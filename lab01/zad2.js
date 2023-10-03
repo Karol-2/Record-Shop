@@ -5,7 +5,6 @@ const products = [
     { name: 'Product 4', price: 12, quantity: 1 },
   ];
 
-
   const calculateProductValue = (product, cb) => {
     setTimeout(() => {
       const value = product.price * product.quantity;
@@ -13,13 +12,24 @@ const products = [
     }, Math.floor(Math.random() * 1000));
   };
 
-  const calculateTotalValue = (n,cb) => {
-    let sum=0;
-    for (let i = 0; i < n; i++) {
-        calculateProductValue(products[n],(num)=>{
-        cb(num +  sum)
-    })
-  }
-}
+const calculateTotalValue = (n, cb) => {
+  const promisesTab = [];
 
-  calculateTotalValue(3,(x)=>{console.log(x)})
+  for (let i = 0; i < n; i++) {
+    const promise = new Promise((res) => {
+      calculateProductValue(products[i], res);
+    });
+    promisesTab.push(promise);
+  }
+
+  Promise.all(promisesTab).then((resolvedTab) => {
+    console.log(resolvedTab);
+    const sum = resolvedTab.reduce((prev, curr) => prev + curr);
+    cb(sum);
+  }, 0);
+
+};
+
+calculateTotalValue(3, (x) => {
+  console.log(x);
+});
