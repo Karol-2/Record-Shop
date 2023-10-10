@@ -11,23 +11,20 @@ interface Obj{
 const arr: Obj[] = [ { x: 4, y: 2}, { x: 1, y: 8 }, { x: 4, y: 2 } ];
 
 
-function srednia(array: Obj[], symbol: string): void {
+function srednia(array: Obj[], symbol: string): number {
+    const sum: number = array.reduce((prev: number, curr: Obj) => {
+        if (symbol === "x")
+            return prev + curr.x;
+        else if (symbol === "y")
+            return prev + curr.y;
+        return prev;
+    }, 0);
 
-    const sum: number  = array.reduce((prev: Obj,curr: Obj)=>{
-        if(symbol === "x")
-        {
-            prev.x += curr.x
-        } else if (symbol === "y")
-        {
-            prev.y += curr.y
-        }
-            
-            return prev;
-    },0)
-
-    console.log("Średnia: ",sum / array.length);
-
+    return sum / array.length;
 }
 
+const resultX: number = srednia(arr,"x");
+console.log(resultX);
 
-srednia(arr,"x");
+const resultY: number = srednia(arr,"y");
+console.log(resultY);
