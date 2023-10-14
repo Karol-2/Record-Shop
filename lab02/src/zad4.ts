@@ -1,6 +1,6 @@
 enum BookStatus {
     DOSTEPNA = "DOSTEPNA",
-    WYPOŻYCZONA = "WYPOŻYCZONA",
+    WYPOZYCZONA = "WYPOZYCZONA",
     ZGUBIONA = "ZGUBIONA",
 }
 
@@ -30,13 +30,34 @@ class Library {
         console.log("Dodano \"" + book.title + "\" do biblioteki")
     }
     public borrowBook(title: string): void {
-        const matchingTitles: Book[] = this.books.filter((book: Book)=> book.title === title)
-        if (matchingTitles.length === 0)
-            console.log("Nie znaleziono tytułu " + title)
-        else if (matchingTitles.length === 1)
-            console.log("Znaleziono " + title)
-        // TODO: dokończyć to
+        for (const book of this.books) {
+            if (book.title.toLowerCase() === title.toLowerCase() && book.status === BookStatus.DOSTEPNA) {
+                book.status = BookStatus.WYPOZYCZONA;
+                console.log("Zmieniono status książki \"" + book.title + "\" na " + book.status)
+                break;
+            }
+        }
     } 
+
+    public returnBook(title: string): void{
+        for (const book of this.books) {
+            if (book.title.toLowerCase() === title.toLowerCase() && book.status === BookStatus.WYPOZYCZONA) {
+                book.status = BookStatus.DOSTEPNA;
+                console.log("Zmieniono status książki \"" + book.title + "\" na " + book.status)
+                break;
+            }
+        }
+    }
+
+    public findBooksByAuthor(author: string): Book[] {
+        const matchingBooks: Book[] = this.books.filter((book: Book)=> book.author.toLowerCase() === author.toLowerCase());
+        return matchingBooks;
+    }
+
+    public findBooksByStatus(status: BookStatus): Book[]{
+        const matchingBooks: Book[] = this.books.filter((book: Book)=> book.status === status);
+        return matchingBooks;
+    }
 
 }
 
@@ -50,5 +71,26 @@ const panTadeusz: Book = {
     status: BookStatus.DOSTEPNA
 }
 
+const lalka: Book = {
+    title: "Lalka",
+    author: "Bolesław Prus",
+    year: 1845,
+    status: BookStatus.DOSTEPNA
+}
+
+const dziady3: Book = {
+    title: "Dziady cz.III",
+    author: "Adam Mickiewicz",
+    year: 1776,
+    status: BookStatus.WYPOZYCZONA
+}
+
 library.addBook(panTadeusz)
-library.borrowBook("Pan Tadeusz")
+library.addBook(lalka)
+library.addBook(dziady3)
+
+library.borrowBook("lalka")
+library.returnBook("lalka")
+
+// console.log(library.findBooksByAuthor("Adam Mickiewicz"));
+// console.log(library.findBooksByStatus(BookStatus.WYPOZYCZONA))
