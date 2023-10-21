@@ -1,4 +1,4 @@
 export interface Food {
     diet: string;
-    favouriteFood: string;
+    favouriteFood?: string;
 }
