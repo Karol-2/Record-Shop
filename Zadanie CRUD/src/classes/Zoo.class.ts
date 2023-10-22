@@ -9,10 +9,7 @@ export class Zoo {
   }
 
   public addAnimal(newAnimal: Animal): void | TErrorMessage {
-    const animalsInSpecies: Animal[] = this.animals.filter(
-      (animal: Animal) =>
-        animal.species.toLowerCase() === newAnimal.species.toLowerCase()
-    );
+    const animalsInSpecies: Animal[] = this.getAnimalsOfSpecies(newAnimal.species);
 
     const animalExists: boolean = animalsInSpecies.reduce(
       (prev: boolean, curr: Animal) => {
@@ -25,7 +22,7 @@ export class Zoo {
     if (!animalExists) {
       this.animals.push(newAnimal);
     } else {
-      return "An animal with this name in this species already exists!";
+      return `ERROR: An animal with name ${newAnimal.name} in ${newAnimal.species} species already exists!`;
     }
   }
 
@@ -39,15 +36,28 @@ export class Zoo {
     );
   }
 
-  public getAnimalByNameAndSpecies(name: string, species: string): Animal {
-    return this.animals.filter(
+  public getAnimalByNameAndSpecies(name: string, species: string): Animal | TErrorMessage {
+    const animalsFound: Animal[] = this.animals.filter(
       (animal: Animal) =>
         animal.name.toLowerCase() === name.toLowerCase() &&
         animal.species.toLowerCase() === species.toLowerCase()
-    )[0];
+    );
+
+    if(animalsFound.length === 1){
+      return animalsFound[0]
+    } else {
+      return `ERROR: An animal with this name ${name} in ${species} species doesn't exists`
+    }
   }
 
-  public deleteAnimal(name: string, species: string): void {
+  public updateAnimal(name: string, species: string, newData: Partial<Animal>): void{
+    const animal: unknown = this.getAnimalByNameAndSpecies(name, species);
+    if ( typeof animal === "object"){
+      Object.assign(animal!, newData)
+    } 
+  }
+
+  public deleteAnimal(name: string, species: string): void | TErrorMessage {
     const index: number = this.animals.findIndex(
       (animal: Animal) =>
         animal.name.toLowerCase() === name.toLowerCase() &&
@@ -56,6 +66,8 @@ export class Zoo {
 
     if (index !== -1) {
       this.animals.splice(index, 1);
+    } else {
+      return `ERROR: An animal with this name ${name} in ${species} species doesn't exists`
     }
 
   }

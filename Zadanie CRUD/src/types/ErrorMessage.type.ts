@@ -1,1 +1,1 @@
-export type TErrorMessage = string;
+export type TErrorMessage = `ERROR: ${string}`

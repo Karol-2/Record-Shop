@@ -11,10 +11,10 @@ const bearWojtek: Animal = {
     status: AnimalStatus.HEALTHY,
     food: {
         diet: 'meat-eater',
-        favouriteFood: 'salmon'
+        favouriteFood: 'salmon',
+        hasAllergies: false,
     },
 }
-
 const bearJadwiga: Animal = {
     name: 'Jadwiga',
     species: 'polar bear',
@@ -22,7 +22,8 @@ const bearJadwiga: Animal = {
     gender: AnimalGender.FEMALE,
     status: AnimalStatus.HEALTHY,
     food: {
-        diet: 'meat-eater'
+        diet: 'meat-eater',
+        hasAllergies: false,
     },
 }
 const lemur: Animal = {
@@ -33,7 +34,8 @@ const lemur: Animal = {
     status: AnimalStatus.SICK,
     food: {
         diet: 'plant-eater',
-        favouriteFood: 'mango'
+        favouriteFood: 'mango',
+        hasAllergies: true,
     },
 }
 
@@ -43,9 +45,25 @@ myZoo.addAnimal(bearWojtek)
 myZoo.addAnimal(bearJadwiga)
 myZoo.addAnimal(lemur)
 
+// console.log(myZoo.getAnimalByNameAndSpecies("sdsd","sds"))
+// console.log(myZoo.getAnimalByNameAndSpecies("wojtek","polar bear"))
+
+// myZoo.updateAnimal("Wojtek","polar bear",{age: 10, name: "Janusz"})
+// myZoo.updateAnimal("Julian","Lemur",{age: 20, name: "Julek"})
+// console.log(myZoo.getAnimals())
+
+// console.log(myZoo.getAnimalsOfSpecies("polar bear"))
+
+
 // myZoo.deleteAnimal('wojtek','polar bear')
 // myZoo.deleteAnimal('julian','lemur')
 // myZoo.deleteAnimal('jadwiga','polar bear')
+
+
+// const response: unknown = myZoo.addAnimal(bearWojtek)
+// if (typeof response === 'string'){
+//     console.log(response)
+// }
 
 
 // console.log(myZoo.getAnimals())
