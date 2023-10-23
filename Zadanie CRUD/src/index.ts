@@ -9,6 +9,7 @@ const bearWojtek: Animal = {
     age: 5,
     gender: AnimalGender.MALE,
     status: AnimalStatus.HEALTHY,
+    isEndangered: true,
     food: {
         diet: 'meat-eater',
         favouriteFood: 'salmon',
@@ -21,6 +22,7 @@ const bearJadwiga: Animal = {
     age: 7,
     gender: AnimalGender.FEMALE,
     status: AnimalStatus.HEALTHY,
+    isEndangered: true,
     food: {
         diet: 'meat-eater',
         hasAllergies: false,
@@ -32,6 +34,7 @@ const lemur: Animal = {
     age: 3,
     gender: AnimalGender.MALE,
     status: AnimalStatus.SICK,
+    isEndangered: false,
     food: {
         diet: 'plant-eater',
         favouriteFood: 'mango',
@@ -50,6 +53,9 @@ myZoo.addAnimal(lemur)
 
 // myZoo.updateAnimal("Wojtek","polar bear",{age: 10, name: "Janusz"})
 // myZoo.updateAnimal("Julian","Lemur",{age: 20, name: "Julek"})
+// console.log(myZoo.getAnimals())
+
+// myZoo.updateAnimal("Julian","Lemur",{color: "red", name: "Julek"})
 // console.log(myZoo.getAnimals())
 
 // console.log(myZoo.getAnimalsOfSpecies("polar bear"))

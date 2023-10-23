@@ -9,4 +9,5 @@ export interface Animal {
     age: number;
     food: Food;
     status: AnimalStatus;
+    isEndangered: boolean;
 }

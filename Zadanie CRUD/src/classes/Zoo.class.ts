@@ -1,7 +1,8 @@
 import { Animal } from "../models/Animal.model";
+import { CrudOperations } from "../models/CrudOperations.model";
 import { TErrorMessage } from "../types/ErrorMessage.type";
 
-export class Zoo {
+export class Zoo implements CrudOperations {
   private animals: Animal[];
 
   public constructor() {
