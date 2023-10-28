@@ -1,0 +1,11 @@
+<app-add-product></app-add-product>
+
+<p>Shopping list:</p>
+<ul>
+    <li *ngFor="let product of products">
+        <span [ngClass]="{'bought': product.bought}">{{product.name}}</span>
+        <input type="checkbox" [(ngModel)]="product.bought">
+        <button (click)="removeProduct(product)">remove</button>
+
+    </li>
+</ul>
