@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-exercise',
@@ -7,34 +6,24 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./exercise.component.scss'],
 })
 export class ExerciseComponent {
+  protected counter: number = 0;
 
-    @Input() protected counter: number = 0;
-    @Output() protected action: EventEmitter<number> = new EventEmitter<number>()
+  protected funkcja!: ReturnType<typeof setTimeout>;
 
-    protected funkcja!: ReturnType<typeof setTimeout>;
+  protected start(): void {
+    this.funkcja = setInterval(() => {
+      this.counter += 1;
+      console.log(this.counter);
+    }, 1000);
+  }
 
-    protected start(): void {
-      this.funkcja = setInterval(()=>{
-        this.counter += 1;
-        this.action.emit(this.counter);
-      },1000)
+  protected stop(): void {
+    clearInterval(this.funkcja);
+    console.log('STOP');
+  }
 
-      console.log(this.counter)
-    }
-
-    protected stop(): void {
-      clearInterval(this.funkcja)
-      console.log(this.counter)
-    }
-
-    protected clear(): void {
-      this.counter = 0;
-      this.action.emit(this.counter);
-      
-      console.log(this.counter)
-    }
-
-    
-
-
-}   
+  protected clear(): void {
+    this.counter = 0;
+    console.log(this.counter);
+  }
+}

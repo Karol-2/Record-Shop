@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExerciseComponent } from './exercise/exercise.component';
-import { CounterComponent } from './exercise/counter/counter.component';
-
+import { CounterComponent } from './counter/counter.component';
 
 
 @NgModule({
@@ -14,7 +13,6 @@ import { CounterComponent } from './exercise/counter/counter.component';
     CommonModule
   ],
   exports: [
-    CounterComponent,
     ExerciseComponent
   ]
 })
