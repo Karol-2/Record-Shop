@@ -1,12 +1,16 @@
-<app-add-product (notify)="updateProducts($event)" [products]="products"></app-add-product>
+<app-add-product  [products]="products"></app-add-product>
 
 <p>Lista zakupów:</p>
 <ul>
     <li *ngFor="let product of products">
         <span [ngClass]="{'bought': product.bought}">{{product.name}}</span>
         <input type="checkbox" [(ngModel)]="product.bought">
-        <button (click)="removeProduct(product)">Usuń</button>
+        <button *ngIf="!showModal" (click)="openModal(product)">Usuń</button>
+       
 
     </li>
 </ul>
+
+<app-modal *ngIf="showModal" [itemToDelete]="itemToDelete" (confirm)="deleteItem($event)" ></app-modal>
+
 <button (click)="removeBought()">Usuń kupione</button>

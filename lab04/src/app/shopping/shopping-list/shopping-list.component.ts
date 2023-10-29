@@ -9,20 +9,29 @@ import { Product } from '../models/Products.model';
 export class ShoppingListComponent {
   protected products: Product[] = [{ name: 'Mleko', bought: false }];
 
-  protected removeProduct(product: Product): void {
-    const index: number = this.products.indexOf(product);
-    if (index !== -1) {
-      this.products.splice(index, 1);
-    }
+  protected showModal: boolean = false;
+  protected itemToDelete: Product = { name: '', bought: false };
+
+  protected openModal(item: Product): void {
+    this.showModal = true;
+    this.itemToDelete = item;
   }
 
-  protected updateProducts(newProducts: Product[]): void {
-   this.products = newProducts;
+  protected deleteItem(result: boolean,): void {
+    const index: number = this.products.indexOf(this.itemToDelete);
+    if (index !== -1 && result) {
+      this.products.splice(index, 1);
+      
+    }
+    this.showModal = false;
   }
+
+
 
   protected removeBought(): void {
     this.products = this.products.filter((product: Product) => {
       return product.bought === false;
     });
   }
+
 }
