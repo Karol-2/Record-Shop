@@ -18,4 +18,9 @@ export class ShoppingListComponent {
       this.products.splice(index,1)
     }
   }
+
+  protected addReceivedProduct(productName: string): void{
+    const newProduct: Product = {name: productName, bought: false}
+    this.products.push(newProduct)
+  }
 }
