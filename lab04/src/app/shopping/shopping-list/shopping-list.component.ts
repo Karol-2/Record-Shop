@@ -16,9 +16,8 @@ export class ShoppingListComponent {
     }
   }
 
-  protected addReceivedProduct(productName: string): void {
-    const newProduct: Product = { name: productName, bought: false };
-    this.products.push(newProduct);
+  protected updateProducts(newProducts: Product[]): void {
+   this.products = newProducts;
   }
 
   protected removeBought(): void {

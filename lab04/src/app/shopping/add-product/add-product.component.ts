@@ -7,27 +7,35 @@ import { Product } from '../models/Products.model';
   styleUrls: ['./add-product.component.scss'],
 })
 export class AddProductComponent {
-  protected newProduct: string = '';
+  
   protected errorMessage: string = '';
   protected showError: boolean = false;
 
   @Input() public products: Product[] = [];
-  @Output() protected notify: EventEmitter<string> = new EventEmitter<string>();
+  @Output() protected notify: EventEmitter<Product[]> = new EventEmitter<Product[]>();
 
   protected addProduct(productName: string): void {
+    if (this.checkIsValid(productName)){
+      this.showError = false;
+      const newProduct: Product = {name: productName, bought: false};
+      
+      this.products.push(newProduct)
+    }
+   
+  }
+
+  protected checkIsValid(productName: string): boolean {
     if (productName.trim() === '') {
       this.errorMessage = 'Error, próba dodania pustego elementu';
       this.showError = true;
-      return;
+      return false;
     } else if (
       this.products.some((product: Product) => product.name === productName)
     ) {
       this.errorMessage = 'Error, ten produkt jest już na liście';
       this.showError = true;
-      return;
+      return false;
     }
-    this.showError = false;
-    this.newProduct = productName;
-    this.notify.emit(this.newProduct);
+    return true
   }
 }
