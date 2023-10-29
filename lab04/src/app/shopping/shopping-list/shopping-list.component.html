@@ -1,11 +1,12 @@
-<app-add-product (notify)="addReceivedProduct($event)"></app-add-product>
+<app-add-product (notify)="addReceivedProduct($event)" [products]="products"></app-add-product>
 
-<p>Shopping list:</p>
+<p>Lista zakupów:</p>
 <ul>
     <li *ngFor="let product of products">
         <span [ngClass]="{'bought': product.bought}">{{product.name}}</span>
         <input type="checkbox" [(ngModel)]="product.bought">
-        <button (click)="removeProduct(product)">remove</button>
+        <button (click)="removeProduct(product)">Usuń</button>
 
     </li>
 </ul>
+<button (click)="removeBought()">Usuń kupione</button>
