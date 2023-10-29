@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { FormsModule } from '@angular/forms';
+import { AlertComponent } from './alert/alert.component';
 
 
 
 @NgModule({
   declarations: [
     ShoppingListComponent,
-    AddProductComponent
+    AddProductComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,

@@ -2,7 +2,6 @@
   <input type="text" placeholder="Nazwa produktu" #productVal />
   <button type="submit" >Dodaj</button>
 </form>
-<div *ngIf="showError">
-  <span class="error"> {{errorMessage}}</span>
-  <button (click)="closeNotification()"> X </button>
-</div>
+
+<app-alert [showError]="showError" [errorMessage]="errorMessage" ></app-alert>
+
