@@ -10,36 +10,36 @@ import data from 'src/app/shared/data/data';
 export class ShoppingListComponent implements OnInit {
 
   public ngOnInit(): void {
-    setTimeout(()=>{
-      this.products = data
-    },2000)
+    setTimeout(() => {
+      this.products = data;
+    }, 2000);
   }
-
-  protected products: Product[] = [];
 
   protected showModal: boolean = false;
-  protected itemToDelete: Product = { name: '', bought: false };
+  protected products: Product[] = [];
+  protected itemToDelete!: Product
 
-  protected openModal(item: Product): void {
-    this.showModal = true;
-    this.itemToDelete = item;
+  protected modalContent(product: Product): string {
+    return `Czy napewno chcesz usunąć ${product.name} (ilość: ${product.quantity}) ?`;
   }
 
-  protected deleteItem(result: boolean,): void {
-    const index: number = this.products.indexOf(this.itemToDelete);
-    if (index !== -1 && result) {
+  protected toggleModal(): void {
+    this.showModal = !this.showModal;
+  }
+
+  protected deleteItem(product: Product): void {
+    const index: number = this.products.indexOf(product);
+    if (index !== -1) {
       this.products.splice(index, 1);
-      
     }
-    this.showModal = false;
+    this.toggleModal();
   }
-
-
 
   protected removeBought(): void {
     this.products = this.products.filter((product: Product) => {
       return product.bought === false;
     });
   }
-
 }
+//TODO: naprawić usuwanie nie tego obiektu
+//TODO: zmiana działania usuń kupione

@@ -4,7 +4,6 @@ import { Product } from '../../shared/models/Products.model';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss'],
 })
 export class AddProductComponent {
   
@@ -17,7 +16,7 @@ export class AddProductComponent {
   protected addProduct(productName: string): void {
     if (this.checkIsValid(productName)){
       this.showError = false;
-      const newProduct: Product = {name: productName, bought: false};
+      const newProduct: Product = {name: productName, bought: false, quantity: 1};
       
       this.products.push(newProduct)
     }

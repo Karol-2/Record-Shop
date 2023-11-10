@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from '../models/Products.model';
+import { Component,Input} from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -7,17 +6,5 @@ import { Product } from '../models/Products.model';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {
-  @Input() public product: Product = {name: "", bought: false}
-  @Input() public itemToDelete: Product = {name: "", bought: false}
-
-  @Output() protected confirm: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  protected onConfirm(): void {
-    this.confirm.emit(true);
-  }
-
-  protected onCancel(): void {
-    this.confirm.emit(false);
-    console.log(confirm)
-  }
+  @Input() public title!: string;
 }
