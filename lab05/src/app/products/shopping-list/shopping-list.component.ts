@@ -19,20 +19,21 @@ export class ShoppingListComponent implements OnInit {
   protected products: Product[] = [];
   protected itemToDelete!: Product
 
-  protected modalContent(product: Product): string {
-    return `Czy napewno chcesz usunąć ${product.name} (ilość: ${product.quantity}) ?`;
+  protected modalContent(): string {
+    return `Czy napewno chcesz usunąć ${this.itemToDelete.name} (ilość: ${this.itemToDelete.quantity}) ?`;
   }
 
-  protected toggleModal(): void {
+  protected toggleModal(product: Product): void {
     this.showModal = !this.showModal;
+    this.itemToDelete = product;
   }
 
-  protected deleteItem(product: Product): void {
-    const index: number = this.products.indexOf(product);
+  protected deleteItem(): void {
+    const index: number = this.products.indexOf(this.itemToDelete);
     if (index !== -1) {
       this.products.splice(index, 1);
     }
-    this.toggleModal();
+    this.toggleModal(this.itemToDelete);
   }
 
   protected removeBought(): void {
@@ -41,5 +42,5 @@ export class ShoppingListComponent implements OnInit {
     });
   }
 }
-//TODO: naprawić usuwanie nie tego obiektu
+
 //TODO: zmiana działania usuń kupione
