@@ -14,4 +14,8 @@ export class AnimalListComponent implements OnInit {
   public ngOnInit(): void {
     this.animals = animalData;
   }
+
+  protected onAnimalsUpdated(updatedAnimals: Animal[]): void {
+    this.animals = updatedAnimals;
+  }
 }

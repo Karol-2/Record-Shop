@@ -7,7 +7,7 @@
     <input id="species" type="text" name="Gatunek" [(ngModel)]="selectedSpecies">
 
     <label for="age">Wiek:</label>
-    <input id="age" type="number" name="Wiek" [(ngModel)]="selectedAge">
+    <input id="age" type="number" name="Wiek" [(ngModel)]="selectedAge" min="1">
     
     <label for="gender">Płeć:</label>
     <select id="gender" [(ngModel)]="selectedGender" name="Plec">
@@ -24,5 +24,5 @@
     </option>
   </select>
 
-    <button type="button" (click)="showData()">Dodaj</button>
+    <button type="button" (click)="addAnimal()">Dodaj</button>
 </form>
