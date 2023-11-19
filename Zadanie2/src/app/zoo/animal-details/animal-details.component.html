@@ -1,0 +1,18 @@
+<div class="animal-info">
+    <p>{{animal.id}}</p>
+    <p>{{animal.name}}</p>
+    <p>{{animal.gender}}</p>
+    <p>{{animal.species}}</p>
+    <p>{{animal.age}}</p>
+    <p>{{animal.status}}</p>
+
+    <button (click)="changeVisibility()">Usuń</button>
+
+    <app-modal *ngIf="toDelete" [title]="'Czy na pewno chcesz usunąć zwierzę ' + animal.name + ', ' + animal.species + ' z bazy danych?'" >
+        <div >
+            <button (click)="changeVisibility()">Nie</button>
+            <button (click)="confirm()">Tak</button>
+          </div>
+        
+    </app-modal>
+</div>

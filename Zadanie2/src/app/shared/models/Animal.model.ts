@@ -8,5 +8,4 @@ export interface Animal {
     readonly species: string;
     age: number;
     status: AnimalStatus;
-    isEndangered: boolean;
 }

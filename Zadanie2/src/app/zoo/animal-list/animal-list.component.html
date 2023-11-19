@@ -1,1 +1,6 @@
-<p>animal-list works!</p>
+<app-animal-add [animals]="animals"></app-animal-add>
+
+<h1>Zwierzęta w zoo:</h1>
+<div *ngFor="let animal of animals">
+    <app-animal-details [animal]="animal" [animals]="animals"></app-animal-details>
+</div>
