@@ -1,10 +1,10 @@
 <div class="animal-info">
     <p>{{animal.id}}</p>
-    <p>{{animal.name}}</p>
-    <p>{{animal.gender}}</p>
-    <p>{{animal.species}}</p>
+    <p>{{animal.name | animalDataDisplay}}</p>
+    <p>{{animal.gender | animalDataDisplay}}</p>
+    <p>{{animal.species | animalDataDisplay}}</p>
     <p>{{animal.age}}</p>
-    <p>{{animal.status}}</p>
+    <p>{{animal.status | animalDataDisplay}}</p>
 
     <button (click)="changeVisibility()">Usuń</button>
 
