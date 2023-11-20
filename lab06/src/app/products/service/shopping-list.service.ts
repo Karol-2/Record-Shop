@@ -76,4 +76,24 @@ export class ShoppingListService implements OnInit {
       this.productStorageService.changeData(products);
     }
   }
+
+  public checkIsProductValid(productName: string, products: Product[]): boolean {
+    if (productName.trim() === '') {
+      return false;
+    } else if (
+      products.some((product: Product) => product.name === productName)
+    ) {
+      return false;
+    }
+    return true
+  }
+
+  public addProduct(productName: string, products: Product[]): void{
+    if (this.checkIsProductValid(productName, products)){
+      const newProduct: Product = {name: productName, bought: false, quantity: 1};
+      
+      this.products.push(newProduct)
+      this.productStorageService.changeData(this.products)
+    }
+  }
 }
