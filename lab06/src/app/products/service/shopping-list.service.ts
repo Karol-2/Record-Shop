@@ -83,6 +83,7 @@ export class ShoppingListService implements OnInit {
     } else if (
       products.some((product: Product) => product.name === productName)
     ) {
+
       return false;
     }
     return true
@@ -92,8 +93,9 @@ export class ShoppingListService implements OnInit {
     if (this.checkIsProductValid(productName, products)){
       const newProduct: Product = {name: productName, bought: false, quantity: 1};
       
-      this.products.push(newProduct)
-      this.productStorageService.changeData(this.products)
+      products.push(newProduct)
+      products.sort((a: Product, b: Product) => a.name.localeCompare(b.name));
+      this.productStorageService.changeData(products)
     }
   }
 }
