@@ -18,9 +18,13 @@
     </app-modal>
 </ng-container>
 
-<!-- <div *ngIf="products.length === 0">
-Loading...
-</div> -->
+<p>Produkty kupione:</p>
+<ul>
+    <li *ngFor="let product of productsBought">
+        <span>{{product.name | produktInfo:product.quantity }}</span>
+    </li>
+</ul>
+
 
 
 

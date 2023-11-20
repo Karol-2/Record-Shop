@@ -1,50 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../shared/models/Products.model';
-import { ProductStorageService } from '../service/product.service';
+import { ProductStorageService } from '../service/product-storage.service';
+import { ShoppingListService } from '../service/shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss'],
-  providers: [ProductStorageService]
+  providers: [ProductStorageService, ShoppingListService]
 })
 export class ShoppingListComponent implements OnInit {
 
   public constructor(
-    private productStorageService: ProductStorageService,
+    private shoppingListService: ShoppingListService
   ){}
 
   public ngOnInit(): void {
-    this.productStorageService.loadData()
-    this.products = this.productStorageService.products
+    this.shoppingListService.loadData();
+    this.products = this.shoppingListService.getProducts();
   }
 
   protected showModal: boolean = false;
   protected products: Product[] = [];
+  protected productsBought: Product[] = [];
   protected itemToDelete!: Product
 
   protected modalContent(): string {
-    return `Czy napewno chcesz usunąć ${this.itemToDelete.name} (ilość: ${this.itemToDelete.quantity}) ?`;
-  }
+    return this.shoppingListService.getModalContent() }
 
 
   protected toggleModal(product: Product): void {
-    this.showModal = !this.showModal;
+    this.shoppingListService.toggleModal(product);
+    this.showModal = this.shoppingListService.isModalVisible();
     this.itemToDelete = product;
   }
 
   protected deleteItem(): void {
-    const index: number = this.products.indexOf(this.itemToDelete);
-    if (index !== -1) {
-      this.products.splice(index, 1);
-      this.productStorageService.changeData(this.products)
-    }
-    this.toggleModal(this.itemToDelete);
+    this.shoppingListService.deleteItem();
+    this.showModal = this.shoppingListService.isModalVisible();
   }
 
   protected removeBought(): void {
-    this.products = this.products.filter((product: Product) => {
-      return product.bought === false;
-    });
-  }
+    this.shoppingListService.removeBought();
+  
+}
+
 }

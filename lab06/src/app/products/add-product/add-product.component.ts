@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Product } from '../../shared/models/Products.model';
-import { ProductStorageService } from '../service/product.service';
+import { ProductStorageService } from '../service/product-storage.service';
 
 @Component({
   selector: 'app-add-product',

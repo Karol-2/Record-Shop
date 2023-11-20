@@ -7,9 +7,10 @@ import { Product } from 'src/app/shared/models/Products.model';
 export class ProductStorageService{
 
   private productList: Product[] = []
-  constructor(){}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  public constructor(){}
 
-  get products(): Product[] { 
+  public get products(): Product[] { 
     return this.productList;
   }
 
@@ -25,7 +26,7 @@ export class ProductStorageService{
   }
 
   private orderData(): void{
-   this.productList =  this.productList.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+   this.productList =  this.productList.sort((a: Product,b: Product) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
   }
 
   

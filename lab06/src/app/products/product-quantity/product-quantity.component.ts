@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/shared/models/Products.model';
-import { ProductStorageService } from '../service/product.service';
+import { ProductStorageService } from '../service/product-storage.service';
 
 @Component({
   selector: 'app-product-quantity',
@@ -18,7 +18,7 @@ export class ProductQuantityComponent {
   @Input() public products!: Product[]
 
   protected add(): void{
-    this.product.quantity += 1
+
     this.productStorageService.changeData(this.products)
   }
 
