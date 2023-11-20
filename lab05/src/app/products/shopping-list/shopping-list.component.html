@@ -11,6 +11,13 @@
     </li>
 </ul>
 
+<p>Produkty kupione:</p>
+<ul>
+    <li *ngFor="let product of productsBought">
+        <span>{{product.name | produktInfo:product.quantity }}</span>
+    </li>
+</ul>
+
 <ng-container *ngIf="showModal">
     <app-modal [title]="modalContent()">
         <button (click)="toggleModal(itemToDelete)">Nie</button>

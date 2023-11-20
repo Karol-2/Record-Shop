@@ -17,6 +17,7 @@ export class ShoppingListComponent implements OnInit {
 
   protected showModal: boolean = false;
   protected products: Product[] = [];
+  protected productsBought: Product[] = [];
   protected itemToDelete!: Product
 
   protected modalContent(): string {
@@ -37,10 +38,12 @@ export class ShoppingListComponent implements OnInit {
   }
 
   protected removeBought(): void {
-    this.products = this.products.filter((product: Product) => {
-      return product.bought === false;
-    });
-  }
+    this.products = this.products.reduce((prev: Product[],curr: Product)=>{
+      if(curr.bought){
+        this.productsBought.push(curr)
+        return prev
+      } return [...prev, curr]
+    },[])
+  
 }
-
-//TODO: zmiana działania usuń kupione
+}
