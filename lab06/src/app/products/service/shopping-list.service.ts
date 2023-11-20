@@ -57,10 +57,15 @@ export class ShoppingListService implements OnInit {
     this.products = this.products.reduce((prev: Product[], curr: Product) => {
       if (curr.bought) {
         this.productsBought.push(curr);
+        
         return prev;
       }
       return [...prev, curr];
     }, []);
+
+    this.productsBought = this.orderChronologically(this.productsBought);
+    this.productStorageService.changeData(this.products);
+    this.productStorageService.loadData();
   }
 
   public addQunatity(product: Product, products: Product[]): void{
@@ -97,5 +102,22 @@ export class ShoppingListService implements OnInit {
       products.sort((a: Product, b: Product) => a.name.localeCompare(b.name));
       this.productStorageService.changeData(products)
     }
+  }
+
+  public checkOffProduct(product: Product, products: Product[]): void {
+    let productWithDate: Product = {...product,  bought: !product.bought}
+    if(!product.bought){
+      productWithDate = {...productWithDate, dateBought: new Date()}
+    } else {
+      delete productWithDate.dateBought;
+    }
+    const index: number = products.indexOf(product);
+    products[index] = productWithDate;
+    this.productStorageService.changeData(products)
+  }
+
+  public orderChronologically(array: Product[]): Product[]{
+    return array.sort((a: Product, b: Product) => a.dateBought!.getTime() - b.dateBought!.getTime());
+
   }
 }

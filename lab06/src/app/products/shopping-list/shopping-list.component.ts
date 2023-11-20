@@ -25,6 +25,10 @@ export class ShoppingListComponent implements OnInit {
   protected productsBought: Product[] = [];
   protected itemToDelete!: Product
 
+  protected checkOff(product: Product): void{
+  this.shoppingListService.checkOffProduct(product, this.products);
+  }
+
   protected modalContent(): string {
     return this.shoppingListService.getModalContent() }
 
@@ -42,6 +46,7 @@ export class ShoppingListComponent implements OnInit {
 
   protected removeBought(): void {
     this.shoppingListService.removeBought();
+    this.productsBought = this.shoppingListService.getProductsBought();
   
 }
 

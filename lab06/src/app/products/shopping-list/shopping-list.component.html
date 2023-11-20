@@ -5,7 +5,7 @@
 <ul>
     <li *ngFor="let product of products">
         <span [ngClass]="{'bought': product.bought}">{{product.name | produktInfo:product.quantity }}</span>
-        <input type="checkbox" [(ngModel)]="product.bought">
+        <input type="checkbox" [(ngModel)]="product.bought" (click)="checkOff(product)">
         <button (click)="toggleModal(product)" >Usuń</button>
         <app-product-quantity [product]="product" [products]="products" />
     </li>
@@ -22,6 +22,7 @@
 <ul>
     <li *ngFor="let product of productsBought">
         <span>{{product.name | produktInfo:product.quantity }}</span>
+        <span>{{ product.dateBought | date: 'short'}}</span>
     </li>
 </ul>
 
