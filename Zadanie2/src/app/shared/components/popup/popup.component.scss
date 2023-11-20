@@ -1,0 +1,11 @@
+.popup{
+    background-color: bisque;
+    padding: 10px;
+    border: 1px solid brown;
+    border-radius: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}

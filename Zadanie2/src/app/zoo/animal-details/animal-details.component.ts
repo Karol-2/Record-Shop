@@ -14,7 +14,6 @@ export class AnimalDetailsComponent implements OnDestroy {
   protected toDelete: boolean = false;
 
   public ngOnDestroy(): void {
-    console.log('Usunięte zwierzę:', this.animal);
     this.toDelete = true;
     this.deletionConfirmed.emit(this.animal);
   }

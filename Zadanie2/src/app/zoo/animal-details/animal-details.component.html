@@ -1,18 +1,23 @@
 <div class="animal-info">
-    <p>{{animal.id}}</p>
-    <p>{{animal.name | animalDataDisplay}}</p>
-    <p>{{animal.gender | animalDataDisplay}}</p>
-    <p>{{animal.species | animalDataDisplay}}</p>
-    <p>{{animal.age}}</p>
-    <p>{{animal.status | animalDataDisplay}}</p>
+  <ul>
+    <li>Id: {{ animal.id }}</li>
+    <li>Imie: {{ animal.name | animalDataDisplay }}</li>
+    <li>Gatunek: {{ animal.species | animalDataDisplay }}</li>
+    <li>Płeć: {{ animal.gender | animalDataDisplay | slice : 0 : 1 }}</li>
+    <li>Wiek: {{ animal.age }}</li>
+    <li>Stan: {{ animal.status | animalDataDisplay }}</li>
+    <button class="btn-delete" (click)="changeVisibility()">Usuń</button>
+  </ul>
 
-    <button (click)="changeVisibility()">Usuń</button>
-
-    <app-modal *ngIf="toDelete" [title]="'Czy na pewno chcesz usunąć zwierzę ' + animal.name + ', ' + animal.species + ' z bazy danych?'" >
-        <div >
-            <button (click)="changeVisibility()">Nie</button>
-            <button (click)="confirm()">Tak</button>
-          </div>
-        
-    </app-modal>
+  <app-modal
+    *ngIf="toDelete"
+    [title]="
+      'Czy na pewno chcesz usunąć zwierzę ' + animal.name +
+      ', z gatunku ' +animal.species +' z bazy danych?'"
+  >
+    <div>
+      <button class="btn-cancel" (click)="changeVisibility()">Nie</button>
+      <button class="btn-delete" (click)="confirm()">Tak</button>
+    </div>
+  </app-modal>
 </div>

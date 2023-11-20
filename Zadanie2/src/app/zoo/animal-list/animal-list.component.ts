@@ -14,18 +14,17 @@ export class AnimalListComponent implements OnInit {
   public deletedAnimal: Animal | null = null;
   public showSuccessModal: boolean = false;
 
-  public handleDeletionConfirmation(animal: Animal): void {
-    console.log("list:", this.deletedAnimal);
+  public ngOnInit(): void {
+    this.animals = animalData;
+  }
+
+  protected handleDeletionConfirmation(animal: Animal): void {
     this.deletedAnimal = animal;
     this.showSuccessModal = true;
 
     setTimeout(() => {
       this.showSuccessModal = false;
-    }, 5000);
-  }
-
-  public ngOnInit(): void {
-    this.animals = animalData;
+    }, 3000);
   }
 
   protected onAnimalsUpdated(updatedAnimals: Animal[]): void {

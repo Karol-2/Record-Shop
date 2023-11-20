@@ -37,9 +37,9 @@ export class AnimalAddComponent implements OnChanges {
   protected animalStatusOptions: string[] = Object.values(AnimalStatus);
 
   // Wartości
-  protected selectedGender!: AnimalGender;
-  protected selectedStatus!: AnimalStatus;
-  protected selectedAge!: number;
+  protected selectedGender: AnimalGender = AnimalGender.MALE;
+  protected selectedStatus: AnimalStatus = AnimalStatus.HEALTHY;
+  protected selectedAge: number = 1;
   protected selectedName!: string;
   protected selectedSpecies!: string;
 
@@ -65,6 +65,8 @@ export class AnimalAddComponent implements OnChanges {
       typeof obj.gender === 'undefined' ||
       typeof obj.name === 'undefined' ||
       typeof obj.species === 'undefined' ||
+      obj.name.replace(/\s/g, "") === ""||
+      obj.species.replace(/\s/g, "") === ""||
       obj.age < 1
     ) {
       return false;
@@ -93,7 +95,7 @@ export class AnimalAddComponent implements OnChanges {
 
   private clearInputs(): void {
     this.selectedAge = 1;
-    this.selectedGender = AnimalGender.FEMALE;
+    this.selectedGender = AnimalGender.MALE;
     this.selectedName = '';
     this.selectedSpecies = '';
     this.selectedStatus = AnimalStatus.HEALTHY;

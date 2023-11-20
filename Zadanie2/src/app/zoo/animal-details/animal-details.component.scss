@@ -1,7 +1,23 @@
 .animal-info{
-    border: 1px solid black;
+    margin-bottom: 5px;
+    background-color: #65451F;
+    color: #EAC696;
 }
 
-p{
-    margin: 0;
+ul{
+    list-style: none; 
+}
+
+li:first-of-type{
+    font-size:x-small;
+}
+
+.btn-delete{
+    background-color: rgb(252, 80, 80);
+    padding: 10px
+}
+
+.btn-cancel{
+    background-color: rgb(80, 252, 129);
+    padding: 10px
 }

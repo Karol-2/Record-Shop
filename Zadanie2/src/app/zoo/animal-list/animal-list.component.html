@@ -5,6 +5,5 @@
     <app-animal-details [animal]="animal" [animals]="animals"  (deletionConfirmed)="handleDeletionConfirmation($event)" ></app-animal-details>
 </div>
 
-<div *ngIf="showSuccessModal">
-    Usuwanie obiektu zakończone sukcesem
-</div>
+<app-popup *ngIf="showSuccessModal" [text]="'Usuwanie zakończone sukcesem!'">
+</app-popup>
