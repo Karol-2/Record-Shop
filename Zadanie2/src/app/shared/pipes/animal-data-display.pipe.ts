@@ -1,15 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'animalDataDisplay'
+  name: 'animalDataDisplay',
 })
 export class AnimalDataDisplayPipe implements PipeTransform {
-
   public transform(text: string): string {
-    const firstLetter: string = text.charAt(0).toUpperCase();
-    const rest: string = text.slice(1).toLowerCase();
+    if (text) {
+      const firstLetter: string = text.charAt(0).toUpperCase();
+      const rest: string = text.slice(1).toLowerCase();
 
-    return firstLetter + rest;
+      return firstLetter + rest;
+    }
+    
+    return "";
   }
-
 }

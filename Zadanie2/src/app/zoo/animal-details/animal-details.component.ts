@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Animal } from 'src/app/shared/models/Animal.model';
 
 @Component({
@@ -6,11 +6,18 @@ import { Animal } from 'src/app/shared/models/Animal.model';
   templateUrl: './animal-details.component.html',
   styleUrls: ['./animal-details.component.scss']
 })
-export class AnimalDetailsComponent {
+export class AnimalDetailsComponent implements OnDestroy {
 
   @Input() public animal!: Animal;
   @Input() public animals!: Animal[];
+  @Output() public deletionConfirmed: EventEmitter<Animal> = new EventEmitter<Animal>();
   protected toDelete: boolean = false;
+
+  public ngOnDestroy(): void {
+    console.log('Usunięte zwierzę:', this.animal);
+    this.toDelete = true;
+    this.deletionConfirmed.emit(this.animal);
+  }
 
   protected changeVisibility(): void{
     this.toDelete = ! this.toDelete;

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { AnimalGender } from 'src/app/shared/enums/AnimalGender.enum';
 import { AnimalStatus } from 'src/app/shared/enums/AnimalStatus.enum';
 import { Animal } from 'src/app/shared/models/Animal.model';
@@ -9,11 +16,13 @@ import { AnimalDataDisplayPipe } from 'src/app/shared/pipes/animal-data-display.
   selector: 'app-animal-add',
   templateUrl: './animal-add.component.html',
   styleUrls: ['./animal-add.component.scss'],
-  providers: [AnimalDataDisplayPipe]
+  providers: [AnimalDataDisplayPipe],
 })
 export class AnimalAddComponent implements OnChanges {
   @Input() public animals!: Animal[];
-  @Output() public animalsUpdated: EventEmitter<Animal[]> = new EventEmitter<Animal[]>();
+  @Output() public animalsUpdated: EventEmitter<Animal[]> = new EventEmitter<
+    Animal[]
+  >();
 
   public constructor(private dataDisplayPipe: AnimalDataDisplayPipe) {}
 
@@ -34,7 +43,7 @@ export class AnimalAddComponent implements OnChanges {
   protected selectedName!: string;
   protected selectedSpecies!: string;
 
-  private sortAnimals(animalsList: Animal[]):  Animal[] {
+  private sortAnimals(animalsList: Animal[]): Animal[] {
     function compare(a: Animal, b: Animal): number {
       if (a.name < b.name) {
         return -1;
@@ -46,7 +55,6 @@ export class AnimalAddComponent implements OnChanges {
       return 0;
     }
     const result: Animal[] = animalsList.sort(compare);
-    console.log(result);
 
     return result;
   }
@@ -74,17 +82,16 @@ export class AnimalAddComponent implements OnChanges {
       status: this.selectedStatus,
       gender: this.selectedGender,
     };
-  
+
     if (this.validateObject(newAnimal)) {
       this.animals = [...this.animals, newAnimal];
 
       this.animalsUpdated.emit([...this.animals]);
       this.clearInputs();
-
     }
   }
-  
-  private clearInputs(): void{ 
+
+  private clearInputs(): void {
     this.selectedAge = 1;
     this.selectedGender = AnimalGender.FEMALE;
     this.selectedName = '';

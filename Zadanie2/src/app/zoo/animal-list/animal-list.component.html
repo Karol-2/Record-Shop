@@ -2,5 +2,9 @@
 
 <h1>Zwierzęta w zoo:</h1>
 <div *ngFor="let animal of animals">
-    <app-animal-details [animal]="animal" [animals]="animals"></app-animal-details>
+    <app-animal-details [animal]="animal" [animals]="animals"  (deletionConfirmed)="handleDeletionConfirmation($event)" ></app-animal-details>
+</div>
+
+<div *ngIf="showSuccessModal">
+    Usuwanie obiektu zakończone sukcesem
 </div>

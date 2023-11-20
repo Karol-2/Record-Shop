@@ -11,6 +11,19 @@ export class AnimalListComponent implements OnInit {
 
   protected animals: Animal[] = [];
 
+  public deletedAnimal: Animal | null = null;
+  public showSuccessModal: boolean = false;
+
+  public handleDeletionConfirmation(animal: Animal): void {
+    console.log("list:", this.deletedAnimal);
+    this.deletedAnimal = animal;
+    this.showSuccessModal = true;
+
+    setTimeout(() => {
+      this.showSuccessModal = false;
+    }, 5000);
+  }
+
   public ngOnInit(): void {
     this.animals = animalData;
   }
