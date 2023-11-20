@@ -20,9 +20,7 @@ import { AnimalDataDisplayPipe } from 'src/app/shared/pipes/animal-data-display.
 })
 export class AnimalAddComponent implements OnChanges {
   @Input() public animals!: Animal[];
-  @Output() public animalsUpdated: EventEmitter<Animal[]> = new EventEmitter<
-    Animal[]
-  >();
+  @Output() public animalsUpdated: EventEmitter<Animal[]> = new EventEmitter<Animal[]>();
 
   public constructor(private dataDisplayPipe: AnimalDataDisplayPipe) {}
 
