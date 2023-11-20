@@ -1,13 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/models/Products.model';
 import { ProductStorageService } from './product-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShoppingListService {
+export class ShoppingListService implements OnInit {
 
   public constructor(private productStorageService: ProductStorageService){}
+  
+  public ngOnInit(): void {
+    this.loadData();
+  }
 
   private products: Product[] = [];
   private productsBought: Product[] = [];
@@ -59,9 +63,17 @@ export class ShoppingListService {
     }, []);
   }
 
-  public addQunatity(product: Product): void{
-    const index: number = this.products.indexOf(product);
-    this.products[index].quantity += 1;
-    this.productStorageService.changeData(this.products)
+  public addQunatity(product: Product, products: Product[]): void{
+    const index: number = products.indexOf(product);
+    products[index].quantity += 1;
+    this.productStorageService.changeData(products)
+  }
+
+  public minusQunatity(product: Product,  products: Product[]): void{
+    const index: number = products.indexOf(product);
+    if(products[index].quantity > 1){
+      products[index].quantity -= 1;
+      this.productStorageService.changeData(products);
+    }
   }
 }

@@ -1,16 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/shared/models/Products.model';
 import { ProductStorageService } from '../service/product-storage.service';
+import { ShoppingListService } from '../service/shopping-list.service';
 
 @Component({
   selector: 'app-product-quantity',
   templateUrl: './product-quantity.component.html',
-  providers: [ProductStorageService]
+  providers: [ProductStorageService, ShoppingListService]
 })
 export class ProductQuantityComponent {
 
   public constructor(
-    private productStorageService: ProductStorageService,
+    private shoppingListService: ShoppingListService
   ){}
 
 
@@ -18,15 +19,10 @@ export class ProductQuantityComponent {
   @Input() public products!: Product[]
 
   protected add(): void{
-
-    this.productStorageService.changeData(this.products)
+    this.shoppingListService.addQunatity(this.product, this.products);
   }
 
   protected substract(): void{
-    if(this.product.quantity > 1){
-      this.product.quantity -= 1
-      this.productStorageService.changeData(this.products)
-    }
-    
+   this.shoppingListService.minusQunatity(this.product, this.products);
   }
 }
