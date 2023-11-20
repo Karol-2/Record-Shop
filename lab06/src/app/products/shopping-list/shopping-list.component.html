@@ -1,6 +1,8 @@
 <app-add-product  [products]="products"></app-add-product>
 <button (click)="removeBought()">Usuń kupione</button>
 
+<app-last-added-product />
+
 <p>Lista zakupów:</p>
 <ul>
     <li *ngFor="let product of products">

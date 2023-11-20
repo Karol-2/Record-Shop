@@ -5,6 +5,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { LastAddedProductComponent } from './last-added-product/last-added-product.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     ShoppingListComponent,
     AddProductComponent,
     ProductQuantityComponent,
+    LastAddedProductComponent,
   ],
   imports: [
     FormsModule,

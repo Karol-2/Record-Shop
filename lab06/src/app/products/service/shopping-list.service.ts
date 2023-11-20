@@ -1,13 +1,17 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/models/Products.model';
 import { ProductStorageService } from './product-storage.service';
+import { LastAddedProductService } from './last-added-product.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingListService implements OnInit {
 
-  public constructor(private productStorageService: ProductStorageService){}
+  public constructor(
+    private productStorageService: ProductStorageService,
+    private lastAddedProductService: LastAddedProductService
+    ){}
   
   public ngOnInit(): void {
     this.loadData();
@@ -101,6 +105,7 @@ export class ShoppingListService implements OnInit {
       products.push(newProduct)
       products.sort((a: Product, b: Product) => a.name.localeCompare(b.name));
       this.productStorageService.changeData(products)
+      this.lastAddedProductService.setLastAddedProduct(productName);
     }
   }
 
