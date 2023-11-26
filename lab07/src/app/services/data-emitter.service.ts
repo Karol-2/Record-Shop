@@ -6,15 +6,14 @@ import { Subject } from 'rxjs';
 })
 export class DataEmitterService {
   
-  protected dataSubject: Subject<number | string> = new Subject();
+  public dataSubject: Subject<number | string> = new Subject<number | string>();
 
-  protected emitData(data: any): void{
+  public emitData(data: any): void{
     this.dataSubject.next(data);
   }
 
-  protected complete(): void{
+  public complete(): void{
     this.dataSubject.complete();
   }
 
-  constructor() { }
 }
