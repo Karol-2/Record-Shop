@@ -1,0 +1,7 @@
+<form #form="ngForm" (submit)="save(form)">
+    <input type="text" name="imie" placeholder="imie" required minlength="3">
+    <input type="text" name="nazwisko" placeholder="nazwisko" required minlength="3">
+    <input type="number" name="wiek" placeholder="wiek" required min="1" max="99">
+    <input type="text" name="kodPodcztowy" placeholder="kodPodcztowy" required>
+    <button type="submit"> Dodaj </button>
+</form>
