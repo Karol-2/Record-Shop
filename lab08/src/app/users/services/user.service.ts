@@ -7,10 +7,8 @@ import { User } from '../models/user.model';
 export class UserService {
 
   constructor() { }
-
-  private testObj: User = {id: 1, imie: "Karol", nazwisko: "Krawczykiewicz", kodPocztowy: "82-200", wiek: 21}
   
-  private userList: User[] = [this.testObj]
+  private userList: User[] = []
 
   public getUserList(): User[]{
     return this.userList;
@@ -24,6 +22,7 @@ export class UserService {
   }
   
   public addUser(user:User): void{
-    this.userList.push(user);
+    this.userList = [...this.userList, user]
+    console.log(this.userList);
   }
 }

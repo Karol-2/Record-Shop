@@ -7,6 +7,7 @@ import { UserRoutingModule } from './users-routing.module';
 import { FormsModule } from '@angular/forms';
 import { OnlyTextDirective } from './directives/only-text.directive';
 import { ZipCodeDirective } from './directives/zip-code.directive';
+import { FirstBigLetterDirective } from './directives/first-big-letter.directive';
 
 
 
@@ -16,7 +17,8 @@ import { ZipCodeDirective } from './directives/zip-code.directive';
     UserDetailsComponent,
     UserFormComponent,
     OnlyTextDirective,
-    ZipCodeDirective
+    ZipCodeDirective,
+    FirstBigLetterDirective,
   ],
   imports: [
     CommonModule,
