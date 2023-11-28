@@ -1,7 +1,7 @@
 <h1>Lista użytkowników</h1>
 <div>
     <ol *ngFor="let user of userList">
-        <li> {{user.nazwisko}} 
+        <li> {{user.imie + " " + user.nazwisko }} 
             <button (click)="details(user)">Szczegóły</button>
         </li>
     </ol>

@@ -1,16 +1,14 @@
 import { Component} from '@angular/core';
 import {  NgForm } from '@angular/forms';
-import { UserService } from '../services/user.service';
-import { User } from '../models/user.model';
+import { UserService } from '../../shared/services/user.service';
+import { User } from '../../shared/models/user.model';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss'],
-  providers: [
-    UserService
-  ]
+  
 })
 export class UserFormComponent {
   imie: string = '';

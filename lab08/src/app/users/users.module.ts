@@ -5,25 +5,24 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserRoutingModule } from './users-routing.module';
 import { FormsModule } from '@angular/forms';
-import { OnlyTextDirective } from './directives/only-text.directive';
-import { ZipCodeDirective } from './directives/zip-code.directive';
-import { FirstBigLetterDirective } from './directives/first-big-letter.directive';
-
-
+import { SharedModule } from '../shared/shared.module';
+import { UserService } from '../shared/services/user.service';
 
 @NgModule({
   declarations: [
     UserListComponent,
     UserDetailsComponent,
     UserFormComponent,
-    OnlyTextDirective,
-    ZipCodeDirective,
-    FirstBigLetterDirective,
+
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ], 
+  providers: [
+    UserService
+  ],
   exports: [
     UserRoutingModule
   ]
