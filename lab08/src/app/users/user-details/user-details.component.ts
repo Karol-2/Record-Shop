@@ -1,32 +1,30 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { User } from '../user.type';
+import { User } from '../models/user.model';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  styleUrls: ['./user-details.component.scss'],
+  providers: [UserService]
 })
 export class UserDetailsComponent implements OnInit{
   public id!: number;
   protected user!: User;
+  protected errorMessage!: string;
   
   public constructor(
-    private router: Router,
     private activatedRoute: ActivatedRoute,
-    private location: Location,
+    private userService: UserService
   ) {}
 
   public ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
-      const state = this.location.getState();
-      console.log('params', params);
-      console.log('state', state);
-
       this.id = +params['id'];
-
-
+      const result = this.userService.getUserById(this.id)
+      typeof result === "string" ? this.errorMessage = result: this.user = result;
     });
   }
 
