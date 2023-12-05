@@ -1,0 +1,13 @@
+<button (click)="goToAdd()">Dodaj nowy</button>
+
+<div *ngFor="let todo of todoList">
+    <div>
+        <p>id: {{todo.id}}</p>
+        <p>name: {{todo.name}}</p>
+        <p>is complete? {{todo.isComplete}}</p>
+        <button (click)="goToFormEdit(todo.id)">Edytuj</button>
+        <button (click)="delete(todo.id)">Usuń</button>
+    </div>
+
+</div>
+
