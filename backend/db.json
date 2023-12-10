@@ -28,29 +28,29 @@
       "id": 5
     },
     {
-      "name": "Obejrzeć tiktoki",
-      "isComplete": true,
-      "id": 6
-    },
-    {
       "name": "Zrobić zakupy",
       "isComplete": false,
       "id": 7
     },
     {
-      "name": "Pość do kina",
-      "isComplete": false,
-      "id": 8
-    },
-    {
-      "name": "Zjeść pizze",
-      "isComplete": false,
-      "id": 9
-    },
-    {
       "name": "Zrobić curry",
       "isComplete": false,
       "id": 10
+    },
+    {
+      "name": "Objerzeć wykład",
+      "isComplete": false,
+      "id": 11
+    },
+    {
+      "name": "Umyć podłogę",
+      "isComplete": false,
+      "id": 12
+    },
+    {
+      "name": "Odkurzyć",
+      "isComplete": true,
+      "id": 13
     }
   ]
 }

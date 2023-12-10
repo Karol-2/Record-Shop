@@ -17,6 +17,10 @@ export class TodosService {
     return this.httpClient.get<Todo[]>('http://localhost:3000/todos')
   }
 
+  public getAllPaginated(page: number, limit: number): Observable<Todo[]>{
+    return this.httpClient.get<Todo[]>(`http://localhost:3000/todos?_page=${page}&_limit=${limit}`)
+  }
+
   public getById(id: number): Observable<Todo>{
     return this.httpClient.get<Todo>(`http://localhost:3000/todos/${id}`)
   }
