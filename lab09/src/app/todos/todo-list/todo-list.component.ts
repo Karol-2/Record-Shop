@@ -16,8 +16,6 @@ export class TodoListComponent implements OnInit {
     private toDosService: TodosService,
   ){}
 
-  
-
   ngOnInit(): void {
     this.getAll()
   }
@@ -40,5 +38,8 @@ export class TodoListComponent implements OnInit {
   }
   public goToFormEdit(id: number){
     this.router.navigate(["form", id])
+  }
+  public showDetails(id: number){
+    this.router.navigate(["details",id])
   }
 }

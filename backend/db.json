@@ -8,19 +8,49 @@
   ],
   "todos": [
     {
-      "id": 1,
-      "name": "Element 1",
-      "isComplete": false
-    }
-  ],
-  "comments": [
+      "name": "Pranie wstawić",
+      "isComplete": true,
+      "id": 1
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Wstawić zmywarke",
+      "isComplete": true,
+      "id": 2
+    },
+    {
+      "name": "Umyć okna",
+      "isComplete": true,
+      "id": 3
+    },
+    {
+      "name": "projekt Spring",
+      "isComplete": false,
+      "id": 5
+    },
+    {
+      "name": "Obejrzeć tiktoki",
+      "isComplete": true,
+      "id": 6
+    },
+    {
+      "name": "Zrobić zakupy",
+      "isComplete": false,
+      "id": 7
+    },
+    {
+      "name": "Pość do kina",
+      "isComplete": false,
+      "id": 8
+    },
+    {
+      "name": "Zjeść pizze",
+      "isComplete": false,
+      "id": 9
+    },
+    {
+      "name": "Zrobić curry",
+      "isComplete": false,
+      "id": 10
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

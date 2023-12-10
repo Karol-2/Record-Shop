@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,6 +15,7 @@ import { TodoFormComponent } from './todo-form/todo-form.component';
   ],
   imports: [
     CommonModule,
+    FormsModule
   ],
   exports:[
     TodoListComponent

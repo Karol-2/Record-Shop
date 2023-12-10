@@ -1,7 +1,7 @@
-<button>Back</button>
+<button (click)="goBack()">Back</button>
 <h1>id: {{todo.id}}</h1>
-<p>name: {{todo.name}}</p>
-<p>completed? {{todo.isComplete}}</p>
+<p>nazwa: {{todo.name}}</p>
+<p>czy ukończone? {{todo.isComplete}}</p>
 
-<button>Edit</button>
-<button>Delete</button>
+<button (click)="goToFormEdit(todo.id)">Edytuj</button>
+<button (click)="delete(todo.id)">Usuń</button>

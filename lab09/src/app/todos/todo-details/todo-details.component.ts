@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosService } from '../services/todos.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { switchMap, tap } from 'rxjs';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Todo } from '../models/Todo.model';
+import { Location } from '@angular/common'
+ 
 
 @Component({
   selector: 'app-todo-details',
@@ -15,17 +16,34 @@ export class TodoDetailsComponent implements OnInit {
   
   constructor(
     private toDosService: TodosService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location
+
   ){}
 
   ngOnInit(): void {
-    this.route.params.pipe(
-      switchMap((params: Params)=> this.toDosService.getById(params['id'])),
-      tap((res)=>{
-          console.log(res)
-      })
-    ).subscribe()
+    this.route.data.subscribe((data)=>{
+      // console.log(data);
+      this.todo = data['todo'];
+    });
 
+  }
+
+  public delete(id: number){
+    this.toDosService.delete(id).subscribe((res)=>{
+      console.log("removed" + id)
+      console.log(res)
+      this.router.navigate(["/list"])
+    })
+  }
+
+  public goToFormEdit(id: number){
+    this.router.navigate(["form", id])
+  }
+
+  protected goBack(){
+    this.location.back()
   }
 
 }
