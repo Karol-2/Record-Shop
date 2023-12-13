@@ -1,0 +1,25 @@
+<form [formGroup]="userForm" (ngSubmit)="save()">
+    <div>
+        Imie
+        <input type="text" formControlName="firstName">
+    </div>
+    <div *ngIf="userForm.controls.firstName.touched && userForm.controls.firstName.hasError('required')">Pole jest wymagane</div>
+    <div *ngIf="userForm.controls.firstName.touched && userForm.controls.firstName.hasError('minlength')">Pole musi mieć minumum 2 znaki</div>
+    
+    <div>
+       Nazwisko
+        <input type="text" formControlName="lastName">
+    </div>
+    <div *ngIf="userForm.controls.lastName.touched && userForm.controls.lastName.hasError('required')">Pole jest wymagane</div>
+    <div *ngIf="userForm.controls.lastName.touched && userForm.controls.lastName.hasError('minlength')">Pole musi mieć minumum 2 znaki</div>
+
+    <div formArrayName="addresses">
+        Adres:
+        <div *ngFor="let addressForm of  addresses.controls; index as i">
+            <app-user-address [addressForm]="addressForm"></app-user-address>
+            <button type="button" (click)="removeAddress(i)">X</button>
+        </div>
+        <button type="button" (click)="addAddress()">Dodaj</button>
+    </div>
+    <button type="submit" [disabled]="userForm.invalid">Zapisz</button>
+</form>
