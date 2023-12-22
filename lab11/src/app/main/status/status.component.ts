@@ -6,30 +6,32 @@ import { Observable } from 'rxjs';
   selector: 'app-status',
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.scss'],
-  // providers: [ HttpClientModule]
-
 })
 export class StatusComponent implements OnInit {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient){}
-
-  protected setStatus(){
-    localStorage.setItem("status","true");
+  protected setStatus() {
+    localStorage.setItem('status', 'true');
   }
 
-  protected clearStorage(){
+  protected clearStorage() {
     localStorage.clear();
   }
 
-  public getAll(): Observable<any>{
+  public getAll(): Observable<any> {
     return this.httpClient.get<any>(
-      'https://gitlab.com/ug_at/aplikacje-webowe/23-24/wyklad/-/tree/main/wyklad-09?ref_type=heads'
-      )
+      'https://jsonplaceholder.typicode.com/todos/1'
+    );
   }
 
   ngOnInit(): void {
-    this.getAll()
-  
+    this.getAll().subscribe(
+      (data) => {
+        console.log('Response:', data);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
-
 }
