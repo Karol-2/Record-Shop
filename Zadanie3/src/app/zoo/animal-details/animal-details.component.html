@@ -1,0 +1,23 @@
+<div class="animal-info">
+  <ul>
+    <li>Id: {{ animal.id }}</li>
+    <li>Imie: {{ animal.name | animalDataDisplay }}</li>
+    <li>Gatunek: {{ animal.species | animalDataDisplay }}</li>
+    <li>Płeć: {{ animal.gender | animalDataDisplay | slice : 0 : 1 }}</li>
+    <li>Wiek: {{ animal.age }}</li>
+    <li>Stan: {{ animal.status | animalDataDisplay }}</li>
+    <button class="btn-delete" (click)="changeVisibility()">Usuń</button>
+  </ul>
+
+  <app-modal
+    *ngIf="toDelete"
+    [title]="
+      'Czy na pewno chcesz usunąć zwierzę ' + animal.name +
+      ', z gatunku ' +animal.species +' z bazy danych?'"
+  >
+    <div>
+      <button class="btn-cancel" (click)="changeVisibility()">Nie</button>
+      <button class="btn-delete" (click)="confirm()">Tak</button>
+    </div>
+  </app-modal>
+</div>
