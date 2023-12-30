@@ -12,6 +12,7 @@ import { Animal } from 'src/app/shared/models/Animal.model';
 import { v4 as uuidv4 } from 'uuid';
 import { AnimalDataDisplayPipe } from 'src/app/shared/pipes/animal-data-display.pipe';
 import { AnimalListService } from 'src/app/shared/services/animal-list.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-animal-add',
@@ -25,7 +26,8 @@ export class AnimalAddComponent implements OnChanges {
 
   public constructor(
     private dataDisplayPipe: AnimalDataDisplayPipe,
-    private animalListService: AnimalListService) {}
+    private animalListService: AnimalListService,
+    private router: Router) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (!changes['animals'].firstChange) {
@@ -98,5 +100,12 @@ export class AnimalAddComponent implements OnChanges {
     this.selectedName = '';
     this.selectedSpecies = '';
     this.selectedStatus = AnimalStatus.HEALTHY;
+  }
+
+  public canDeactivate(): boolean{
+    return this.selectedName.length > 0 || this.selectedSpecies.length > 0;
+  }
+  protected goToHomepage(){
+    this.router.navigate(["/"])
   }
 }

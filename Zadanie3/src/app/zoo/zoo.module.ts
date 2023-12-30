@@ -18,7 +18,7 @@ import { AnimalListService } from '../shared/services/animal-list.service';
   imports: [
     CommonModule,
     SharedModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     AnimalListService

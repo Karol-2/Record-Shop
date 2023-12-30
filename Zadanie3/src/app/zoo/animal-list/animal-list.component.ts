@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { Animal } from 'src/app/shared/models/Animal.model';
 import { AnimalListService } from 'src/app/shared/services/animal-list.service';
 
@@ -10,7 +11,7 @@ import { AnimalListService } from 'src/app/shared/services/animal-list.service';
 })
 export class AnimalListComponent implements OnInit {
 
-  constructor(private animalListService: AnimalListService){}
+  constructor(private animalListService: AnimalListService, private router: Router,){}
 
   protected animals: Animal[] = [];
 
@@ -34,4 +35,10 @@ export class AnimalListComponent implements OnInit {
   protected onAnimalsUpdated(updatedAnimals: Animal[]): void {
     this.animals = updatedAnimals;
   }
+
+  protected showDetails(id: String): void{
+    this.router.navigate(["details",id])
+  }
+
+  
 }
