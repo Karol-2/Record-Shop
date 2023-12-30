@@ -5,6 +5,7 @@ import { AnimalDataDisplayPipe } from './pipes/animal-data-display.pipe';
 import { PopupComponent } from './components/popup/popup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
+import { DisabledDirective } from './directives/disabled.directive';
 
 
 
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     AnimalDataDisplayPipe,
     PopupComponent,
     NavbarComponent,
+    DisabledDirective,
   ],
   imports: [
     CommonModule,

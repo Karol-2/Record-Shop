@@ -4,9 +4,10 @@ div{
     background-color: bisque;
 }
 
-
-a[disabled] {
+a.disabled{
     color: gray;
     pointer-events: none;
     text-decoration: none; 
+    pointer-events: none;
   }
+

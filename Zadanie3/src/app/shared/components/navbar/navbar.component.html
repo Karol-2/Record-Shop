@@ -1,6 +1,6 @@
 <div>
     <a href="/">Strona główna</a>
-    <!-- <a [disabled]="!currentUser" href="add">Dodaj zwierzę</a> -->
+    <a [appDisabled]="!currentUser" href="add">Dodaj zwierzę</a>
 
     <ng-container *ngIf="!currentUser">
         <input type="text" placeholder="Username" [(ngModel)]="username">
