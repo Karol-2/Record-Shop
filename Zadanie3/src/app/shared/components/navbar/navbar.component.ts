@@ -1,10 +1,39 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+
+  constructor(private  authService: AuthService, private cdr: ChangeDetectorRef){}
+
+  protected currentUser: string = ""
+
+  protected username: string = "";
+  protected password: string = "";
+
+  public login(): void{
+    if (this.authService.loginUser(this.username,this.password)){
+      this.currentUser = localStorage.getItem("user") || "";
+      this.cdr.detectChanges();
+    }
+  }
+
+  public logout(): void{
+    this.authService.logout();
+    this.currentUser = ""
+  }
+
+  ngOnInit(): void {
+      if(localStorage.getItem("user")){
+        this.currentUser = localStorage.getItem("user")!
+      } else {
+        this.currentUser = ""
+      }
+    }
+
 
 }

@@ -1,4 +1,15 @@
 <div>
     <a href="/">Strona główna</a>
-    <a href="add">Dodaj zwierze</a>
+    <!-- <a [disabled]="!currentUser" href="add">Dodaj zwierzę</a> -->
+
+    <ng-container *ngIf="!currentUser">
+        <input type="text" placeholder="Username" [(ngModel)]="username">
+        <input type="text" placeholder="Password" [(ngModel)]="password">
+        <button (click)="login()">Log in</button>
+    </ng-container>
+    <ng-container *ngIf="currentUser">
+        <span>Logged as: {{currentUser}}</span>
+        <button (click)="logout()">Log out</button>
+    </ng-container>
+    
 </div>

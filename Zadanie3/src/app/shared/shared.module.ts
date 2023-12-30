@@ -4,6 +4,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { AnimalDataDisplayPipe } from './pipes/animal-data-display.pipe';
 import { PopupComponent } from './components/popup/popup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,16 +13,18 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ModalComponent,
     AnimalDataDisplayPipe,
     PopupComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
   ], 
   exports: [
     ModalComponent,
     AnimalDataDisplayPipe,
     PopupComponent,
-    NavbarComponent
+    NavbarComponent,
+
   ]
 })
 export class SharedModule { }
