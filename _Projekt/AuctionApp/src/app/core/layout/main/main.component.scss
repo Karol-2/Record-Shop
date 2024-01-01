@@ -1,5 +1,6 @@
 main{
     flex: 1;
-    background-color: antiquewhite;
-    padding: 20px;
+    background-color: var(--lighter);
+    padding: 2rem;
+    min-height: 100vh
 }
