@@ -16,6 +16,11 @@ import { NavComponent } from './layout/nav/nav.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    MainComponent,
   ]
 })
 export class CoreModule { }
