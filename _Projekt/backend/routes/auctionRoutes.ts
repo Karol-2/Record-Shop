@@ -31,7 +31,7 @@ router.get("/auctions/:id", (req: Request, res: Response) => {
   const auction = auctions.find((a) => a.id === auctionId);
 
   if (auction) {
-    res.status(200).json({ auction });
+    res.status(200).json({auction});
   } else {
     res.status(404).json({ message: "Auction not found" });
   }
@@ -67,7 +67,7 @@ router.post("/auctions", authenticateUser, (req: Request, res: Response) => {
 
   res
     .status(201)
-    .json({ message: "Auction created successfully", auction: newAuction });
+    .json({newAuction});
 });
 
 router.put("/auctions/:id", authenticateUser, (req: Request, res: Response) => {
@@ -80,10 +80,7 @@ router.put("/auctions/:id", authenticateUser, (req: Request, res: Response) => {
     auctions[index] = { ...auctions[index], ...updatedAuction };
     res
       .status(200)
-      .json({
-        message: "Auction updated successfully",
-        auction: auctions[index],
-      });
+      .json(auctions[index]);
   } else {
     res.status(404).json({ message: "Auction not found" });
   }

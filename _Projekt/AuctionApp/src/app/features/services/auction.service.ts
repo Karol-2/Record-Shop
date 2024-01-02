@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Auction } from 'src/app/shared/models/Auction.model';
 import PaginatedAuction from '../dto/paginated-auction.model';
 import CreateAuction from '../dto/create-auction.model';
+import Message from '../dto/message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,20 +26,20 @@ export class AuctionService {
     return this.httpClient.get<PaginatedAuction>("http://localhost:3000/auctions",{params});
   }
 
-  public getAuction(id: string): Observable<Auction>{
-    return this.httpClient.get<Auction>("http://localhost:3000/auctions/"+id);
+  public getAuction(id: string): Observable<Auction | Message>{
+    return this.httpClient.get<Auction | Message>("http://localhost:3000/auctions/"+id);
   }
 
-  public createAuction(auction: CreateAuction): Observable<CreateAuction>{
-    return this.httpClient.post<CreateAuction>("http://localhost:3000/auctions", auction);
+  public createAuction(auction: CreateAuction): Observable<CreateAuction | Message>{
+    return this.httpClient.post<CreateAuction | Message>("http://localhost:3000/auctions", auction);
   }
 
-  public updateAuction(id: string, newAuction: Auction): Observable<Auction>{
-    return this.httpClient.put<Auction>("http://localhost:3000/auctions/"+id, newAuction);
+  public updateAuction(id: string, newAuction: Auction): Observable<Auction | Message>{
+    return this.httpClient.put<Auction | Message>("http://localhost:3000/auctions/"+id, newAuction);
   }
 
-  public deleteAuction(id: string): Observable<string>{
-    return this.httpClient.delete<string>("http://localhost:3000/auctions/"+id );
+  public deleteAuction(id: string): Observable<Message>{
+    return this.httpClient.delete<Message>("http://localhost:3000/auctions/"+id );
   }
 
 

@@ -14,6 +14,10 @@ const routes: Routes = [
     component: HomepageComponent
   },
   {
+    path: 'login',
+    loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }
