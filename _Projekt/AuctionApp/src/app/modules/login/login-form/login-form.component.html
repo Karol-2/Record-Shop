@@ -13,4 +13,5 @@
     </div>
    
     <button type="submit" [disabled]="loginForm.invalid">Log in</button>
+    <div *ngIf="error"> {{error}}</div>
 </form>

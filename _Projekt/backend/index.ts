@@ -4,12 +4,16 @@ import dotenv from "dotenv";
 import auctionRoutes from "./routes/auctionRoutes";
 import userRoutes from "./routes/userRoutes";
 
+const cors = require('cors');
+
 dotenv.config();
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+
+app.use(cors());
 
 app.use('', auctionRoutes)
 app.use('', userRoutes)

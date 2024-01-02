@@ -14,7 +14,7 @@ router.post("/login", (req: Request, res: Response) => {
   const user = usersDatabase.find((user) => user.email === email);
 
     if (!user) {
-      return res.status(404).json({ message: "Not Found - User not found" });
+      return res.status(404).json({ message: "User doesn't exists" });
     }
 
   if (email === user.email && password === user.password) {
@@ -26,7 +26,7 @@ router.post("/login", (req: Request, res: Response) => {
     });
     res
       .status(200)
-      .json({ accessToken: accessToken, refreshToken: refeshToken });
+      .json({ accessToken: accessToken, refreshToken: refeshToken, id: user.id });
   } else {
     res.status(401).json({ message: "Invalid credentials" });
   }
