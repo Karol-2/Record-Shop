@@ -9,7 +9,7 @@ export interface Auction{
 
     name: string;
     price: number;
-    descriprion: string;
+    description: string;
     photos: string[];
     isBought: boolean;
 

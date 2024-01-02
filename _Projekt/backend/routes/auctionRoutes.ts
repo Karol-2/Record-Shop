@@ -47,9 +47,6 @@ router.post("/auctions", authenticateUser, (req: Request, res: Response) => {
     price,
     description,
     photos,
-    isBought,
-    buyerId,
-    dateBought,
   } = req.body;
 
   const newAuction: Auction = {
@@ -61,9 +58,9 @@ router.post("/auctions", authenticateUser, (req: Request, res: Response) => {
     price,
     description,
     photos,
-    isBought,
-    buyerId: buyerId || null,
-    dateBought: dateBought || null,
+    isBought: false,
+    buyerId: null,
+    dateBought: null,
   };
 
   auctions.push(newAuction);
