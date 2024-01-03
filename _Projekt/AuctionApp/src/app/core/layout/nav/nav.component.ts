@@ -35,7 +35,7 @@ export class NavComponent implements OnInit{
   }
 
   protected goToAccount(): void {
-    this.router.navigate(['account']);
+    this.router.navigate(['user']);
   }
 
   protected goToLogin(): void {

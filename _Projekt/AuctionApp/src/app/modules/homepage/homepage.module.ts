@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WelcomeMessageComponent } from './components/welcome-message/welcome-message.component';
-import { NewAuctionsComponent } from './components/new-auctions/new-auctions.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { NewAuctionsComponent } from './components/new-auctions/new-auctions.component';
+import { WlecomeMessageComponent } from './components/wlecome-message/wlecome-message.component';
 
 
 
 @NgModule({
   declarations: [
-    WelcomeMessageComponent,
+    HomepageComponent,
     NewAuctionsComponent,
-    HomepageComponent
+    WlecomeMessageComponent
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    HomepageComponent
   ]
 })
 export class HomepageModule { }
