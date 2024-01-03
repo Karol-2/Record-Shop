@@ -5,8 +5,10 @@
         <li><button (click)="goToAccount()">My account</button></li>
         <li *ngIf="!user"><button (click)="goToLogin()">Log in</button></li>
         <li *ngIf="user">
-            <p>Hello! {{ user.firstName }} {{ user.lastName }}</p>
-            <button (click)="logOut()">Log out</button>
+            <div class="user-info">
+                <p>Welcome, {{ user | json | userDisplay }}</p>
+                <button (click)="logOut()">Log out</button>
+              </div>
         </li>
     </ul>
 </nav>

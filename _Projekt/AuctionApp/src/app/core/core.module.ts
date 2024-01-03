@@ -6,27 +6,29 @@ import { MainComponent } from './layout/main/main.component';
 import { NavComponent } from './layout/nav/nav.component';
 import { RouterModule } from '@angular/router';
 import { LoggedUserService } from '../shared/services/logged-user.service';
+import { SharedModule } from "../shared/shared.module";
 
 
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent,
-    MainComponent,
-    NavComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule
-  ],
-  providers:[
-    LoggedUserService
-  ],
-  exports: [
-    HeaderComponent,
-    FooterComponent,
-    MainComponent,
-  ]
+    declarations: [
+        HeaderComponent,
+        FooterComponent,
+        MainComponent,
+        NavComponent
+    ],
+    providers: [
+        LoggedUserService
+    ],
+    exports: [
+        HeaderComponent,
+        FooterComponent,
+        MainComponent,
+    ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        SharedModule
+    ]
 })
 export class CoreModule { }

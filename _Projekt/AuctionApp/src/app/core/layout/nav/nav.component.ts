@@ -17,17 +17,14 @@ export class NavComponent implements OnInit{
     private router: Router, 
     private cdr: ChangeDetectorRef) {}
 
-  public ngOnInit(): void {
-    this.user = this.loggedUserService.getLoggedUser();
-
-    this.loggedUserService.loggedUserChanged.subscribe((newUser: User | null) => {
-      this.user = newUser;
-      this.cdr.detectChanges();
-      console.log(newUser) // wyświetla user:{id: 'f1a4f12b-13e2-4624-ab41-c87f9115bf7c', firstName: 'Admin', lastName: 'Testowy', email: 'test@test.pl', password: 'test'}
-      
-      
-    });
-  }
+    public ngOnInit(): void {
+      this.user = this.loggedUserService.getLoggedUser();
+    
+      this.loggedUserService.loggedUserChanged.subscribe((newUser: User | null) => {
+        this.user = newUser;
+        console.log(newUser);
+      });
+    }
 
   protected goToHome(): void {
     this.router.navigate(['/']);
