@@ -5,6 +5,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { MainComponent } from './layout/main/main.component';
 import { NavComponent } from './layout/nav/nav.component';
 import { RouterModule } from '@angular/router';
+import { LoggedUserService } from '../shared/services/logged-user.service';
 
 
 
@@ -18,6 +19,9 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule
+  ],
+  providers:[
+    LoggedUserService
   ],
   exports: [
     HeaderComponent,

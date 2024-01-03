@@ -1,7 +1,12 @@
 <nav>
     <ul>
-        <li><button>Home</button></li>
-        <li><button>Cart</button></li>
-        <li><button>My account</button></li>
+        <li><button (click)="goToHome()">Home</button></li>
+        <li><button (click)="goToCart()">Cart</button></li>
+        <li><button (click)="goToAccount()">My account</button></li>
+        <li *ngIf="!user"><button (click)="goToLogin()">Log in</button></li>
+        <li *ngIf="user">
+            <p>Hello! {{ user.firstName }} {{ user.lastName }}</p>
+            <button (click)="logOut()">Log out</button>
+        </li>
     </ul>
 </nav>
