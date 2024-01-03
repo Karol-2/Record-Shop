@@ -5,11 +5,14 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
 import { UserAuctionsComponent } from './components/user-auctions/user-auctions.component';
 import { UserOrdersComponent } from './components/user-orders/user-orders.component';
 import { UserPanelComponent } from './pages/user-panel/user-panel.component';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: UserPanelComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard], //TODO: FIX
     children: [
       { path: 'details', component: ProfileComponent },
       { path: 'edit', component: EditFormComponent },

@@ -20,15 +20,16 @@ import { SharedModule } from "../shared/shared.module";
     providers: [
         LoggedUserService
     ],
-    exports: [
-        HeaderComponent,
-        FooterComponent,
-        MainComponent,
-    ],
     imports: [
         CommonModule,
         RouterModule,
         SharedModule
+    ],
+    exports: [
+        HeaderComponent,
+        FooterComponent,
+        MainComponent,
     ]
+    
 })
 export class CoreModule { }

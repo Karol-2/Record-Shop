@@ -20,8 +20,6 @@ export class ProfileComponent implements OnInit {
     
     if(response){
       this.user = JSON.parse(response); //TODO: Add resolver for getting user
-    } else {
-      this.router.navigate(["403"]) //TODO: 403 page
-    }
+    } 
   }
 }

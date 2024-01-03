@@ -7,6 +7,8 @@ import { UserOrdersComponent } from './components/user-orders/user-orders.compon
 import { UserPanelComponent } from './pages/user-panel/user-panel.component';
 import { RouterModule } from '@angular/router';
 import { UserRoutingModule } from './user-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -19,8 +21,10 @@ import { UserRoutingModule } from './user-routing.module';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule,
-    UserRoutingModule //THISSSSS
+    UserRoutingModule,//THISSSSS
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }
