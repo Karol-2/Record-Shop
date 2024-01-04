@@ -1,7 +1,12 @@
 img{
-    width: 5rem;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
-div{
+div.container{
     border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    gap: 0.25rem;
 }

@@ -13,7 +13,6 @@ export interface Auction{
     price: number;
     description: string;
     photos: string[];
-    tracklist: string[];
 
     isBought: boolean;
     buyerId: string | null;

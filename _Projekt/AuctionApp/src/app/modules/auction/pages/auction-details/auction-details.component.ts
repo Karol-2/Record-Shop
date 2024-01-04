@@ -1,5 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Auction } from 'src/app/shared/models/Auction.model';
 
 @Component({
@@ -10,11 +11,15 @@ import { Auction } from 'src/app/shared/models/Auction.model';
 export class AuctionDetailsComponent implements OnInit{
   protected auction!: Auction;
 
-  public constructor(private route: ActivatedRoute){};
+  public constructor(private route: ActivatedRoute, private location: Location){};
 
   public ngOnInit(): void {
     this.route.data.subscribe((data) => {
       this.auction = data['auction'].auction;
     });
+  }
+
+  protected goBack(): void{
+    this.location.back();
   }
 }

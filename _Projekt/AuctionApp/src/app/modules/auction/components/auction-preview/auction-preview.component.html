@@ -1,6 +1,8 @@
-<div>
-    <p>{{auction.albumName}}</p>
-    <p>{{auction.artistName}}</p>
+<div class="container">
     <img [src]="auction.photos[0]">
-    <button (click)="goToDetails()">More info</button>
+    <div>
+        <p>{{auction | auctionTitle}}</p>
+        <p>${{auction.price}}</p>
+        <button (click)="goToDetails()">More info</button>
+    </div>
 </div>

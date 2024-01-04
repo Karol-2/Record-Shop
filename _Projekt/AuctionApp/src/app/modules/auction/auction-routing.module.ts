@@ -27,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'form/:id',
-    component: AuctionFormComponent //guard na admina
+    component: AuctionFormComponent,
+    resolve:{auction: auctionResolver} //guard na admina
   }
 ];
 

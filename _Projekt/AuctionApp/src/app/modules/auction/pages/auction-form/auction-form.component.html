@@ -1,1 +1,61 @@
-<p>auction-form works!</p>
+<h1> {{formTitle}} </h1>
+
+<form [formGroup]="auctionForm" (ngSubmit)="onSubmit()">
+    <h3>Info</h3>
+    <div>
+        <label for="artistName">Artist name: </label>
+        <input type="text" id="artistName" formControlName="artistName">
+        <div *ngIf="auctionForm.controls['artistName'].touched && auctionForm.controls['artistName'].hasError('required')">This field is required</div>
+        <div *ngIf="auctionForm.controls['artistName'].touched && auctionForm.controls['artistName'].hasError('minlength')">This field should have at least 2 characters</div>
+    </div>
+    
+    <div>
+        <label for="albumName">Album name: </label>
+        <input type="text" id="albumName" formControlName="albumName">
+        <div *ngIf="auctionForm.controls['albumName'].touched && auctionForm.controls['albumName'].hasError('required')" >This field is required</div>
+        <div *ngIf="auctionForm.controls['albumName'].touched && auctionForm.controls['albumName'].hasError('minlength')">This field should have at least 2 characters</div>
+    </div>
+        
+    <div>
+        <label for="categoryId">Category id: </label>
+        <input type="number" id="categoryId" formControlName="categoryId">
+        <div *ngIf="auctionForm.controls['categoryId'].touched && auctionForm.controls['categoryId'].hasError('required')" >This field is required</div>
+    </div>
+    
+    <div>
+        <label for="type">Type: </label>
+        <input type="text" id="type" formControlName="type">
+        <div *ngIf="auctionForm.controls['type'].touched && auctionForm.controls['type'].hasError('required')" >This field is required</div>
+    </div>
+    
+    <div>
+        <label for="price">Price: </label>
+        <input type="number" id="price" formControlName="price" min="0">
+        <div *ngIf="auctionForm.controls['price'].touched && auctionForm.controls['price'].hasError('required')" >This field is required</div>
+        <div *ngIf="auctionForm.controls['price'].touched && auctionForm.controls['price'].hasError('min')">The lowest possible price is $0.99</div>
+    </div>
+    
+    <div>
+        <label for="description">Description: </label>
+        <input type="text" id="description" formControlName="description">
+        <div *ngIf="auctionForm.controls['description'].touched && auctionForm.controls['description'].hasError('required')" >This field is required</div>
+        <div *ngIf="auctionForm.controls['description'].touched && auctionForm.controls['description'].hasError('minlength')" > This field should have at least 10 characters</div>
+    </div>
+    
+
+    <div formArrayName="photos">
+        <h3>Photos</h3>
+        <button type="button" (click)="addPhoto()">+</button>
+        <div *ngFor="let photoForm of photos.controls; index as i">
+            <app-form-photos [photosForm]="photoForm"></app-form-photos>
+            <button type="button" (click)="removePhoto(i)">X</button>
+        </div>
+
+    </div>
+    
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+  
+    
+</form>

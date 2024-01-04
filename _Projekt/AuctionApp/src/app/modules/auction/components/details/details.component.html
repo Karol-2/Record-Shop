@@ -1,22 +1,27 @@
 <div>
-    <h1>{{auction.artistName}}</h1>
+    <h1>{{auction | auctionTitle}}</h1>
     <div class="content">
-        <img [src]="auction.photos[0]" class="thumbnail">
-        <div class="info">
-            <p>Artist: {{auction.artistName}}</p>
-            <p>Album: {{auction.albumName}}</p>
-            <p>Category: {{auction.categoryId}}</p>
-            <p>Type: {{auction.type}}</p>
-        </div>
-        <div>
-            <p>Price: {{auction.price}}</p>
-            <button> Buy </button>
-        </div>
-        <div class="description">
+        <section class="top">
+            <img [src]="auction.photos[0]" class="left">
+            <div class="right">
+                <div class="info">
+                    <p>Artist: {{auction.artistName}}</p>
+                    <p>Album: {{auction.albumName}}</p>
+                    <p>Category: {{auction.categoryId}}</p>
+                    <p>Type: {{auction.type}}</p>
+                </div>
+                <div class="price">
+                    <p>Price: ${{auction.price}}</p>
+                    <button> Buy </button>
+                </div>
+            </div>    
+        </section>
+        
+        <section class="description">
             <p>{{auction.description}}</p>
             <div *ngFor="let photo of auction.photos" class="photos">
                 <img [src]="photo">
             </div>
-        </div>
+        </section>
     </div>
 </div>

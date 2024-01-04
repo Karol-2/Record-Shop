@@ -8,6 +8,8 @@ import { AuctionFormComponent } from './pages/auction-form/auction-form.componen
 import { AuctionPreviewComponent } from './components/auction-preview/auction-preview.component';
 import { AuctionRoutingModule } from './auction-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuctionTitlePipe } from './pipes/auction-title.pipe';
+import { FormPhotosComponent } from './components/form-photos/form-photos.component';
 
 
 
@@ -19,6 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetailsComponent,
     AuctionFormComponent,
     AuctionPreviewComponent,
+    AuctionTitlePipe,
+    FormPhotosComponent,
   ],
   imports: [
     CommonModule,
