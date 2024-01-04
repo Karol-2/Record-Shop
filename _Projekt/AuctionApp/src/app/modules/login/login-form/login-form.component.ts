@@ -68,7 +68,6 @@ export class LoginFormComponent implements OnInit{
     this.userService.getUser(id).subscribe({
       next: (resp: User) => {
         this.loggedUserService.setLoggedUser(resp);
-        // console.log(this.loggedUserService.getLoggedUser());
         
         this.router.navigate(["/"]);},
       error: (err)=> console.log(err)

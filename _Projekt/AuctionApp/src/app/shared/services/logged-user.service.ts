@@ -1,41 +1,52 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User.model';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoggedUserService {
 
-  private userSubject: BehaviorSubject<User | null>;
+  private currentUser: User | null = null;
+  private userSubject = new Subject<User | null>();
 
   constructor() {
-    const storedUser = localStorage.getItem('loggedUser');
-    this.userSubject = new BehaviorSubject<User | null>(storedUser ? JSON.parse(storedUser) : null);
+    this.loadUserFromLocalStorage();
   }
 
-  get loggedUserChanged() {
-    return this.userSubject.asObservable();
+  private loadUserFromLocalStorage(): void {
+    const storedUser = localStorage.getItem('loggedUser');
+    if (storedUser) {
+      this.currentUser = JSON.parse(storedUser);
+      this.notifyUserChange();
+    }
+  }
+
+  loggedUserChanged(): Subject<User | null> {
+    return this.userSubject;
   }
 
   getLoggedUser(): User | null {
-    const localData: string | null = localStorage.getItem('loggedUser');
-    if(localData){
-      const user: User | null = JSON.parse(localData);
-      return user;
-    }
-    return null;
+    return this.currentUser;
   }
 
   setLoggedUser(user: User ): void {
-    this.userSubject.next(user);
+    this.currentUser = user;
     localStorage.setItem('loggedUser', JSON.stringify(user));
+    this.notifyUserChange()
   }
 
   logout(): void{
-    this.userSubject.next(null);
+    this.currentUser = null;
     localStorage.removeItem('loggedUser');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('accessToken');
+    this.notifyUserChange();
   }
+
+  private notifyUserChange(): void {
+    this.userSubject.next(this.currentUser);
+  }
+  
 }
+
