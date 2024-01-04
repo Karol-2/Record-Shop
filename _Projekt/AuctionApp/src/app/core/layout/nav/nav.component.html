@@ -6,7 +6,7 @@
         <li *ngIf="!user"><button (click)="goToLogin()">Log in</button></li>
         <li *ngIf="user">
             <div class="user-info">
-                <p>Welcome, {{ user | json | userDisplay }}</p>
+                <p>Welcome, {{ user.firstName }} {{user.lastName}}</p>
                 <button (click)="logOut()">Log out</button>
               </div>
         </li>

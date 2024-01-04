@@ -22,14 +22,16 @@ export class NavComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.user = this.loggedUserService.getLoggedUser();
 
-    this.userSubscription = this.loggedUserService
-      .loggedUserChanged()
-      .subscribe((user) => {
-        this.user = user;
+    this.userSubscription = this.loggedUserService.loggedUserChanged().subscribe(user => {
+      this.user = user;
+        //TODO: fixs
+      setTimeout(() => {
+        this.cdr.detectChanges();
       });
+    });
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
 

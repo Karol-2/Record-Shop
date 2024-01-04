@@ -11,14 +11,19 @@ import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
 export class ProfileComponent implements OnInit {
 
   protected user!: User;
+  protected isLoading: boolean = true;
 
-  constructor(private route: ActivatedRoute){}
+  constructor(private route: ActivatedRoute, private loggedUserService: LoggedUserService){}
 
   public ngOnInit(): void {
-    this.route.data.subscribe((data) => {
-      console.log('data', data);
-      this.user = data['user'];
-    });
 
+    this.loggedUserService.loggedUserChanged().subscribe((user) => {
+      if(user){
+        this.user = user;
+        this.isLoading = false;
+      }
+      
+    });
+    this.loggedUserService.loadUserFromLocalStorage();
   }
 }

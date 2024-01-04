@@ -7,13 +7,13 @@ export const userData: User[] = [
         firstName: "Karol",
         lastName: "Krawczykiewicz",
         email: "k-krawczykiewicz@wp.pl",
-        password: "123"
+        password: "Karol1"
     },
     {
         id: uuidv4(),
         firstName: "Admin",
         lastName: "Testowy",
         email: "test@test.pl",
-        password: "test"
+        password: "Test1"
     }
 ]
