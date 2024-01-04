@@ -1,1 +1,6 @@
-<p>auction-preview works!</p>
+<div>
+    <p>{{auction.albumName}}</p>
+    <p>{{auction.artistName}}</p>
+    <img [src]="auction.photos[0]">
+    <button (click)="goToDetails()">More info</button>
+</div>

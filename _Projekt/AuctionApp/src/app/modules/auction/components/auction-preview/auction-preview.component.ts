@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Auction } from 'src/app/shared/models/Auction.model';
 
 @Component({
   selector: 'app-auction-preview',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AuctionPreviewComponent {
 
+  public constructor(private router:Router){};
+
+  @Input() public auction!: Auction;
+
+  protected goToDetails(): void{
+    this.router.navigate(["auctions","details", this.auction.id])
+  }
 }

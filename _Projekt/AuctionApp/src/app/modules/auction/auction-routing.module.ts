@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuctionListComponent } from './pages/auction-list/auction-list.component';
 import { AuctionDetailsComponent } from './pages/auction-details/auction-details.component';
 import { AuctionFormComponent } from './pages/auction-form/auction-form.component';
+import { auctionsResolver } from 'src/app/core/resolvers/auctions.resolver';
+import { auctionResolver } from 'src/app/core/resolvers/auction.resolver';
 const routes: Routes = [
   {
     path: '',
@@ -11,19 +13,21 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    component: AuctionListComponent
+    component: AuctionListComponent,
+    resolve:{ auctions: auctionsResolver}
   },
   {
     path: 'details/:id',
-    component: AuctionDetailsComponent //resolver
+    component: AuctionDetailsComponent,
+    resolve:{auction: auctionResolver}
   },
   {
     path: 'form',
-    component: AuctionFormComponent //guard
+    component: AuctionFormComponent, //guard na admina
   },
   {
     path: 'form/:id',
-    component: AuctionFormComponent //guard
+    component: AuctionFormComponent //guard na admina
   }
 ];
 

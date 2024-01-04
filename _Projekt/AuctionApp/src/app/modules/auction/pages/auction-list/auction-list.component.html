@@ -1,4 +1,8 @@
-<p>auction-list works!</p>
 <app-search-form></app-search-form>
-<p>lista komponentów</p>
-<app-auction-preview></app-auction-preview>
+
+<div>
+    <h1>Matching auctions</h1>
+    <div *ngFor="let auction of auctions">
+        <app-auction-preview [auction]="auction"></app-auction-preview>
+    </div>
+</div>

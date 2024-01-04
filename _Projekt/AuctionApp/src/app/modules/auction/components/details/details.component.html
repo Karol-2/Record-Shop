@@ -1,1 +1,22 @@
-<p>details works!</p>
+<div>
+    <h1>{{auction.artistName}}</h1>
+    <div class="content">
+        <img [src]="auction.photos[0]" class="thumbnail">
+        <div class="info">
+            <p>Artist: {{auction.artistName}}</p>
+            <p>Album: {{auction.albumName}}</p>
+            <p>Category: {{auction.categoryId}}</p>
+            <p>Type: {{auction.type}}</p>
+        </div>
+        <div>
+            <p>Price: {{auction.price}}</p>
+            <button> Buy </button>
+        </div>
+        <div class="description">
+            <p>{{auction.description}}</p>
+            <div *ngFor="let photo of auction.photos" class="photos">
+                <img [src]="photo">
+            </div>
+        </div>
+    </div>
+</div>
