@@ -19,7 +19,12 @@ export class LoggedUserService {
   }
 
   getLoggedUser(): User | null {
-    return this.userSubject.value;
+    const localData: string | null = localStorage.getItem('loggedUser');
+    if(localData){
+      const user: User | null = JSON.parse(localData);
+      return user;
+    }
+    return null;
   }
 
   setLoggedUser(user: User ): void {

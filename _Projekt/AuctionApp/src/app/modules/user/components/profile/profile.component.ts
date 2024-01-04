@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/shared/models/User.model';
 import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
 
@@ -12,14 +12,13 @@ export class ProfileComponent implements OnInit {
 
   protected user!: User;
 
-  constructor(private loggedUserService: LoggedUserService, private router:Router){}
+  constructor(private route: ActivatedRoute){}
 
   public ngOnInit(): void {
-    const response: string | null = localStorage.getItem("loggedUser");
-    console.log("response",response);
-    
-    if(response){
-      this.user = JSON.parse(response); //TODO: Add resolver for getting user
-    } 
+    this.route.data.subscribe((data) => {
+      console.log('data', data);
+      this.user = data['user'];
+    });
+
   }
 }

@@ -16,16 +16,13 @@ export class EditFormComponent implements OnInit {
 
   public ngOnInit(): void {
     
-    const result: string | null = localStorage.getItem("user");
-    if(result){
-      this.user = JSON.parse(result);
-    }
+   
 
     this.editForm = new FormGroup({
-      firstName: new FormControl<string>("user",[Validators.minLength(3), Validators.required]),
-      lastName: new FormControl<string>("user",[Validators.minLength(3), Validators.required]),
-      email: new FormControl<string>("user",[Validators.email, Validators.required]),
-      password: new FormControl<string>("user",[Validators.required, Validators.minLength(5)]),
+      firstName: new FormControl<string>("test",[Validators.minLength(3), Validators.required]),
+      lastName: new FormControl<string>("test",[Validators.minLength(3), Validators.required]),
+      email: new FormControl<string>("test",[Validators.email, Validators.required]),
+      password: new FormControl<string>("test",[Validators.required, Validators.minLength(5)]),
     })
     //TODO: add user placeholder data
     //TODO: add sending to backend
