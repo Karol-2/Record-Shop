@@ -24,7 +24,7 @@ export class NavComponent implements OnInit, OnDestroy {
 
     this.userSubscription = this.loggedUserService.loggedUserChanged().subscribe(user => {
       this.user = user;
-        //TODO: fixs
+        //TODO: fixs error
       setTimeout(() => {
         this.cdr.detectChanges();
       });

@@ -13,12 +13,12 @@ const routes: Routes = [
     path: '',
     component: UserPanelComponent,
     canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard], //TODO: FIX
+    canActivateChild: [AuthGuard],
     children: [
-      { path: 'details', component: ProfileComponent , resolve: {user: UserResolver}},
-      { path: 'edit', component: EditFormComponent, resolve: {user: UserResolver} },
-      { path: 'auctions', component: UserAuctionsComponent,resolve: {user: UserResolver} },
-      { path: 'orders', component: UserOrdersComponent, resolve: {user: UserResolver} },
+      { path: 'details', component: ProfileComponent },
+      { path: 'edit', component: EditFormComponent},
+      { path: 'auctions', component: UserAuctionsComponent },
+      { path: 'orders', component: UserOrdersComponent },
       { path: '', redirectTo: 'details', pathMatch: 'full' },
     ],
   },

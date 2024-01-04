@@ -16,13 +16,13 @@
             <div *ngIf="editForm.controls['password'].touched && editForm.controls['password'].hasError('hasCapitalLetter')">Password should contain at least one capital letter</div>
         </div>
         <div>
-            <label for="firstName">Firstname</label>
+            <label for="firstName">First name</label>
             <input id="firstName" type="text" formControlName="firstName">
             <div *ngIf="editForm.controls['firstName'].touched && editForm.controls['firstName'].hasError('required')">Required</div>
             <div *ngIf="editForm.controls['firstName'].touched && editForm.controls['firstName'].hasError('minlength')">First name should be at least 3 characters long</div>
         </div>
         <div>
-            <label for="lastName">Lastname</label>
+            <label for="lastName">Last name</label>
             <input id="lastName" type="text" formControlName="lastName">
             <div *ngIf="editForm.controls['lastName'].touched && editForm.controls['lastName'].hasError('required')">Required</div>
             <div *ngIf="editForm.controls['lastName'].touched && editForm.controls['lastName'].hasError('minlength')">Last name should be at least 3 characters long</div>

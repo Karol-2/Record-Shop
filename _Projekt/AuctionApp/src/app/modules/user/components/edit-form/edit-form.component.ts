@@ -33,13 +33,10 @@ export class EditFormComponent implements OnInit {
       email: new FormControl<string>(this.user.email,[Validators.email, Validators.required]),
       password: new FormControl<string>(this.user.password,[Validators.required, Validators.minLength(5)]),
     })
-    //TODO: add sending to backend
   }
   
   protected submit():void{
     const updatedUser: User = this.editForm.value;
-    console.log(updatedUser);
-    
     
     this.userService.updateUser(this.user.id,updatedUser).subscribe({
       next: (resp)=>{ this.updateHandler(resp)},
@@ -49,7 +46,6 @@ export class EditFormComponent implements OnInit {
   }
 
   private updateHandler(user:User): void{
-    console.log("success", user);
     this.message = "Update successful!"
     this.loggedUserService.setLoggedUser(user)
   }
