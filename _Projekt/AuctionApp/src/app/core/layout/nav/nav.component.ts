@@ -39,8 +39,8 @@ export class NavComponent implements OnInit, OnDestroy {
     this.router.navigate(['/']);
   }
 
-  protected goToCart(): void {
-    this.router.navigate(['cart']);
+  protected goToSearch(): void {
+    this.router.navigate(['auctions']);
   }
 
   protected goToAccount(): void {

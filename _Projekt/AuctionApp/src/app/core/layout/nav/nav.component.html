@@ -1,7 +1,7 @@
 <nav>
     <ul>
         <li><button (click)="goToHome()">Home</button></li>
-        <li><button (click)="goToCart()">Cart</button></li>
+        <li><button (click)="goToSearch()">Search</button></li>
         <li><button (click)="goToAccount()">My account</button></li>
         <li *ngIf="!user"><button (click)="goToLogin()">Log in</button></li>
         <li *ngIf="user">
