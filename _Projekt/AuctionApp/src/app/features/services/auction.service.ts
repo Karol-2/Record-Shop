@@ -14,23 +14,23 @@ export class AuctionService {
   constructor(private httpClient: HttpClient) { }
 
   public getAllAuctions(): Observable<Auction[]>{
-    return this.httpClient.get<Auction[]>("http://localhost:3000/auctions");
+    return this.httpClient.get<Auction[]>("auctions");
   }
 
   public getAuction(id: string): Observable<Auction | Message>{
-    return this.httpClient.get<Auction | Message>("http://localhost:3000/auctions/"+id);
+    return this.httpClient.get<Auction | Message>("auctions/"+id);
   }
 
   public createAuction(auction: CreateAuction): Observable<CreateAuction | Message>{
-    return this.httpClient.post<CreateAuction | Message>("http://localhost:3000/auctions", auction);
+    return this.httpClient.post<CreateAuction | Message>("auctions", auction);
   }
 
   public updateAuction(id: string, newAuction: Auction): Observable<Auction | Message>{
-    return this.httpClient.put<Auction | Message>("http://localhost:3000/auctions/"+id, newAuction);
+    return this.httpClient.put<Auction | Message>("auctions/"+id, newAuction);
   }
 
   public deleteAuction(id: string): Observable<Message>{
-    return this.httpClient.delete<Message>("http://localhost:3000/auctions/"+id );
+    return this.httpClient.delete<Message>("auctions/"+id );
   }
 
 

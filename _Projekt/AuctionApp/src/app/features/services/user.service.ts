@@ -12,15 +12,15 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   public getAllUsers(): Observable<User[]>{
-    return this.httpClient.get<User[]>("http://localhost:3000/users")
+    return this.httpClient.get<User[]>("users")
   }
 
   public getUser(id: string): Observable<User>{
-    return this.httpClient.get<User>("http://localhost:3000/users/" + id)
+    return this.httpClient.get<User>("users/" + id)
   }
 
   public updateUser(id: string, user: UpdateUser): Observable<User>{
-    return this.httpClient.put<User>("http://localhost:3000/users/" + id,user)
+    return this.httpClient.put<User>("users/" + id,user)
   }
   //TODO: Add interceptor for localhost:3000
 }

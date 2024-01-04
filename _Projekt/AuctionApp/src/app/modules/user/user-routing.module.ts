@@ -6,7 +6,6 @@ import { UserAuctionsComponent } from './components/user-auctions/user-auctions.
 import { UserOrdersComponent } from './components/user-orders/user-orders.component';
 import { UserPanelComponent } from './pages/user-panel/user-panel.component';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
-import { UserResolver } from 'src/app/core/resolvers/user.resolver';
 
 const routes: Routes = [
   {

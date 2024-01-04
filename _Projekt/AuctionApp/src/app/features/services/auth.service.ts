@@ -13,6 +13,6 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   public login(user: LoginUser): Observable<Tokens>{
-    return this.httpClient.post<Tokens>("http://localhost:3000/login",user)
+    return this.httpClient.post<Tokens>("login",user)
   }
 }
