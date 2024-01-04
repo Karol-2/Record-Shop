@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/features/services/user.service';
 import { CapitalLetterDirective } from 'src/app/shared/directives/capital-letter.directive';
 import { User } from 'src/app/shared/models/User.model';
 import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
@@ -11,14 +12,13 @@ import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
 })
 export class EditFormComponent implements OnInit {
   protected editForm!: FormGroup;
-  protected error: String = "";
+  protected message: String = "";
 
-  constructor(private loggedUserService:LoggedUserService){}
+  constructor(private loggedUserService:LoggedUserService, private userService: UserService){}
   
   private user!:User;
 
   public ngOnInit(): void {
-
     this.loggedUserService.loggedUserChanged().subscribe((user) => {
       if(user){
         this.user = user;
@@ -27,20 +27,46 @@ export class EditFormComponent implements OnInit {
     });
     this.loggedUserService.loadUserFromLocalStorage();
   
-    
-   
-
     this.editForm = new FormGroup({
       firstName: new FormControl<string>(this.user.firstName,[Validators.minLength(3), Validators.required]),
       lastName: new FormControl<string>(this.user.lastName,[Validators.minLength(3), Validators.required]),
       email: new FormControl<string>(this.user.email,[Validators.email, Validators.required]),
       password: new FormControl<string>(this.user.password,[Validators.required, Validators.minLength(5)]),
     })
-    //TODO: add user placeholder data
     //TODO: add sending to backend
   }
   
   protected submit():void{
-    console.log(this.editForm);
+    const updatedUser: User = this.editForm.value;
+    console.log(updatedUser);
+    
+    
+    this.userService.updateUser(this.user.id,updatedUser).subscribe({
+      next: (resp)=>{ this.updateHandler(resp)},
+      error: (err)=> { this.message = this.getErrorMessageFromStatusCode(err.statusCode)}
+      
+    })
+  }
+
+  private updateHandler(user:User): void{
+    console.log("success", user);
+    this.message = "Update successful!"
+    this.loggedUserService.setLoggedUser(user)
+  }
+
+  private getErrorMessageFromStatusCode(statusCode: number): string {
+    switch (statusCode) {
+      case 400:
+        return "Error - At least one field is required for update";
+      case 404:
+        return "Error - User not found";
+      case 409:
+        return "Conflict - Email is already in use by another user or new email must be different";
+      case 500:
+        return "Internal Server Error";
+      default:
+        return "Unknown error";
+    }
   }
 }
+

@@ -17,15 +17,6 @@ export class AuctionService {
     return this.httpClient.get<Auction[]>("http://localhost:3000/auctions");
   }
 
-  public getAllAuctionsPaginated(page: number, pageSize: number): Observable<PaginatedAuction>{
-    const params = {
-      page: page.toString(),
-      pageSize: pageSize.toString()
-    };
-
-    return this.httpClient.get<PaginatedAuction>("http://localhost:3000/auctions",{params});
-  }
-
   public getAuction(id: string): Observable<Auction | Message>{
     return this.httpClient.get<Auction | Message>("http://localhost:3000/auctions/"+id);
   }

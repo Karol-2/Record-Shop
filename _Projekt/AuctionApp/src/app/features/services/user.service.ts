@@ -19,8 +19,8 @@ export class UserService {
     return this.httpClient.get<User>("http://localhost:3000/users/" + id)
   }
 
-  public updateUser(id: string, user: UpdateUser): Observable<UpdateUser>{
-    return this.httpClient.put<UpdateUser>("http://localhost:3000/users/" + id,user)
+  public updateUser(id: string, user: UpdateUser): Observable<User>{
+    return this.httpClient.put<User>("http://localhost:3000/users/" + id,user)
   }
   //TODO: Add interceptor for localhost:3000
 }

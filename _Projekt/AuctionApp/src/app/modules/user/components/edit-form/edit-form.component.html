@@ -28,6 +28,6 @@
             <div *ngIf="editForm.controls['lastName'].touched && editForm.controls['lastName'].hasError('minlength')">Last name should be at least 3 characters long</div>
         </div>
         <button type="submit" [disabled]="!editForm.valid">Save</button>
-        <div *ngIf="error"> {{error}}</div>
     </form>
+    <div *ngIf="message"> {{message}}</div>
 </div>

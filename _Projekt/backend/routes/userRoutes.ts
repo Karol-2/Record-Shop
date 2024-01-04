@@ -74,6 +74,7 @@ router.put("/users/:id", (req: Request, res: Response) => {
         .json({ message: "Bad Request - Unexpected fields in the request" });
     }
 
+
     const existingUserIndex = usersDatabase.findIndex(
       (user) => user.id === userId
     );
