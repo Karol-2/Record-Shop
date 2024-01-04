@@ -1,32 +1,16 @@
 import { Auction } from "../models/Auction.model";
 import { v4 as uuidv4 } from 'uuid';
-import { userData } from "./userData";
-import { Category } from "../enum/Category.enum";
+import { Type } from "../enums/Type.enum";
 
 export const auctionData: Auction[] = [
     {
         id: uuidv4(),
-        dateCreated: new Date(11,12,2023),
-        ownerId: userData[0].id,
-        name: "Smartfon SAMSUNG Galaxy S23 8/128GB 5G 6.1' 120Hz",
-        price: 3456.13,
-        category: Category.ELECTRONICS,
-        description: "Cool phone for cool guys",
-        photos: [
-            "https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/50/5073848/Smartfon-SAMSUNG-Galaxy-S23-Ultra-5G-Zielony-front-tyl-1.jpg",
-            "https://images.samsung.com/pl/smartphones/galaxy-s23/buy/02_Image_Carousel/02-1_Group_KV_Basic_Color/S23Plus-group_kv_MO.jpg"
-        ],
-        isBought: false,
-        buyerId: null,
-        dateBought: null
-    },
-    {
-        id: uuidv4(),
         dateCreated: new Date(12,12,2023),
-        ownerId: userData[0].id,
-        name: "Taylor Swift - Folklore LP",
+        categoryId: 0,
+        artistName: "Taylor Swift",
+        albumName: "Folklore",
+        type: Type.VINYL,
         price: 156.13,
-        category: Category.ENTERTAINMENT,
         description: "Taylor Swift's surprise album, folklore, is available here on vinyl. Born out of social distancing and isolation, full of her whims, dreams, fears and musings, Swift’s eighth studio album features collaborations with Aaron Dessner, Bon Iver, William Bowery and Jack Antonoff. 2020, Republic",
         photos: [
             "https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0550434960095_000_b?$xlarge$&fit=constrain&qlt=80&wid=640",
@@ -39,10 +23,11 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(13, 12, 2023),
-        ownerId: userData[0].id,
-        name: "Led Zeppelin - IV LP",
+        categoryId: 1,
+        artistName: "Led Zeppelin",
+        albumName: "IV LP",
+        type: Type.VINYL,
         price: 199.99,
-        category: Category.ENTERTAINMENT,
         description: "Classic rock album by Led Zeppelin.",
         photos: [
             "https://via.placeholder.com/500x500",
@@ -52,13 +37,15 @@ export const auctionData: Auction[] = [
         buyerId: null,
         dateBought: null
     },
+    
     {
         id: uuidv4(),
         dateCreated: new Date(14, 12, 2023),
-        ownerId: userData[0].id,
-        name: "Pink Floyd - Dark Side of the Moon LP",
+        categoryId: 1,
+        artistName: "Pink Floyd",
+        albumName: "Dark Side of the Moon LP",
+        type: Type.VINYL,
         price: 249.99,
-        category: Category.ENTERTAINMENT,
         description: "Iconic progressive rock album by Pink Floyd.",
         photos: [
             "https://via.placeholder.com/500x500",
@@ -71,10 +58,11 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(17, 12, 2023),
-        ownerId: userData[0].id,
-        name: "Queen - A Night at the Opera LP",
+        categoryId: 1,
+        artistName: "Queen",
+        albumName: "A Night at the Opera LP",
+        type: Type.VINYL,
         price: 179.99,
-        category: Category.ENTERTAINMENT,
         description: "Classic album by Queen with Bohemian Rhapsody.",
         photos: [
             "https://via.placeholder.com/500x500",
@@ -84,13 +72,15 @@ export const auctionData: Auction[] = [
         buyerId: null,
         dateBought: null
     },
+    
     {
         id: uuidv4(),
         dateCreated: new Date(18, 12, 2023),
-        ownerId: userData[0].id,
-        name: "Bob Dylan - Highway 61 Revisited LP",
+        categoryId: 4,
+        artistName: "Bob Dylan",
+        albumName: "Highway 61 Revisited LP",
+        type: Type.VINYL,
         price: 199.99,
-        category: Category.ENTERTAINMENT,
         description: "Influential album by Bob Dylan.",
         photos: [
             "https://via.placeholder.com/500x500",
@@ -100,13 +90,15 @@ export const auctionData: Auction[] = [
         buyerId: null,
         dateBought: null
     },
+    
     {
         id: uuidv4(),
         dateCreated: new Date(19, 12, 2023),
-        ownerId: userData[0].id,
-        name: "Arctic Monkeys - Tranquility Base Hotel & Casino LP",
+        categoryId: 2,
+        artistName: "Arctic Monkeys",
+        albumName: "Tranquility Base Hotel & Casino LP",
+        type: Type.VINYL,
         price: 29.99,
-        category: Category.ENTERTAINMENT,
         description: "Latest album by Arctic Monkeys with a unique sound.",
         photos: [
             "https://via.placeholder.com/500x500",
@@ -119,10 +111,11 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(20, 12, 2023),
-        ownerId: userData[0].id,
-        name: "Billie Eilish - Happier Than Ever LP",
+        categoryId: 0,
+        artistName: "Billie Eilish",
+        albumName: "Happier Than Ever LP",
+        type: Type.VINYL,
         price: 39.99,
-        category: Category.ENTERTAINMENT,
         description: "Chart-topping album by Billie Eilish.",
         photos: [
             "https://via.placeholder.com/500x500",
@@ -132,13 +125,15 @@ export const auctionData: Auction[] = [
         buyerId: null,
         dateBought: null
     },
+    
     {
         id: uuidv4(),
         dateCreated: new Date(21, 12, 2023),
-        ownerId: userData[0].id,
-        name: "Lorde - Solar Power LP",
+        categoryId: 0,
+        artistName: "Lorde",
+        albumName: "Solar Power LP",
+        type: Type.VINYL,
         price: 49.99,
-        category: Category.ENTERTAINMENT,
         description: "Lorde's latest album showcasing her evolving sound.",
         photos: [
             "https://via.placeholder.com/500x500",
@@ -148,13 +143,15 @@ export const auctionData: Auction[] = [
         buyerId: null,
         dateBought: null
     },
+    
     {
         id: uuidv4(),
         dateCreated: new Date(22, 12, 2023),
-        ownerId: userData[0].id,
-        name: "The Weeknd - After Hours LP",
+        categoryId: 0,
+        artistName: "The Weeknd",
+        albumName: "After Hours LP",
+        type: Type.VINYL,
         price: 59.99,
-        category: Category.ENTERTAINMENT,
         description: "The Weeknd's critically acclaimed album with hits like 'Blinding Lights.'",
         photos: [
             "https://via.placeholder.com/500x500",
@@ -164,5 +161,6 @@ export const auctionData: Auction[] = [
         buyerId: null,
         dateBought: null
     },
+
 
 ]

@@ -8,22 +8,8 @@ const router = express.Router();
 
 let auctions: Auction[] = auctionData;
 
-// console.log(auctions[0])
-
 router.get("/auctions", (req: Request, res: Response) => {
-  const page = parseInt(req.query.page as string) || 1;
-  const pageSize = parseInt(req.query.pageSize as string) || auctions.length;
-
-  const startIndex = (page - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-
-  const paginatedAuctions = auctions.slice(startIndex, endIndex);
-
-  res.status(200).json({
-    auctions: paginatedAuctions,
-    totalPages: Math.ceil(auctions.length / pageSize),
-    currentPage: page,
-  });
+  res.status(200).json({auctions: auctions});
 });
 
 router.get("/auctions/:id", (req: Request, res: Response) => {
@@ -41,9 +27,10 @@ router.get("/auctions/:id", (req: Request, res: Response) => {
 
 router.post("/auctions", authenticateUser, (req: Request, res: Response) => {
   const {
-    ownerId,
-    category,
-    name,
+    categoryId,
+    artistName,
+    albumName,
+    type,
     price,
     description,
     photos,
@@ -52,9 +39,10 @@ router.post("/auctions", authenticateUser, (req: Request, res: Response) => {
   const newAuction: Auction = {
     id: uuidv4(),
     dateCreated: new Date(),
-    ownerId,
-    category,
-    name,
+    categoryId,
+    artistName,
+    albumName,
+    type,
     price,
     description,
     photos,

@@ -11,8 +11,6 @@ const routes: Routes = [
   {
     path: '',
     component: UserPanelComponent,
-    canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
     children: [
       { path: 'details', component: ProfileComponent },
       { path: 'edit', component: EditFormComponent},

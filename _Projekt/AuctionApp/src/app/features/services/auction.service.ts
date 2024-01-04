@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Auction } from 'src/app/shared/models/Auction.model';
-import PaginatedAuction from '../dto/paginated-auction.model';
 import CreateAuction from '../dto/create-auction.model';
 import Message from '../dto/message.model';
 
@@ -13,7 +12,7 @@ export class AuctionService {
  
   constructor(private httpClient: HttpClient) { }
 
-  public getAllAuctions(): Observable<Auction[]>{
+  public getAuctions(): Observable<Auction[]>{
     return this.httpClient.get<Auction[]>("auctions");
   }
 

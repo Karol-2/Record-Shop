@@ -22,5 +22,4 @@ export class UserService {
   public updateUser(id: string, user: UpdateUser): Observable<User>{
     return this.httpClient.put<User>("users/" + id,user)
   }
-  //TODO: Add interceptor for localhost:3000
 }

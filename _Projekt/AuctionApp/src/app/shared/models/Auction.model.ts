@@ -1,19 +1,18 @@
-import { Category } from "../enums/Category.enum";
-
 export interface Auction{
     readonly id: string;
     readonly dateCreated: Date;
 
-    readonly ownerId: string;
-    category: Category;
+    categoryId: number;
 
-    name: string;
+    artistName: string,
+    albumName:string
+
     price: number;
     description: string;
     photos: string[];
-    isBought: boolean;
+    tracklist: string[];
 
+    isBought: boolean;
     buyerId: string | null;
     dateBought: Date | null;
-    
 }

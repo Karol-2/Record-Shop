@@ -1,19 +1,20 @@
-import { Category } from "../enum/Category.enum";
+import { Type } from "../enums/Type.enum";
 
 export interface Auction{
     readonly id: string;
     readonly dateCreated: Date;
 
-    readonly ownerId: string;
-    category: Category;
+    categoryId: number;
 
-    name: string;
+    artistName: string,
+    albumName:string
+    type: Type,
+
     price: number;
     description: string;
     photos: string[];
-    isBought: boolean;
 
+    isBought: boolean;
     buyerId: string | null;
     dateBought: Date | null;
-    
 }
