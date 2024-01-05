@@ -6,6 +6,7 @@ import { NumberDirective } from './directives/number.directive';
 import { GoBackButtonComponent } from './components/go-back-button/go-back-button.component';
 import { PhotoLinkDirective } from './directives/photo-link.directive';
 import { ModalComponent } from './components/modal/modal.component';
+import { MaterialModule } from '../modules/material/material.module';
 
 
 
@@ -19,7 +20,8 @@ import { ModalComponent } from './components/modal/modal.component';
     ModalComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   exports: [
     UserDisplayPipe,

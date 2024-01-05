@@ -13,6 +13,7 @@ import { FormPhotosComponent } from './components/form-photos/form-photos.compon
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminOptionsComponent } from './components/admin-options/admin-options.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { MaterialModule } from '../material/material.module';
 
 
 
@@ -33,7 +34,8 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     CommonModule,
     SharedModule,
     AuctionRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class AuctionModule { }

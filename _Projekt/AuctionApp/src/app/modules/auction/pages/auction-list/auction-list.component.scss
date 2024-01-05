@@ -1,6 +1,7 @@
 .grid{
     display: grid;
     grid-template-columns: 1fr 7fr;
+    gap: 1.5rem;
 }
 
 .sidebar{

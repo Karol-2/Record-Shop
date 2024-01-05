@@ -1,12 +1,14 @@
-img{
+.picture{
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-div.container{
-    border: 1px solid black;
+.container{
+    margin-bottom: 0.5rem;
+}
+
+div.content{
     display: grid;
     grid-template-columns: 1fr 10fr;
-    gap: 0.25rem;
 }

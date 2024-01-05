@@ -2,60 +2,56 @@
     <div>
         <h1>Sorting</h1>
         <form>
-            <select>
-                <option>Artist name: ascending</option>
-                <option>Artist name: descending</option>
-                <option>Album name: ascending</option>
-                <option>Album name: descending</option>
-                <option>Price: ascending</option>
-                <option>Price: descending</option>
-                <option>Date: oldest</option>
-                <option>Date: newest</option>
-            </select>
-        <button type="submit">Reorder</button>
+            <mat-form-field>
+                <mat-label> Order by</mat-label>
+                <mat-select>
+                    <mat-option>None</mat-option>
+                    <mat-option value="artistName">Artist name</mat-option>
+                    <mat-option value="albumName">Album name</mat-option>
+                    <mat-option value="price">Price</mat-option>
+                    <mat-option value="dateCreated">Date</mat-option>
+                </mat-select>
+            </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Reorder</button>
         </form>
     </div>
     <div>
         <h1>Filters</h1>
         <form>
-            <div>
-                <label>Artist name: </label>
-                <input type="text">
-            </div>  
-            <div>
-                <label>Music category</label>
-                <select>
-                    <option>test</option>
-                </select>
-            </div>
-                
-            <div>
-                <p>Music device</p>
-                <label>
-                    <input type="radio" name="musicFormat" value="vinyl">
-                    VINYL
-                  </label>
-                  <label>
-                    <input type="radio" name="musicFormat" value="cd">
-                    CD
-                  </label>
-                  <label>
-                    <input type="radio" name="musicFormat" value="any">
-                    ANY
-                  </label>
-            </div>
+            <mat-form-field floatLabel="auto">
+                <mat-label >Artist name</mat-label>
+                <input matInput placeholder="...">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label> Music category</mat-label>
+                <mat-select>
+                    <mat-option>None</mat-option>
+                    <mat-option value="test">Test</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-button-toggle-group>
+                <mat-button-toggle>Any</mat-button-toggle>
+                <mat-button-toggle value="VINYL">Vinyl</mat-button-toggle>
+                <mat-button-toggle value="CD">CD</mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <mat-checkbox>
+                Show finished auctions
+            </mat-checkbox>
                
-            <div>
-                <p>Price range</p>
-                <input type="range">
-            </div>
+            <mat-slider>
+                <label>Price range</label>
+                <input matSliderStartThumb>
+                <input matSliderEndThumb>
+            </mat-slider>
 
+            
             <div>
-                <label>Show finished auctions</label>
-                <input type="checkbox">
+                <button mat-raised-button color="primary" type="submit">Filter</button>
             </div>
-
-            <button type="submit">Filter</button>
+            
         </form>
     </div>
 </div>

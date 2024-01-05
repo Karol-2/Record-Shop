@@ -1,8 +1,13 @@
-<div class="container">
-    <img [src]="auction.photos[0]">
-    <div>
-        <p>{{auction | auctionTitle}}</p>
-        <p>${{auction.price}}</p>
-        <button (click)="goToDetails()">More info</button>
-    </div>
-</div>
+<mat-card class="container">
+    <mat-card-content>
+        <div class="content">
+            <img [src]="auction.photos[0]" class="picture">
+            <div>
+                <p></p>
+                <p>${{auction.price}}</p>
+                <button mat-raised-button color="accent" (click)="goToDetails()">More info</button>
+            </div>
+        </div>
+    </mat-card-content>
+    
+</mat-card>
