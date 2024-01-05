@@ -30,6 +30,7 @@ export class AuctionFormComponent implements OnInit{
         this.route.data.subscribe((data) => {
           this.existingAuction = data['auction'].auction;
           console.log(this.existingAuction);
+          this.auctionFormService.setInitialData(this.existingAuction)
           //TODO: w innym wypadku przekieruj na strone z bledem
         });
       }

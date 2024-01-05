@@ -8,5 +8,15 @@ import { Auction } from 'src/app/shared/models/Auction.model';
 })
 export class DetailsComponent {
   @Input() public auction!:Auction;
+
+  protected daysFromDate(startingDate: Date): number {
+    const today: Date = new Date();
+
+    const diffMs = startingDate.getTime() - today.getTime();
+
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  return diffDays;
+  }
   
 }

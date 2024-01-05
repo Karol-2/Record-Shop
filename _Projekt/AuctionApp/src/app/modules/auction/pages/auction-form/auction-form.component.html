@@ -1,3 +1,5 @@
+<app-go-back-button></app-go-back-button>
+
 <h1> {{formTitle}} </h1>
 
 <form [formGroup]="auctionForm" (ngSubmit)="onSubmit()">
@@ -51,9 +53,13 @@
             <button type="button" (click)="removePhoto(i)">X</button>
         </div>
 
+        <div *ngIf="photos.hasError('required')">You need to upload atleast 1 photo</div>
+        <div *ngIf="photos.hasError('maxlength')">You can only add up to 6 photos</div>
+
     </div>
     
     <div>
+        <button type="button"> Clear </button>
         <button type="submit">Submit</button>
     </div>
   

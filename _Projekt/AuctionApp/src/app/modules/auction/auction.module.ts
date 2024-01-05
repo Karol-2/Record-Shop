@@ -10,6 +10,7 @@ import { AuctionRoutingModule } from './auction-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuctionTitlePipe } from './pipes/auction-title.pipe';
 import { FormPhotosComponent } from './components/form-photos/form-photos.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -26,6 +27,7 @@ import { FormPhotosComponent } from './components/form-photos/form-photos.compon
   ],
   imports: [
     CommonModule,
+    SharedModule,
     AuctionRoutingModule,
     ReactiveFormsModule
   ]

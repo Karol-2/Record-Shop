@@ -1,5 +1,7 @@
 <div>
     <h1>{{auction | auctionTitle}}</h1>
+    <p>Created: {{auction.dateCreated | date}}</p>
+
     <div class="content">
         <section class="top">
             <img [src]="auction.photos[0]" class="left">

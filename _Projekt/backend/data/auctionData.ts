@@ -5,7 +5,7 @@ import { Type } from "../enums/Type.enum";
 export const auctionData: Auction[] = [
     {
         id: uuidv4(),
-        dateCreated: new Date(12,12,2023),
+        dateCreated: new Date(2023,11,12),
         categoryId: 0,
         artistName: "Taylor Swift",
         albumName: "Folklore",
@@ -22,7 +22,7 @@ export const auctionData: Auction[] = [
     },
     {
         id: uuidv4(),
-        dateCreated: new Date(13, 12, 2023),
+        dateCreated: new Date(2023,10,22),
         categoryId: 1,
         artistName: "Led Zeppelin",
         albumName: "IV LP",
@@ -40,7 +40,7 @@ export const auctionData: Auction[] = [
     
     {
         id: uuidv4(),
-        dateCreated: new Date(14, 12, 2023),
+        dateCreated: new Date(2024,0,1),
         categoryId: 1,
         artistName: "Pink Floyd",
         albumName: "Dark Side of the Moon LP",
@@ -57,7 +57,7 @@ export const auctionData: Auction[] = [
     },
     {
         id: uuidv4(),
-        dateCreated: new Date(17, 12, 2023),
+        dateCreated: new Date(2024,0,2),
         categoryId: 1,
         artistName: "Queen",
         albumName: "A Night at the Opera LP",
@@ -75,7 +75,7 @@ export const auctionData: Auction[] = [
     
     {
         id: uuidv4(),
-        dateCreated: new Date(18, 12, 2023),
+        dateCreated: new Date(2022,5,4),
         categoryId: 4,
         artistName: "Bob Dylan",
         albumName: "Highway 61 Revisited LP",
@@ -93,7 +93,7 @@ export const auctionData: Auction[] = [
     
     {
         id: uuidv4(),
-        dateCreated: new Date(19, 12, 2023),
+        dateCreated: new Date(2023,8,16),
         categoryId: 2,
         artistName: "Arctic Monkeys",
         albumName: "Tranquility Base Hotel & Casino LP",
@@ -110,7 +110,7 @@ export const auctionData: Auction[] = [
     },
     {
         id: uuidv4(),
-        dateCreated: new Date(20, 12, 2023),
+        dateCreated: new Date(2023,6,13),
         categoryId: 0,
         artistName: "Billie Eilish",
         albumName: "Happier Than Ever LP",
@@ -128,7 +128,7 @@ export const auctionData: Auction[] = [
     
     {
         id: uuidv4(),
-        dateCreated: new Date(21, 12, 2023),
+        dateCreated: new Date(2022,2,23),
         categoryId: 0,
         artistName: "Lorde",
         albumName: "Solar Power LP",
@@ -146,7 +146,7 @@ export const auctionData: Auction[] = [
     
     {
         id: uuidv4(),
-        dateCreated: new Date(22, 12, 2023),
+        dateCreated: new Date(2023,10,18),
         categoryId: 0,
         artistName: "The Weeknd",
         albumName: "After Hours LP",

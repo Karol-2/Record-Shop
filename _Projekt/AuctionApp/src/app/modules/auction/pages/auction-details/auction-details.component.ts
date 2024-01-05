@@ -11,7 +11,7 @@ import { Auction } from 'src/app/shared/models/Auction.model';
 export class AuctionDetailsComponent implements OnInit{
   protected auction!: Auction;
 
-  public constructor(private route: ActivatedRoute, private location: Location){};
+  public constructor(private route: ActivatedRoute){};
 
   public ngOnInit(): void {
     this.route.data.subscribe((data) => {
@@ -19,7 +19,5 @@ export class AuctionDetailsComponent implements OnInit{
     });
   }
 
-  protected goBack(): void{
-    this.location.back();
-  }
+
 }
