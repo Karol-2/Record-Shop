@@ -4,7 +4,7 @@ export default interface CreateAuction{
     categoryId: number;
     artistName: string,
     albumName:string
-    type: Type,
+    type: string,
     price: number;
     description: string;
     photos: string[];

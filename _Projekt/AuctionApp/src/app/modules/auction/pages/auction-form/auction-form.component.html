@@ -26,13 +26,15 @@
     
     <div>
         <label for="type">Type: </label>
-        <input type="text" id="type" formControlName="type">
+        <select id="type" formControlName="type">
+            <option *ngFor="let type of typeValues" [value]="type">{{ type }}</option>
+          </select>
         <div *ngIf="auctionForm.controls['type'].touched && auctionForm.controls['type'].hasError('required')" >This field is required</div>
     </div>
     
     <div>
         <label for="price">Price: </label>
-        <input type="number" id="price" formControlName="price" min="0">
+        <input type="number" id="price" formControlName="price" min="0" step="0.05">
         <div *ngIf="auctionForm.controls['price'].touched && auctionForm.controls['price'].hasError('required')" >This field is required</div>
         <div *ngIf="auctionForm.controls['price'].touched && auctionForm.controls['price'].hasError('min')">The lowest possible price is $0.99</div>
     </div>
@@ -59,9 +61,13 @@
     </div>
     
     <div>
-        <button type="button"> Clear </button>
-        <button type="submit">Submit</button>
+        <button type="button" (click)="clearForm()"> Clear </button>
+        <button type="submit" [disabled]="!auctionForm.valid">Submit</button>
     </div>
   
     
 </form>
+
+<div *ngIf="message">
+    {{message}}
+</div>

@@ -8,6 +8,7 @@ import { LoginModule } from './modules/login/login.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserModule } from './modules/user/user.module';
 import { PrefixInterceptor } from './core/interceptors/prefix.interceptor';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,11 @@ import { PrefixInterceptor } from './core/interceptors/prefix.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: PrefixInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
       multi: true,
     },
   ],
