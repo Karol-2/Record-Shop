@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuctionTitlePipe } from './pipes/auction-title.pipe';
 import { FormPhotosComponent } from './components/form-photos/form-photos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AdminOptionsComponent } from './components/admin-options/admin-options.component';
 
 
 
@@ -24,6 +25,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     AuctionPreviewComponent,
     AuctionTitlePipe,
     FormPhotosComponent,
+    AdminOptionsComponent,
   ],
   imports: [
     CommonModule,

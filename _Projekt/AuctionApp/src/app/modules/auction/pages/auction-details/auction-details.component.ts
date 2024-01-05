@@ -14,6 +14,8 @@ export class AuctionDetailsComponent implements OnInit{
   public constructor(private route: ActivatedRoute){};
 
   public ngOnInit(): void {
+    window.scrollTo(0, 0);
+
     this.route.data.subscribe((data) => {
       this.auction = data['auction'].auction;
     });
