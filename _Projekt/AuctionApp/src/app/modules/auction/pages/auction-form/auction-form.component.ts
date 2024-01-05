@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Auction } from 'src/app/shared/models/Auction.model';
 import { Type } from 'src/app/shared/enums/Type.enum';
 import { AuctionService } from 'src/app/features/services/auction.service';
-import { editedAuction } from '../../models/editedAuction.model';
 import CreateAuction from 'src/app/features/dto/create-auction.model';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -28,7 +27,6 @@ export class AuctionFormComponent implements OnInit{
   public constructor(
     private auctionFormService: AuctionFormService, 
     private route: ActivatedRoute,
-    private router: Router,
     private auctionService: AuctionService){};
 
   public ngOnInit(): void {
@@ -40,7 +38,6 @@ export class AuctionFormComponent implements OnInit{
 
         this.route.data.subscribe((data) => {
           this.existingAuction = data['auction'].auction;
-          console.log(this.existingAuction);
 
           if (this.editMode) {
             this.auctionFormService.setInitialData(this.existingAuction);
@@ -68,7 +65,6 @@ export class AuctionFormComponent implements OnInit{
   }
 
   protected onSubmit():void{
-    console.log(this.auctionForm);
     if(this.editMode){
      this.handleEditReq();
     } else {
@@ -78,10 +74,6 @@ export class AuctionFormComponent implements OnInit{
 
   protected clearForm():void{
     this.auctionFormService.resetForm();
-  }
-
-  private handleEditReq(){
-    console.log("edit");
   }
 
   private handleAddReq(){
@@ -102,15 +94,44 @@ export class AuctionFormComponent implements OnInit{
       type: form.value.type!,
     }
 
-    this.auctionService.createAuction(newAuction).subscribe((resp)=>{
+    this.auctionService.createAuction(newAuction).subscribe({
+      next: ()=>{
         this.message = "Success!";
         this.auctionFormService.resetForm();
-    }, (err: HttpErrorResponse)=>{console.log("err",err);
-        this.message = err.error.message;
-    })
+    }, 
+    error: (err: HttpErrorResponse)=>{
+      this.message = err.error.message;}
+    })}
+
+
+  private handleEditReq(){
+    const form: FormGroup<AuctionForm> = this.auctionForm;
+
+    const photos: string[] = form.value.photos!
+      .map((photoForm: Partial<{ photo: string | null }>) => {
+        return photoForm && photoForm.photo!;
+    });
+
+    const editedAuction: Auction = {
+      ...this.existingAuction,
+      albumName: form.value.albumName!,
+      artistName: form.value.artistName!,
+      categoryId: form.value.categoryId!,
+      description: form.value.description!,
+      photos: photos,
+      price: form.value.price!,
+      type: form.value.type! as Type,
+    }
+
+    this.auctionService.updateAuction(editedAuction.id,editedAuction).subscribe({
+      next: ()=>{
+        this.message = "Success!";
+        this.auctionFormService.resetForm();
+    }, 
+    error: (err: HttpErrorResponse)=>{
+      this.message = err.error.message;}
+    })}
     
-  }
 
-  //TODO: Add canDeactivate guard
-
+    //TODO: Add canDeactivate guard
 }

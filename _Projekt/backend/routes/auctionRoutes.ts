@@ -55,7 +55,7 @@ router.post("/auctions", authenticateUser, (req: Request, res: Response) => {
 
   res
     .status(201)
-    .json({newAuction});
+    .json(newAuction);
 });
 
 router.put("/auctions/:id", authenticateUser, (req: Request, res: Response) => {

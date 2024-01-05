@@ -16,16 +16,16 @@ export class AuctionService {
     return this.httpClient.get<Auction[]>("auctions");
   }
 
-  public getAuction(id: string): Observable<Auction | Message>{
-    return this.httpClient.get<Auction | Message>("auctions/"+id);
+  public getAuction(id: string): Observable<Auction>{
+    return this.httpClient.get<Auction>("auctions/"+id);
   }
 
-  public createAuction(auction: CreateAuction): Observable<CreateAuction | Message>{
-    return this.httpClient.post<CreateAuction | Message>("auctions", auction);
+  public createAuction(auction: CreateAuction): Observable<Auction>{
+    return this.httpClient.post<Auction>("auctions", auction);
   }
 
-  public updateAuction(id: string, newAuction: Auction): Observable<Auction | Message>{
-    return this.httpClient.put<Auction | Message>("auctions/"+id, newAuction);
+  public updateAuction(id: string, newAuction: Auction): Observable<Auction>{
+    return this.httpClient.put<Auction>("auctions/"+id, newAuction);
   }
 
   public deleteAuction(id: string): Observable<Message>{
