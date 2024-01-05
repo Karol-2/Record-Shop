@@ -30,18 +30,15 @@ export class AuctionFormComponent implements OnInit{
         this.route.data.subscribe((data) => {
           this.existingAuction = data['auction'].auction;
           console.log(this.existingAuction);
-          this.auctionFormService.setInitialData(this.existingAuction)
-          //TODO: w innym wypadku przekieruj na strone z bledem
-        });
-      }
 
-      //   this.todoService.getById(this.todoID).subscribe((todo: Todo)=>{
-      //     this.newTodo.name = todo.name;
-      //     this.newTodo.isComplete = todo.isComplete;
-      //   },
-      //   (error: HttpErrorResponse)=> {console.log("ERROR",error)})
-      // }
-      //TODO: kinda useful maybe
+          if (this.editMode) {
+            this.auctionFormService.setInitialData(this.existingAuction);
+          }
+        
+        });
+      } else{
+        this.auctionFormService.resetForm();
+      }
     })
 
   }
@@ -61,5 +58,7 @@ export class AuctionFormComponent implements OnInit{
   protected onSubmit():void{
     console.log(this.auctionForm);
   }
+
+  
 
 }

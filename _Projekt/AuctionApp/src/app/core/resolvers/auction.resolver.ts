@@ -8,3 +8,4 @@ export const auctionResolver: ResolveFn<Auction | Message> = (route, state) => {
   return inject(AuctionService).getAuction(route.params['id']); //TODO: do smth with message
 };
 
+//TODO: when returns 404 redirect to auction not found
