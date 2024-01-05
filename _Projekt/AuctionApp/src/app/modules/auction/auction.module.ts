@@ -12,6 +12,7 @@ import { AuctionTitlePipe } from './pipes/auction-title.pipe';
 import { FormPhotosComponent } from './components/form-photos/form-photos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminOptionsComponent } from './components/admin-options/admin-options.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 
 
@@ -26,6 +27,7 @@ import { AdminOptionsComponent } from './components/admin-options/admin-options.
     AuctionTitlePipe,
     FormPhotosComponent,
     AdminOptionsComponent,
+    SideBarComponent,
   ],
   imports: [
     CommonModule,

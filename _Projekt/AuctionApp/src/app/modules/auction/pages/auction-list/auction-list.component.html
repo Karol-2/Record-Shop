@@ -4,9 +4,14 @@
 
 <app-search-form></app-search-form>
 
-<div>
-    <h1>Matching auctions</h1>
-    <div *ngFor="let auction of auctions">
-        <app-auction-preview [auction]="auction"></app-auction-preview>
+<div class="grid">
+    <div class="side-bar">
+        <app-side-bar></app-side-bar>
+    </div>
+    <div class="auctions">
+        <h1>Auctions</h1>
+        <div *ngFor="let auction of auctions">
+            <app-auction-preview [auction]="auction"></app-auction-preview>
+        </div>
     </div>
 </div>
