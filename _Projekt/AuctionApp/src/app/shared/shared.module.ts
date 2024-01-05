@@ -5,6 +5,7 @@ import { CapitalLetterDirective } from './directives/capital-letter.directive';
 import { NumberDirective } from './directives/number.directive';
 import { GoBackButtonComponent } from './components/go-back-button/go-back-button.component';
 import { PhotoLinkDirective } from './directives/photo-link.directive';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
@@ -14,7 +15,8 @@ import { PhotoLinkDirective } from './directives/photo-link.directive';
     CapitalLetterDirective,
     NumberDirective,
     GoBackButtonComponent,
-    PhotoLinkDirective
+    PhotoLinkDirective,
+    ModalComponent
   ],
   imports: [
     CommonModule
@@ -24,7 +26,8 @@ import { PhotoLinkDirective } from './directives/photo-link.directive';
     CapitalLetterDirective,
     NumberDirective,
     PhotoLinkDirective,
-    GoBackButtonComponent
+    GoBackButtonComponent,
+    ModalComponent
   ]
 })
 export class SharedModule { }

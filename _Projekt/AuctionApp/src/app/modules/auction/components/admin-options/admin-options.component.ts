@@ -11,6 +11,7 @@ import { AuctionService } from 'src/app/features/services/auction.service';
 export class AdminOptionsComponent {
   @Input() public auctionId: string = "";
 
+  protected showModal: boolean = false;
   protected message: string = "";
 
   public constructor(private router: Router, private auctionService: AuctionService,){};
@@ -22,8 +23,13 @@ export class AdminOptionsComponent {
   protected deleteAuction(): void{
     this.auctionService.deleteAuction(this.auctionId).subscribe({
       next: ()=>{this.router.navigate(["auctions"])},
-      error: (err: HttpErrorResponse) => {this.message = err.error.message}
+      error: (err: HttpErrorResponse) => {this.message = err.error.message},
+      complete: ()=>{this.changeVisibility()}
     })
+  }
+
+  protected changeVisibility(): void{
+    this.showModal = !this.showModal;
   }
 
 }
