@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { UserRoutingModule } from './user-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule,
     RouterModule,
     UserRoutingModule,//THISSSSS
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class UserModule { }

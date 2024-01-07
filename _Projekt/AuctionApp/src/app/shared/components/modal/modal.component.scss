@@ -6,6 +6,7 @@
     left: 0;
     right: 0;
     color:var(--dark);
+    z-index: 1000;
 }
 
 .modal-content{
@@ -14,5 +15,5 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px;
-
+  z-index: 1001;
 }
