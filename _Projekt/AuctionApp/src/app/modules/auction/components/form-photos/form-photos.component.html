@@ -1,6 +1,9 @@
 <div [formGroup]="photosForm" >
-    <label for="photo">Photo link: </label>
-    <input type="text" id="photo" formControlName="photo" appPhotoLink>
+    <mat-form-field>
+        <mat-label for="photo">Photo link: </mat-label>
+        <input matInput type="text" id="photo" formControlName="photo" appPhotoLink>
+    </mat-form-field>
+  
 
     <div *ngIf="photosForm.controls.photo.touched && photosForm.controls.photo.hasError('required')">This field is required</div>
     <div *ngIf="photosForm.controls.photo.touched && photosForm.controls.photo.hasError('invalidImageLink')">Invalid link to a picture</div>

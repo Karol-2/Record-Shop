@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatIconModule} from '@angular/material/icon';
 
 const MaterialComponents = [
   MatSlideToggleModule,
@@ -23,7 +24,8 @@ const MaterialComponents = [
   MatButtonToggleModule,
   MatSliderModule,
   MatCardModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatIconModule
 ];
 
 @NgModule({
