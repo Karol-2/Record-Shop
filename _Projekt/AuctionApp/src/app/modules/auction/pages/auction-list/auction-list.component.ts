@@ -57,6 +57,8 @@ export class AuctionListComponent implements OnInit, OnDestroy {
 
       if (showFinished !== null && auction.isBought !== showFinished) {
         return false;
+      } else {
+        return true
       }
 
       return true;

@@ -12,3 +12,18 @@ div.content{
     display: grid;
     grid-template-columns: 1fr 10fr;
 }
+
+.info{
+ display: flex;
+ justify-content: space-between;
+ align-content: center;
+
+ div.text{
+    align-self: center;
+    margin-left: 1.5rem;
+ }
+
+ button{
+    align-self: center;
+ }
+}

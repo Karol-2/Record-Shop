@@ -2,10 +2,13 @@
     <mat-card-content>
         <div class="content">
             <img [src]="auction.photos[0]" class="picture">
-            <div>
-                <p>{{auction | auctionTitle}}</p>
-                <p>${{auction.price}}</p>
-                <p *ngIf="auction.isBought">This auction has ended</p>
+            <div class="info">
+                <div class="text">
+                    <h2>{{auction | auctionTitle}}</h2>
+                    <p>${{auction.price}}</p>
+                    <p *ngIf="auction.isBought">This auction has ended</p>
+                </div>
+                
                 <button mat-raised-button color="accent" (click)="goToDetails()">More info</button>
             </div>
         </div>
