@@ -4,11 +4,10 @@
         <mat-form-field>
             <mat-label> Order by</mat-label>
             <mat-select [(ngModel)]="sortValue" (ngModelChange)="sortAuctions()">
-                <mat-option>None</mat-option>
                 <mat-option value="artistName">Artist name</mat-option>
                 <mat-option value="albumName">Album name</mat-option>
                 <mat-option value="price">Price</mat-option>
-                <mat-option value="dateCreated">Date</mat-option>
+                <mat-option value="dateCreated">Auction date</mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -19,36 +18,31 @@
     </div>
     <div>
         <h1>Filters</h1>
-        <form>
-            <mat-form-field floatLabel="auto">
+        <form [formGroup]="filterForm" (submit)="onSubmitFilter()">
+            <mat-form-field floatLabel="auto" >
                 <mat-label >Artist name</mat-label>
-                <input matInput placeholder="...">
+                <input matInput placeholder="..." formControlName="artistName" >
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label> Music category</mat-label>
-                <mat-select>
+                <mat-select formControlName="categoryId">
                     <mat-option>None</mat-option>
-                    <mat-option value="test">Test</mat-option>
+                    <mat-option value="1">1</mat-option>
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="3">3</mat-option>
                 </mat-select>
             </mat-form-field>
 
-            <mat-button-toggle-group>
+            <mat-button-toggle-group formControlName="type">
                 <mat-button-toggle>Any</mat-button-toggle>
                 <mat-button-toggle value="VINYL">Vinyl</mat-button-toggle>
                 <mat-button-toggle value="CD">CD</mat-button-toggle>
             </mat-button-toggle-group>
 
-            <mat-checkbox>
+            <mat-checkbox formControlName="showFinished">
                 Show finished auctions
             </mat-checkbox>
-               
-            <mat-slider>
-                <label>Price range</label>
-                <input matSliderStartThumb>
-                <input matSliderEndThumb>
-            </mat-slider>
-
             
             <div>
                 <button mat-raised-button color="primary" type="submit">Filter</button>

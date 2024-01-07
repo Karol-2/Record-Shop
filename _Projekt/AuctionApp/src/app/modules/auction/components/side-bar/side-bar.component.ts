@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Type } from 'src/app/shared/enums/Type.enum';
 import { Auction } from 'src/app/shared/models/Auction.model';
 
 @Component({
@@ -6,12 +9,15 @@ import { Auction } from 'src/app/shared/models/Auction.model';
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.scss']
 })
-export class SideBarComponent {
+export class SideBarComponent implements OnInit{
+
+  public constructor( private route: ActivatedRoute, private router: Router){};
   
+  // ============= SORTING ==========
+
   @Input() public auctions!: Auction[];
   protected sortValue: string = "";
   protected sortOrder: string = "";
-
 
   protected sortAuctions() {
     if (this.sortValue) {
@@ -42,5 +48,38 @@ export class SideBarComponent {
       default:
         return '';
     }
+  }
+
+  // ========== FILTERS =========
+
+  protected filterForm!: FormGroup;
+
+  public ngOnInit(): void {
+    this.filterForm = new FormGroup({
+      artistName: new FormControl<string | null>(null),
+      categoryId: new FormControl<number | null>(null),
+      type: new FormControl<Type | null>(null),
+      showFinished: new FormControl<boolean | null>(null)
+    })
+  }
+
+  protected onSubmitFilter(): void{
+    this.updateUrl();
+  }
+
+  private updateUrl() {
+    const queryParams = {
+      type: this.filterForm.value.type,
+      artistName: this.filterForm.value.artistName,
+      categoryId: this.filterForm.value.categoryId,
+      showFinished: this.filterForm.value.showFinished
+    };
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams,
+      queryParamsHandling: 'merge'
+    });
+
   }
 }

@@ -5,6 +5,7 @@
             <div>
                 <p>{{auction | auctionTitle}}</p>
                 <p>${{auction.price}}</p>
+                <p *ngIf="auction.isBought">This auction has ended</p>
                 <button mat-raised-button color="accent" (click)="goToDetails()">More info</button>
             </div>
         </div>

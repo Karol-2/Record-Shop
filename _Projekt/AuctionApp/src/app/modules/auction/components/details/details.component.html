@@ -14,7 +14,8 @@
                 </div>
                 <div class="price">
                     <p>Price: ${{auction.price}}</p>
-                    <button> Buy </button>
+                    <button [disabled]="auction.isBought"> Buy </button>
+                    <p *ngIf="auction.isBought">This auction has ended</p>
                 </div>
             </div>    
         </section>

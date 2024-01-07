@@ -1,6 +1,7 @@
 import { Auction } from "../models/Auction.model";
 import { v4 as uuidv4 } from 'uuid';
 import { Type } from "../enums/Type.enum";
+import { userData } from "./userData";
 
 export const auctionData: Auction[] = [
     {
@@ -106,9 +107,9 @@ export const auctionData: Auction[] = [
         photos: [
             "https://plasticstone.net/cdn/shop/products/ArcticMonkeys-AMLP_BlackVinyl_1024x1024@2x.jpg",
         ],
-        isBought: false,
-        buyerId: null,
-        dateBought: null
+        isBought: true,
+        buyerId: userData[1].id,
+        dateBought: new Date()
     },
     {
         id: uuidv4(),
