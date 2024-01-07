@@ -10,6 +10,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const MaterialComponents = [
   MatSlideToggleModule,
@@ -22,6 +23,7 @@ const MaterialComponents = [
   MatButtonToggleModule,
   MatSliderModule,
   MatCardModule,
+  MatPaginatorModule
 ];
 
 @NgModule({

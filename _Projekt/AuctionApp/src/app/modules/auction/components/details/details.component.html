@@ -1,32 +1,57 @@
 <div>
-    <h1>{{auction | auctionTitle}}</h1>
-    <p>Created: {{auction.dateCreated | date}}</p>
+    <mat-card>    
+        <mat-card-header>
+            <mat-card-title>{{auction | auctionTitle}}</mat-card-title>
+            <mat-card-subtitle>Created: {{auction.dateCreated | date}}</mat-card-subtitle>
+        </mat-card-header>
+        
+        
+    </mat-card>
+   
 
     <div class="content">
-        <section class="top">
+        <mat-card class="top">
             <img [src]="auction.photos[0]" class="left">
             <div class="right">
+                <div class="price">
+                    <h1>Price: ${{auction.price}}</h1>
+                    <button mat-raised-button color="primary" [disabled]="auction.isBought"> Buy </button>
+                    <p *ngIf="auction.isBought">This auction has ended</p>
+                </div>
                 <div class="info">
+                    <h2>Basic informations:</h2>
                     <p>Artist: {{auction.artistName}}</p>
                     <p>Album: {{auction.albumName}}</p>
                     <p>Category: {{auction.categoryId}}</p>
                     <p>Type: {{auction.type}}</p>
                 </div>
-                <div class="price">
-                    <p>Price: ${{auction.price}}</p>
-                    <button [disabled]="auction.isBought"> Buy </button>
-                    <p *ngIf="auction.isBought">This auction has ended</p>
-                </div>
+                
             </div>    
-        </section>
+        </mat-card>
         
-        <section class="description">
-            <p>{{auction.description}}</p>
-                <div class="gallery">
-                    <div *ngFor="let photo of auction.photos" class="photo">
+        <mat-card class="description">
+            <mat-card-header>
+                <mat-card-title>Description</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>{{auction.description}}</p>
+            </mat-card-content>   
+        </mat-card>
+
+        <mat-card class="description">
+            <mat-card-header>
+                    <mat-card-title>Photos</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+
+                
+            <div class="gallery">
+                
+                <div *ngFor="let photo of auction.photos" class="photo">
                     <img [src]="photo">
                 </div>
             </div>
-        </section>
+        </mat-card-content>
+        </mat-card>
     </div>
 </div>

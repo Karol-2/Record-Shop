@@ -1,11 +1,15 @@
-<div>
-    <p>You are currently logged as an ADMINISTRATOR. You have an access to add, edit and delete auctions! If this is not your account, we strongly recommend that you log out immediately for security reasons.</p>
-    <div>
-        <button mat-raised-button color="accent" (click)="editAuction()"> Edit </button>
-        <button mat-raised-button color="warn"(click)="changeVisibility()"> Delete </button>
-        <div *ngIf="message"> {{message}}</div>
-    </div>
-
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      You are currently logged as an ADMINISTRATOR. You have an access to add, edit and delete auctions! If this is not your account, we strongly recommend that you log out immediately for security reasons.
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-footer>
+    <button mat-raised-button color="accent" (click)="editAuction()"> Edit </button>
+    <button mat-raised-button color="warn"(click)="changeVisibility()"> Delete </button>
+    <div *ngIf="message"> {{message}}</div>
+  </mat-card-footer>
+  
     <app-modal *ngIf="showModal" [text]="'Are you shure that you want to delete auction: '+ auctionId + '?'" >
     <div>
       <button mat-raised-button color="primary" (click)="changeVisibility()">No</button>
@@ -14,4 +18,4 @@
   </app-modal>
 
 
-</div>
+</mat-card>
