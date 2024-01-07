@@ -7,7 +7,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { AuctionFormComponent } from './pages/auction-form/auction-form.component';
 import { AuctionPreviewComponent } from './components/auction-preview/auction-preview.component';
 import { AuctionRoutingModule } from './auction-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuctionTitlePipe } from './pipes/auction-title.pipe';
 import { FormPhotosComponent } from './components/form-photos/form-photos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -35,7 +35,8 @@ import { MaterialModule } from '../material/material.module';
     SharedModule,
     AuctionRoutingModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ]
 })
 export class AuctionModule { }

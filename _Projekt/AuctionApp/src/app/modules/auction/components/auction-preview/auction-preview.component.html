@@ -3,7 +3,7 @@
         <div class="content">
             <img [src]="auction.photos[0]" class="picture">
             <div>
-                <p></p>
+                <p>{{auction | auctionTitle}}</p>
                 <p>${{auction.price}}</p>
                 <button mat-raised-button color="accent" (click)="goToDetails()">More info</button>
             </div>

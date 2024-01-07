@@ -1,19 +1,21 @@
 <div>
     <div>
         <h1>Sorting</h1>
-        <form>
-            <mat-form-field>
-                <mat-label> Order by</mat-label>
-                <mat-select>
-                    <mat-option>None</mat-option>
-                    <mat-option value="artistName">Artist name</mat-option>
-                    <mat-option value="albumName">Album name</mat-option>
-                    <mat-option value="price">Price</mat-option>
-                    <mat-option value="dateCreated">Date</mat-option>
-                </mat-select>
-            </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Reorder</button>
-        </form>
+        <mat-form-field>
+            <mat-label> Order by</mat-label>
+            <mat-select [(ngModel)]="sortValue" (ngModelChange)="sortAuctions()">
+                <mat-option>None</mat-option>
+                <mat-option value="artistName">Artist name</mat-option>
+                <mat-option value="albumName">Album name</mat-option>
+                <mat-option value="price">Price</mat-option>
+                <mat-option value="dateCreated">Date</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-button-toggle-group [(ngModel)]="sortOrder" (ngModelChange)="sortAuctions()">
+            <mat-button-toggle value="asc">ASC</mat-button-toggle>
+            <mat-button-toggle value="desc">DESC</mat-button-toggle>
+        </mat-button-toggle-group>
     </div>
     <div>
         <h1>Filters</h1>

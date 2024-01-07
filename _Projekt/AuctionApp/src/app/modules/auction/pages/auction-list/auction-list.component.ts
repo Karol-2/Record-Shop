@@ -21,4 +21,5 @@ export class AuctionListComponent implements OnInit {
   protected goToForm(): void{
     this.router.navigate(["auctions","form"]);
   }
+
 }
