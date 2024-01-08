@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: 'details', component: ProfileComponent },
       { path: 'edit', component: EditFormComponent},
       { path: 'auctions', component: UserAuctionsComponent, resolve:{ auctions: auctionsResolver} },
-      { path: 'manage', component: UserManagementComponent, resolve: {usersTab: UsersResolver}},
+      { path: 'manage', component: UserManagementComponent, resolve: {usersTab: UsersResolver, auctionsTab: auctionsResolver}},
       { path: '', redirectTo: 'details', pathMatch: 'full' },
     ],
   },

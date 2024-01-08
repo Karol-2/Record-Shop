@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.ts",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "start": "nodemon ./index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -20,11 +18,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@angular-eslint/eslint-plugin": "^17.1.1",
-    "@angular-eslint/eslint-plugin-template": "^17.1.1",
     "@types/jsonwebtoken": "^9.0.5",
-    "@typescript-eslint/eslint-plugin": "^6.17.0",
-    "@typescript-eslint/parser": "^6.17.0",
     "eslint": "^8.56.0",
     "nodemon": "^3.0.2"
   }

@@ -13,6 +13,7 @@ import { AuctionModule } from '../auction/auction.module';
 import { AuctionPanelComponent } from './components/auction-panel/auction-panel.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
+import { UserDisplayComponent } from './components/user-display/user-display.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { UserManagementComponent } from './components/user-management/user-manag
     UserPanelComponent,
     AuctionPanelComponent,
     SideBarComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    UserDisplayComponent
   ],
   imports: [
     CommonModule,
