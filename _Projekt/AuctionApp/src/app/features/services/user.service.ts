@@ -22,4 +22,7 @@ export class UserService {
   public updateUser(id: string, user: UpdateUser): Observable<User>{
     return this.httpClient.put<User>("users/" + id,user)
   }
+  public deleteUser(id: string): Observable<String>{
+    return this.httpClient.delete<String>("users/" + id) //TODO: you shure?
+  }
 }

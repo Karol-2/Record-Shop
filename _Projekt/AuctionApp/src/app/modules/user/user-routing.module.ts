@@ -5,6 +5,8 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
 import { UserAuctionsComponent } from './components/user-auctions/user-auctions.component';
 import { UserPanelComponent } from './pages/user-panel/user-panel.component';
 import { auctionsResolver } from 'src/app/core/resolvers/auctions.resolver';
+import { UserManagementComponent } from './components/user-management/user-management.component';
+import { UsersResolver } from 'src/app/core/resolvers/users.resolver';
 
 const routes: Routes = [
   {
@@ -14,6 +16,7 @@ const routes: Routes = [
       { path: 'details', component: ProfileComponent },
       { path: 'edit', component: EditFormComponent},
       { path: 'auctions', component: UserAuctionsComponent, resolve:{ auctions: auctionsResolver} },
+      { path: 'manage', component: UserManagementComponent, resolve: {usersTab: UsersResolver}},
       { path: '', redirectTo: 'details', pathMatch: 'full' },
     ],
   },

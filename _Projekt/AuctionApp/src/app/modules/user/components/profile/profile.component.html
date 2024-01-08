@@ -1,15 +1,27 @@
-<div>
-    <h1>Account details</h1>
-    <div *ngIf="isLoading">
-        <p>Loading user...</p>
+<div class="content">
+  <mat-card class="profile-info">
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Account details</h1>
+      <div *ngIf="isLoading">
+          <p>Loading user...</p>
       </div>
-      <div *ngIf="user">
-        <p>First name: {{user.firstName}}</p>
-        <p>Last name: {{user.lastName}}</p>
-        <p>E-mail: {{user.email}}</p>
-        <p>Password: {{user.password}}</p>
-      </div>
-      <div *ngIf="!isLoading && !user">
-        <p>No user is logged in.</p>
-      </div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="user">
+      <p>First name: {{user.firstName}}</p>
+      <p>Last name: {{user.lastName}}</p>
+      <p>E-mail: {{user.email}}</p>
+      <p>Password: {{user.password}}</p>
+    </div>
+    <div *ngIf="!isLoading && !user">
+      <p>No user is logged in.</p>
+    </div>
+
+  </mat-card-content>
+   
+     
+  </mat-card>
+   
 </div>

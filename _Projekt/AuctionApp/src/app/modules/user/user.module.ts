@@ -11,6 +11,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from '../material/material.module';
 import { AuctionModule } from '../auction/auction.module';
 import { AuctionPanelComponent } from './components/auction-panel/auction-panel.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { UserManagementComponent } from './components/user-management/user-management.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { AuctionPanelComponent } from './components/auction-panel/auction-panel.
     EditFormComponent,
     UserAuctionsComponent,
     UserPanelComponent,
-    AuctionPanelComponent
+    AuctionPanelComponent,
+    SideBarComponent,
+    UserManagementComponent
   ],
   imports: [
     CommonModule,

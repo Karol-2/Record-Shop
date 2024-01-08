@@ -1,0 +1,13 @@
+<div>
+    <h1>User Management</h1>
+    <div *ngFor="let user of usersTab">
+        <div>
+            <h2>{{user.firstName}} {{user.lastName}}</h2>
+            <p>{{user.id}}</p>
+            <p>{{user.email}}</p>
+            <p>{{user.password}}</p>
+            <button mat-raised-button color="warn" (click)="removeUser(user.id)"> Remove user</button>
+            <p>{{message}}</p>
+        </div>
+    </div>
+</div>
