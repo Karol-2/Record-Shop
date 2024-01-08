@@ -6,3 +6,9 @@ mat-checkbox{
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+.side-bar{
+    @media (max-width: 768px) {
+        display: none;
+      }
+}

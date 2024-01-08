@@ -37,6 +37,9 @@ import { MaterialModule } from '../material/material.module';
     ReactiveFormsModule,
     MaterialModule,
     FormsModule
+  ],
+  exports:[
+    AuctionTitlePipe
   ]
 })
 export class AuctionModule { }

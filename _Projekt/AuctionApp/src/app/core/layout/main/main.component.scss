@@ -3,4 +3,12 @@ main{
     background-color: var(--lighter);
     padding: 2rem 10rem;
     min-height: 100vh;
+
+    @media (max-width: 768px) {
+        padding: 2rem 0;
+      }
+
+    @media (max-width: 992px) { 
+        padding: 2rem 2rem;
+      }
 }

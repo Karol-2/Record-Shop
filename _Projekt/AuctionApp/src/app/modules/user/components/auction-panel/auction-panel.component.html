@@ -1,0 +1,18 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{auction.id}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{auction | auctionTitle}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <ul>
+        <li>Album name: {{auction.albumName}}</li>
+        <li>Artist name: {{auction.artistName}}</li>
+        <li>Type: {{auction.type}}</li>
+        <li>Price: ${{auction.price}}</li>
+        <li>Date of order: {{auction.dateBought }}</li>
+        <li>Order id: {{auction.id}}</li>
+    </ul>
+  </mat-expansion-panel>

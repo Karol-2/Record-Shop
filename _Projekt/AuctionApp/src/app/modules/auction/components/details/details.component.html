@@ -15,8 +15,9 @@
             <div class="right">
                 <div class="price">
                     <h1>Price: ${{auction.price}}</h1>
-                    <button mat-raised-button color="primary" [disabled]="auction.isBought"> Buy </button>
+                    <button mat-raised-button color="primary" [disabled]="auction.isBought" (click)="changeVisibility()"> Buy </button>
                     <p *ngIf="auction.isBought">This auction has ended</p>
+                    <h1>{{this.message}}</h1>
                 </div>
                 <div class="info">
                     <h2>Basic informations:</h2>
@@ -54,4 +55,10 @@
         </mat-card-content>
         </mat-card>
     </div>
+    <app-modal *ngIf="showModal" [text]="'Are you shure that you want to buy this auction for $ '+ auction.price + '?'" >
+        <div>
+          <button mat-raised-button color="warn" (click)="changeVisibility()">No</button>
+          <button mat-raised-button color="primary" (click)="buyAuction()">Yes</button>
+        </div>
+      </app-modal>
 </div>

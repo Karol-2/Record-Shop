@@ -9,6 +9,10 @@ mat-card{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
+
+    @media (max-width: 576px) {
+        grid-template-columns: 1fr;
+      }
 }
 
 .left{
@@ -26,6 +30,10 @@ mat-card{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+
+    
+
+    
 }
 
 .price{

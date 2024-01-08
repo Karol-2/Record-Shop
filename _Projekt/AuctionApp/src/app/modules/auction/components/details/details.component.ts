@@ -1,22 +1,57 @@
-import { Component, Input } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuctionService } from 'src/app/features/services/auction.service';
 import { Auction } from 'src/app/shared/models/Auction.model';
+import { User } from 'src/app/shared/models/User.model';
+import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit {
   @Input() public auction!:Auction;
+  private userId: string | null = null;
+  protected showModal: boolean = false;
+  protected message: string = ""
 
-  protected daysFromDate(startingDate: Date): number {
-    const today: Date = new Date();
+  public constructor(private loggedUserService: LoggedUserService, private auctionService: AuctionService, private router: Router){}
 
-    const diffMs = startingDate.getTime() - today.getTime();
+  public ngOnInit(): void {
+    this.loggedUserService.loggedUserChanged().subscribe((user) => {
+      if(user){
+        this.userId = user.id;
+      }
+    });
+    this.loggedUserService.loadUserFromLocalStorage();
+  }
 
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  protected changeVisibility(): void{
+    if(this.userId){
+      this.showModal = !this.showModal;
+    }
+    
+  }
 
-  return diffDays;
+  protected buyAuction(): void{
+    if (this.userId){
+      const updatedAuction: Auction = {
+        ...this.auction, 
+        isBought: true, 
+        buyerId: this.userId, 
+        dateBought: new Date() }
+
+        this.auctionService.updateAuction(this.auction.id,updatedAuction).subscribe({
+          next: ()=>{this.message == "success"; this.router.navigate(["user","auctions"])},
+          error: (error: HttpErrorResponse) => {this.message == "Error: " + error.error},
+          complete: ()=>{this.changeVisibility()}
+        })
+    }
+    this.message = "You need to log in to buy an auction"
+    
+    
   }
   
 }

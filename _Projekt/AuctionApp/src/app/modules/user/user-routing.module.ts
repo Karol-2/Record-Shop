@@ -3,9 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
 import { UserAuctionsComponent } from './components/user-auctions/user-auctions.component';
-import { UserOrdersComponent } from './components/user-orders/user-orders.component';
 import { UserPanelComponent } from './pages/user-panel/user-panel.component';
-import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { auctionsResolver } from 'src/app/core/resolvers/auctions.resolver';
 
 const routes: Routes = [
   {
@@ -14,8 +13,7 @@ const routes: Routes = [
     children: [
       { path: 'details', component: ProfileComponent },
       { path: 'edit', component: EditFormComponent},
-      { path: 'auctions', component: UserAuctionsComponent },
-      { path: 'orders', component: UserOrdersComponent },
+      { path: 'auctions', component: UserAuctionsComponent, resolve:{ auctions: auctionsResolver} },
       { path: '', redirectTo: 'details', pathMatch: 'full' },
     ],
   },
