@@ -3,6 +3,13 @@
     <p>{{user.id}}</p>
     <p>{{user.email}}</p>
     <p>{{user.password}}</p>
-    <button mat-raised-button color="warn" (click)="removeUser(user.id)"> Remove user</button>
+    <button mat-raised-button color="warn" (click)="changeVisibility()"> Remove user</button>
     <p>{{message}}</p>
 </div>
+
+<app-modal *ngIf="showModal" [text]="'Are you shure that you want to delete user: '+ user.firstName + ' ' + user.lastName + '?'" >
+    <div>
+      <button mat-raised-button color="primary" (click)="changeVisibility()">No</button>
+      <button mat-raised-button color="warn" (click)="removeUser(user.id)">Yes</button>
+    </div>
+</app-modal>

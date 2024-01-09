@@ -13,11 +13,11 @@ export class UserDisplayComponent {
   @Input() public user!: User;
   @Input() public auctionsTab!: Auction[];
   protected message: string = "";
+  protected showModal: boolean = false;
 
   public constructor(private userService: UserService){};
 
   protected removeUser(userId: string): void{
-    console.log('click');
     const usersAuctions: Auction[] = this.auctionsTab.filter((auction: Auction) => auction.buyerId === userId)
     if(usersAuctions.length > 0){
       this.message = "Cannot remove user with existing auctions! You have to delete auctions ("+ usersAuctions.length+ ") that this user bought in order to delete this user."
@@ -29,5 +29,9 @@ export class UserDisplayComponent {
       error: (error: HttpErrorResponse)=> {this.message = "ERROR, " + error.error.mess}
     })
     
+  }
+
+  protected changeVisibility(): void{
+    this.showModal = !this.showModal;
   }
 }
