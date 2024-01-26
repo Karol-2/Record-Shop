@@ -5,6 +5,7 @@ import { AuctionDetailsComponent } from './pages/auction-details/auction-details
 import { AuctionFormComponent } from './pages/auction-form/auction-form.component';
 import { auctionsResolver } from 'src/app/core/resolvers/auctions.resolver';
 import { auctionResolver } from 'src/app/core/resolvers/auction.resolver';
+import { adminGuard } from 'src/app/core/guards/admin.guard';
 const routes: Routes = [
   {
     path: '',
@@ -23,12 +24,14 @@ const routes: Routes = [
   },
   {
     path: 'form',
-    component: AuctionFormComponent, //guard na admina
+    component: AuctionFormComponent,
+    canActivate:[adminGuard]
   },
   {
     path: 'form/:id',
     component: AuctionFormComponent,
-    resolve:{auction: auctionResolver} //guard na admina
+    resolve:{auction: auctionResolver},
+    canActivate:[adminGuard]
   }
 ];
 

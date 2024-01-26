@@ -7,6 +7,7 @@ import { UserPanelComponent } from './pages/user-panel/user-panel.component';
 import { auctionsResolver } from 'src/app/core/resolvers/auctions.resolver';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { UsersResolver } from 'src/app/core/resolvers/users.resolver';
+import { adminGuard } from 'src/app/core/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -14,9 +15,18 @@ const routes: Routes = [
     component: UserPanelComponent,
     children: [
       { path: 'details', component: ProfileComponent },
-      { path: 'edit', component: EditFormComponent},
-      { path: 'auctions', component: UserAuctionsComponent, resolve:{ auctions: auctionsResolver} },
-      { path: 'manage', component: UserManagementComponent, resolve: {usersTab: UsersResolver, auctionsTab: auctionsResolver}},
+      { path: 'edit', component: EditFormComponent },
+      {
+        path: 'auctions',
+        component: UserAuctionsComponent,
+        resolve: { auctions: auctionsResolver },
+      },
+      {
+        path: 'manage',
+        component: UserManagementComponent,
+        resolve: { usersTab: UsersResolver, auctionsTab: auctionsResolver },
+        canActivate:[adminGuard]
+      },
       { path: '', redirectTo: 'details', pathMatch: 'full' },
     ],
   },

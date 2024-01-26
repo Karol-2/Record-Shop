@@ -1,9 +1,12 @@
 <div>
     <h2>{{user.firstName}} {{user.lastName}}</h2>
-    <p>{{user.id}}</p>
-    <p>{{user.email}}</p>
-    <p>{{user.password}}</p>
-    <button mat-raised-button color="warn" (click)="changeVisibility()"> Remove user</button>
+    <p>Id: {{user.id}}</p>
+    <p>E-mail: {{user.email}}</p>
+    <p>Password: {{user.password}}</p>
+    <p>Type: {{user.userType}}</p>
+    <ng-container >
+      <button mat-raised-button [disabled]="user.userType === 'ADMIN'" color="warn" (click)="changeVisibility()"> Remove user</button>
+    </ng-container>
     <p>{{message}}</p>
 </div>
 

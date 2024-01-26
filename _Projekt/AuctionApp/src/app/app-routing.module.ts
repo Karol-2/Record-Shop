@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './core/layout/page-not-found/page-not-found.component';
 import { HomepageComponent } from './modules/homepage/pages/homepage/homepage.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { PageForbiddenComponent } from './core/layout/page-forbidden/page-forbidden.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'auctions',
     loadChildren: () => import('./modules/auction/auction.module').then(m => m.AuctionModule)
+  },
+  {
+    path: '403',
+    component: PageForbiddenComponent
   },
   {
     path: '**',

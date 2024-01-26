@@ -7,6 +7,7 @@ import { NavComponent } from './layout/nav/nav.component';
 import { RouterModule } from '@angular/router';
 import { LoggedUserService } from '../shared/services/logged-user.service';
 import { SharedModule } from "../shared/shared.module";
+import { PageForbiddenComponent } from './layout/page-forbidden/page-forbidden.component';
 
 
 
@@ -15,7 +16,8 @@ import { SharedModule } from "../shared/shared.module";
         HeaderComponent,
         FooterComponent,
         MainComponent,
-        NavComponent
+        NavComponent,
+        PageForbiddenComponent
     ],
     providers: [
         LoggedUserService

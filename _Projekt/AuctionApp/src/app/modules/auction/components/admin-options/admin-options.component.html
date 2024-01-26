@@ -1,21 +1,23 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      You are currently logged as an ADMINISTRATOR. You have an access to add, edit and delete auctions! If this is not your account, we strongly recommend that you log out immediately for security reasons.
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-footer>
-    <button mat-raised-button color="accent" (click)="editAuction()"> Edit </button>
-    <button mat-raised-button color="warn"(click)="changeVisibility()"> Delete </button>
-    <div *ngIf="message"> {{message}}</div>
-  </mat-card-footer>
-  
-    <app-modal *ngIf="showModal" [text]="'Are you shure that you want to delete auction: '+ auctionId + '?'" >
-    <div>
-      <button mat-raised-button color="primary" (click)="changeVisibility()">No</button>
-      <button mat-raised-button color="warn" (click)="deleteAuction()">Yes</button>
-    </div>
-  </app-modal>
+<ng-container *ngIf="user && user.userType === 'ADMIN' ">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        You are currently logged as an ADMINISTRATOR. You have an access to add, edit and delete auctions! If this is not your account, we strongly recommend that you log out immediately for security reasons.
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-footer>
+      <button mat-raised-button color="accent" (click)="editAuction()"> Edit </button>
+      <button mat-raised-button color="warn"(click)="changeVisibility()"> Delete </button>
+      <div *ngIf="message"> {{message}}</div>
+    </mat-card-footer>
+    
+      <app-modal *ngIf="showModal" [text]="'Are you shure that you want to delete auction: '+ auctionId + '?'" >
+      <div>
+        <button mat-raised-button color="primary" (click)="changeVisibility()">No</button>
+        <button mat-raised-button color="warn" (click)="deleteAuction()">Yes</button>
+      </div>
+    </app-modal>
 
 
-</mat-card>
+  </mat-card>
+</ng-container>

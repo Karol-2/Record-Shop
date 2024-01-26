@@ -53,7 +53,8 @@ export class LoggedUserService {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        password: user.password
+        password: user.password,
+        userType: user.userType,
       };
     }
     return null;
