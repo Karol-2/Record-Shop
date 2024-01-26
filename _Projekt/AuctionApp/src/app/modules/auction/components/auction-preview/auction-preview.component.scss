@@ -2,6 +2,11 @@
     width: 100%;
     height: auto;
     object-fit: cover;
+
+    @media (max-width: 768px) {
+        width: 50%;
+        margin: auto;
+      }
 }
 
 .container{
@@ -11,6 +16,10 @@
 div.content{
     display: grid;
     grid-template-columns: 1fr 10fr;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
 }
 
 .info{
@@ -26,4 +35,8 @@ div.content{
  button{
     align-self: center;
  }
+
+ @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }

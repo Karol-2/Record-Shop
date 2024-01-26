@@ -3,7 +3,7 @@
         <mat-card-header>
             <mat-card-title>Sorting</mat-card-title>
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content id="sorting">
             <mat-form-field>
                 <mat-label> Order by</mat-label>
                 <mat-select [(ngModel)]="sortValue" (ngModelChange)="sortAuctions()">
@@ -13,11 +13,13 @@
                     <mat-option value="dateCreated">Auction date</mat-option>
                 </mat-select>
             </mat-form-field>
-
-            <mat-button-toggle-group [(ngModel)]="sortOrder" (ngModelChange)="sortAuctions()">
-                <mat-button-toggle value="asc">ASC</mat-button-toggle>
-                <mat-button-toggle value="desc">DESC</mat-button-toggle>
-            </mat-button-toggle-group>
+            <div>
+                <mat-button-toggle-group [(ngModel)]="sortOrder" (ngModelChange)="sortAuctions()">
+                    <mat-button-toggle value="asc">ASC</mat-button-toggle>
+                    <mat-button-toggle value="desc">DESC</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+           
         </mat-card-content>
     </mat-card>
     <mat-card>
@@ -38,11 +40,14 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-button-toggle-group formControlName="type">
-                    <mat-button-toggle>Any</mat-button-toggle>
-                    <mat-button-toggle value="VINYL">Vinyl</mat-button-toggle>
-                    <mat-button-toggle value="CD">CD</mat-button-toggle>
-                </mat-button-toggle-group>
+                <div>
+                    <mat-button-toggle-group formControlName="type">
+                        <mat-button-toggle>Any</mat-button-toggle>
+                        <mat-button-toggle value="VINYL">Vinyl</mat-button-toggle>
+                        <mat-button-toggle value="CD">CD</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+               
                 <mat-checkbox formControlName="showFinished">
                     Show only finished auctions
                 </mat-checkbox>
