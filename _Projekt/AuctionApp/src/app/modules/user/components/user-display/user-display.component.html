@@ -5,9 +5,8 @@
     <p>Password: {{user.password}}</p>
     <p>Type: {{user.userType}}</p>
     <ng-container >
-      <button mat-raised-button [disabled]="user.userType === 'ADMIN'" color="warn" (click)="changeVisibility()"> Remove user</button>
+      <button mat-raised-button color="warn" (click)="changeVisibility()"> Remove user</button>
     </ng-container>
-    <p>{{message}}</p>
 </div>
 
 <app-modal *ngIf="showModal" [text]="'Are you shure that you want to delete user: '+ user.firstName + ' ' + user.lastName + '?'" >

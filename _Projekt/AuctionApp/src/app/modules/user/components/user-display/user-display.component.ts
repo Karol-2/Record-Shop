@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/features/services/user.service';
 import { Auction } from 'src/app/shared/models/Auction.model';
 import { User } from 'src/app/shared/models/User.model';
@@ -15,31 +16,29 @@ export class UserDisplayComponent {
   protected message: string = '';
   protected showModal: boolean = false;
 
-  public constructor(private userService: UserService) {}
+  public constructor(private userService: UserService,  private _snackBar: MatSnackBar) {}
 
   protected removeUser(userId: string): void {
-    const usersAuctions: Auction[] = this.auctionsTab.filter(
-      (auction: Auction) => auction.buyerId === userId
-    );
-    if (usersAuctions.length > 0) {
-      this.message =
-        'Cannot remove user with existing auctions! You have to delete auctions (' +
-        usersAuctions.length +
-        ') that this user bought in order to delete this user.';
-      return;
-    }
-
     this.userService.deleteUser(userId).subscribe({
       next: () => {
         this.message = 'Success';
+        this.changeVisibility();
+        this.openSnackBar(this.message);
       },
       error: (error: HttpErrorResponse) => {
-        this.message = 'ERROR, ' + error.error.mess;
-      },
+        this.message = 'ERROR, ' + error.error.message;
+        this.changeVisibility();
+        this.openSnackBar(this.message);
+      }
     });
   }
 
   protected changeVisibility(): void {
     this.showModal = !this.showModal;
+  }
+
+  
+  protected openSnackBar(message: string) {
+    this._snackBar.open(message, 'OK');
   }
 }

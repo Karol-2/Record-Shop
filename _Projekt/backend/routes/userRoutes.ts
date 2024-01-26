@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { userData } from "../data/userData";
 import { User } from "../models/User.model";
 import jwt from "jsonwebtoken";
+import { UserType } from "../enums/UserType";
 
 const router = express.Router();
 
@@ -112,6 +113,10 @@ router.delete("/users/:id", (req: Request, res: Response) => {
 
     if (existingUserIndex === -1) {
       return res.status(404).json({ message: "Not Found - User not found" });
+    }
+
+    if (usersDatabase[existingUserIndex].userType === UserType.ADMIN) {
+      return res.status(403).json({ message: "You cannot delete admin account!" });
     }
 
     const deletedUser = usersDatabase.splice(existingUserIndex, 1)[0];
