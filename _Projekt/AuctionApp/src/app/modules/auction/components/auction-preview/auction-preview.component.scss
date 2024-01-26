@@ -15,7 +15,11 @@
 
 div.content{
     display: grid;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 1fr 8fr;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr 5fr;
+      }
 
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
