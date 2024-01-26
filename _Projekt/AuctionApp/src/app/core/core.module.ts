@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { LoggedUserService } from '../shared/services/logged-user.service';
 import { SharedModule } from "../shared/shared.module";
 import { PageForbiddenComponent } from './layout/page-forbidden/page-forbidden.component';
+import { AuctionNotFoundComponent } from './layout/auction-not-found/auction-not-found.component';
+import { MaterialModule } from '../modules/material/material.module';
 
 
 
@@ -17,7 +19,8 @@ import { PageForbiddenComponent } from './layout/page-forbidden/page-forbidden.c
         FooterComponent,
         MainComponent,
         NavComponent,
-        PageForbiddenComponent
+        PageForbiddenComponent,
+        AuctionNotFoundComponent
     ],
     providers: [
         LoggedUserService
@@ -25,7 +28,8 @@ import { PageForbiddenComponent } from './layout/page-forbidden/page-forbidden.c
     imports: [
         CommonModule,
         RouterModule,
-        SharedModule
+        SharedModule,
+        MaterialModule
     ],
     exports: [
         HeaderComponent,
