@@ -13,8 +13,10 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const MaterialComponents = [
+  MatSnackBarModule,
   MatSlideToggleModule,
   MatButtonModule,
   MatFormFieldModule,

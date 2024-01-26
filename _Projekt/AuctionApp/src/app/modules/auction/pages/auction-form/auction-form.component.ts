@@ -9,6 +9,7 @@ import { AuctionService } from 'src/app/features/services/auction.service';
 import CreateAuction from 'src/app/features/dto/create-auction.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Category } from 'src/app/shared/enums/Category.enum';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-auction-form',
@@ -30,7 +31,9 @@ export class AuctionFormComponent implements OnInit{
   public constructor(
     private auctionFormService: AuctionFormService, 
     private route: ActivatedRoute,
-    private auctionService: AuctionService){};
+    private auctionService: AuctionService,
+    private _snackBar: MatSnackBar
+    ){};
 
   public ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -129,12 +132,19 @@ export class AuctionFormComponent implements OnInit{
     this.auctionService.updateAuction(editedAuction.id,editedAuction).subscribe({
       next: ()=>{
         this.message = "Success!";
+        this.openSnackBar(this.message);
         this.auctionFormService.resetForm();
     }, 
     error: (err: HttpErrorResponse)=>{
-      this.message = err.error.message;}
+      this.message = err.error.message;
+      this.openSnackBar(this.message);
+    
+    }     
     })}
     
 
-    //TODO: Add canDeactivate guard
+    protected openSnackBar(message: string) {
+      this._snackBar.open(message, 'OK');
+    }
+
 }

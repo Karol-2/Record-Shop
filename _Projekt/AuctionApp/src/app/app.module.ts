@@ -17,6 +17,7 @@ import { MaterialModule } from './modules/material/material.module';
     AppComponent
   ],
   imports: [
+    MaterialModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -24,7 +25,7 @@ import { MaterialModule } from './modules/material/material.module';
     CoreModule,
     LoginModule,
     UserModule,
-    MaterialModule
+
   ],
   providers: [
     {

@@ -28,12 +28,12 @@ import { UserDisplayComponent } from './components/user-display/user-display.com
     UserDisplayComponent
   ],
   imports: [
+    MaterialModule,
     CommonModule,
     SharedModule,
     RouterModule,
-    UserRoutingModule,//THISSSSS
+    UserRoutingModule,
     ReactiveFormsModule,
-    MaterialModule,
     AuctionModule
   ]
 })
