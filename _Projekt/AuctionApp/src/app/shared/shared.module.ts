@@ -7,6 +7,7 @@ import { GoBackButtonComponent } from './components/go-back-button/go-back-butto
 import { PhotoLinkDirective } from './directives/photo-link.directive';
 import { ModalComponent } from './components/modal/modal.component';
 import { MaterialModule } from '../modules/material/material.module';
+import { CamelCasePipe } from './pipes/camel-case.pipe';
 
 
 
@@ -17,7 +18,8 @@ import { MaterialModule } from '../modules/material/material.module';
     NumberDirective,
     GoBackButtonComponent,
     PhotoLinkDirective,
-    ModalComponent
+    ModalComponent,
+    CamelCasePipe
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { MaterialModule } from '../modules/material/material.module';
   ],
   exports: [
     UserDisplayPipe,
+    CamelCasePipe,
     CapitalLetterDirective,
     NumberDirective,
     PhotoLinkDirective,

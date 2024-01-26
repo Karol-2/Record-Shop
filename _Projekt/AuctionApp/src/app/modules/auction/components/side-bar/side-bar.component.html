@@ -34,7 +34,7 @@
                 <mat-form-field floatLabel="auto">
                     <mat-label for="categorySelect">Music category</mat-label>
                     <mat-select formControlName="category" id="categorySelect">
-                        <mat-option *ngFor="let category of categoryValues" [value]="category">{{ category }}</mat-option>
+                        <mat-option *ngFor="let category of categoryValues" [value]="category">{{ category | camelCase}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 

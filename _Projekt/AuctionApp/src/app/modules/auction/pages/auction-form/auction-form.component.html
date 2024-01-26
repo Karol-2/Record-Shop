@@ -28,7 +28,7 @@
         <mat-form-field>
             <mat-label for="category">Category: </mat-label>
             <mat-select id="category" formControlName="category">
-                <mat-option *ngFor="let category of categoryValues" [value]="category">{{ category }}</mat-option>
+                <mat-option *ngFor="let category of categoryValues" [value]="category">{{ category | camelCase }}</mat-option>
             </mat-select>
         </mat-form-field>
        
