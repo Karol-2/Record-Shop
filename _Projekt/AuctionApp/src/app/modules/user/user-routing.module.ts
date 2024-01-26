@@ -8,6 +8,7 @@ import { auctionsResolver } from 'src/app/core/resolvers/auctions.resolver';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { UsersResolver } from 'src/app/core/resolvers/users.resolver';
 import { adminGuard } from 'src/app/core/guards/admin.guard';
+import { leaveGuard } from 'src/app/core/guards/leave.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
     component: UserPanelComponent,
     children: [
       { path: 'details', component: ProfileComponent },
-      { path: 'edit', component: EditFormComponent },
+      { path: 'edit', component: EditFormComponent, canDeactivate:[leaveGuard] },
       {
         path: 'auctions',
         component: UserAuctionsComponent,

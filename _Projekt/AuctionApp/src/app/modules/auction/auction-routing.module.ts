@@ -6,6 +6,7 @@ import { AuctionFormComponent } from './pages/auction-form/auction-form.componen
 import { auctionsResolver } from 'src/app/core/resolvers/auctions.resolver';
 import { auctionResolver } from 'src/app/core/resolvers/auction.resolver';
 import { adminGuard } from 'src/app/core/guards/admin.guard';
+import { leaveGuard } from 'src/app/core/guards/leave.guard';
 const routes: Routes = [
   {
     path: '',
@@ -25,13 +26,15 @@ const routes: Routes = [
   {
     path: 'form',
     component: AuctionFormComponent,
-    canActivate:[adminGuard]
+    canActivate:[adminGuard],
+    canDeactivate:[leaveGuard]
   },
   {
     path: 'form/:id',
     component: AuctionFormComponent,
     resolve:{auction: auctionResolver},
-    canActivate:[adminGuard]
+    canActivate:[adminGuard],
+    canDeactivate:[leaveGuard]
   }
 ];
 
