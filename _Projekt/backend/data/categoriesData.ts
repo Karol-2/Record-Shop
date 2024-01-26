@@ -5,6 +5,5 @@ export const categoriesData: Category[] = [
     {id: 1, name: "Rock"},
     {id: 2, name: "Alternative"},
     {id: 3, name: "Rap"},
-    {id: 4, name: "R&B"},
 
 ]

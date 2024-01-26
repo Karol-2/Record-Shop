@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Type } from 'src/app/shared/enums/Type.enum';
 import { Auction } from 'src/app/shared/models/Auction.model';
 
 @Component({
@@ -38,8 +37,7 @@ export class AuctionListComponent implements OnInit, OnDestroy {
   private filterAuctions(): void {
     const type: string | null = this.route.snapshot.queryParamMap.get('type') || null;
     const artistName: string | null = this.route.snapshot.queryParamMap.get('artistName') || null;
-    const categoryIdString: string | null = this.route.snapshot.queryParamMap.get('categoryId');
-    const categoryId: number | null = categoryIdString ? +categoryIdString : null;
+    const category: string | null = this.route.snapshot.queryParamMap.get('category');
     const showFinished: boolean | null = this.route.snapshot.queryParamMap.get('showFinished') === 'true' || null;
 
     this.auctions = this.originalAuctions.filter(auction => {
@@ -51,7 +49,7 @@ export class AuctionListComponent implements OnInit, OnDestroy {
         return false;
       }
 
-      if (categoryId !== null && auction.categoryId !== categoryId) {
+      if (category !== null && auction.category !== category) {
         return false;
       }
 

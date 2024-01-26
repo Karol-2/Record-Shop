@@ -6,5 +6,6 @@ export interface User{
     lastName: string;
     email: string;
     password: string;
-    userType: UserType
+    userType: UserType;
+   
 }

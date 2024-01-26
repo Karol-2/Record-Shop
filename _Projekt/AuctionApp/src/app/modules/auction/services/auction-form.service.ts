@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuctionForm, PhotoForm } from '../models/auction-form.model';
 import { Auction } from 'src/app/shared/models/Auction.model';
+import { Category } from 'src/app/shared/enums/Category.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuctionFormService {
   public auctionForm = new FormGroup<AuctionForm>({
     artistName: new FormControl<string>( '',[Validators.required, Validators.minLength(2)]),
     albumName: new FormControl<string>( '',[Validators.required, Validators.minLength(2)]),
-    categoryId: new FormControl<number>( 0,[Validators.required]),
+    category: new FormControl<Category>( Category.POP,[Validators.required]),
     type: new FormControl<string>( '',[Validators.required]),
     price: new FormControl<number>(0.99,[Validators.required, Validators.min(0.99)]),
     description: new FormControl<string>( '',[Validators.required, Validators.minLength(10)]),
@@ -35,7 +36,7 @@ export class AuctionFormService {
     this.auctionForm.patchValue({
       artistName: auction.artistName,
       albumName: auction.albumName,
-      categoryId: auction.categoryId,
+      category: auction.category,
       type: auction.type,
       price: auction.price,
       description: auction.description,

@@ -26,11 +26,13 @@
         
     <div>
         <mat-form-field>
-            <mat-label for="categoryId">Category id: </mat-label>
-            <input matInput type="number" id="categoryId" formControlName="categoryId">
+            <mat-label for="category">Category: </mat-label>
+            <mat-select id="category" formControlName="category">
+                <mat-option *ngFor="let category of categoryValues" [value]="category">{{ category }}</mat-option>
+            </mat-select>
         </mat-form-field>
        
-        <div *ngIf="auctionForm.controls['categoryId'].touched && auctionForm.controls['categoryId'].hasError('required')" >This field is required</div>
+        <div *ngIf="auctionForm.controls['category'].touched && auctionForm.controls['category'].hasError('required')" >This field is required</div>
     </div>
     
     <div>

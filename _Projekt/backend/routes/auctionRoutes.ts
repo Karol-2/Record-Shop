@@ -27,7 +27,7 @@ router.get("/auctions/:id", (req: Request, res: Response) => {
 
 router.post("/auctions", authenticateUser, (req: Request, res: Response) => {
   const {
-    categoryId,
+    category,
     artistName,
     albumName,
     type,
@@ -39,7 +39,7 @@ router.post("/auctions", authenticateUser, (req: Request, res: Response) => {
   const newAuction: Auction = {
     id: uuidv4(),
     dateCreated: new Date(),
-    categoryId,
+    category,
     artistName,
     albumName,
     type,

@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import auctionRoutes from "./routes/auctionRoutes";
 import userRoutes from "./routes/userRoutes";
-import categoryRoutes from "./routes/categoryRoutes"
 
 const cors = require('cors');
 
@@ -18,7 +17,6 @@ app.use(cors());
 
 app.use('', auctionRoutes)
 app.use('', userRoutes)
-app.use('', categoryRoutes)
 
 
 app.listen(port, () => {

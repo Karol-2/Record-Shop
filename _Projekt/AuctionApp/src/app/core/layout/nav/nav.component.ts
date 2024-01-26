@@ -54,5 +54,6 @@ export class NavComponent implements OnInit, OnDestroy {
   protected logOut(): void {
     this.loggedUserService.logout();
     this.cdr.detectChanges();
+    this.router.navigate(['login']);
   }
 }

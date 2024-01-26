@@ -2,12 +2,13 @@ import { Auction } from "../models/Auction.model";
 import { v4 as uuidv4 } from 'uuid';
 import { Type } from "../enums/Type.enum";
 import { userData } from "./userData";
+import { Category } from "../enums/Category.enum";
 
 export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(2023,11,12),
-        categoryId: 0,
+        category: Category.POP,
         artistName: "Taylor Swift",
         albumName: "Folklore",
         type: Type.VINYL,
@@ -25,7 +26,7 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(2023,10,22),
-        categoryId: 1,
+        category: Category.ROCK,
         artistName: "Fleetwood Mac",
         albumName: "Rumours",
         type: Type.VINYL,
@@ -45,7 +46,7 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(2024,0,1),
-        categoryId: 1,
+        category: Category.ROCK,
         artistName: "Pink Floyd",
         albumName: "Dark Side of the Moon LP",
         type: Type.VINYL,
@@ -62,7 +63,7 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(2024,0,2),
-        categoryId: 1,
+        category: Category.ROCK,
         artistName: "Queen",
         albumName: "A Night at the Opera",
         type: Type.CD,
@@ -80,7 +81,7 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(2022,5,4),
-        categoryId: 0,
+        category: Category.POP,
         artistName: "Taylor Swift",
         albumName: "1989 Deluxe",
         type: Type.CD,
@@ -98,7 +99,7 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(2023,8,16),
-        categoryId: 2,
+        category: Category.ALTERNATIVE,
         artistName: "Arctic Monkeys",
         albumName: "AM",
         type: Type.VINYL,
@@ -114,7 +115,7 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(2023,6,13),
-        categoryId: 0,
+        category: Category.POP,
         artistName: "Billie Eilish",
         albumName: "Happier Than Ever LP",
         type: Type.VINYL,
@@ -132,7 +133,7 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(2022,2,23),
-        categoryId: 0,
+        category: Category.POP,
         artistName: "Lana del Ray",
         albumName: "Norman Fucking Rockwell",
         type: Type.VINYL,
@@ -150,7 +151,7 @@ export const auctionData: Auction[] = [
     {
         id: uuidv4(),
         dateCreated: new Date(2023,10,18),
-        categoryId: 0,
+        category: Category.POP,
         artistName: "The Weeknd",
         albumName: "After Hours LP",
         type: Type.VINYL,

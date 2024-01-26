@@ -89,6 +89,7 @@ router.put("/users/:id", (req: Request, res: Response) => {
       lastName: lastName || usersDatabase[existingUserIndex].lastName,
       email: email || usersDatabase[existingUserIndex].email,
       password: password || usersDatabase[existingUserIndex].password,
+      userType: usersDatabase[existingUserIndex].userType,
     };
 
     usersDatabase[existingUserIndex] = editedUser;

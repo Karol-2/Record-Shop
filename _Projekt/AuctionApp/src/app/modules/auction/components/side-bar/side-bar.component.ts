@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/app/shared/enums/Category.enum';
 import { Type } from 'src/app/shared/enums/Type.enum';
 import { Auction } from 'src/app/shared/models/Auction.model';
 
@@ -10,6 +11,8 @@ import { Auction } from 'src/app/shared/models/Auction.model';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent implements OnInit{
+
+  protected categoryValues:Category[] = Object.values(Category)
 
   public constructor( private route: ActivatedRoute, private router: Router){};
   
@@ -57,7 +60,7 @@ export class SideBarComponent implements OnInit{
   public ngOnInit(): void {
     this.filterForm = new FormGroup({
       artistName: new FormControl<string | null>(null),
-      categoryId: new FormControl<number | null>(null),
+      category: new FormControl<string | null>(null),
       type: new FormControl<Type | null>(null),
       showFinished: new FormControl<boolean | null>(null)
     })
@@ -71,7 +74,7 @@ export class SideBarComponent implements OnInit{
     const queryParams = {
       type: this.filterForm.value.type,
       artistName: this.filterForm.value.artistName,
-      categoryId: this.filterForm.value.categoryId,
+      category: this.filterForm.value.category,
       showFinished: this.filterForm.value.showFinished
     };
 

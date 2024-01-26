@@ -1,9 +1,10 @@
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
+import { Category } from "src/app/shared/enums/Category.enum";
 
 export interface AuctionForm{
     readonly artistName: FormControl<string | null>;
     readonly albumName: FormControl<string | null>;
-    readonly categoryId: FormControl<number | null>;
+    readonly category: FormControl<Category | null>;
     readonly type: FormControl<string | null>;
     readonly price: FormControl<number | null>;
     readonly description: FormControl<string | null>;

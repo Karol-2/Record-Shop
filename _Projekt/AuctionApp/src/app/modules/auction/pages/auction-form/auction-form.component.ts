@@ -8,6 +8,7 @@ import { Type } from 'src/app/shared/enums/Type.enum';
 import { AuctionService } from 'src/app/features/services/auction.service';
 import CreateAuction from 'src/app/features/dto/create-auction.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Category } from 'src/app/shared/enums/Category.enum';
 
 @Component({
   selector: 'app-auction-form',
@@ -20,7 +21,9 @@ export class AuctionFormComponent implements OnInit{
   protected formTitle: string = "Add New Auction";
   protected existingAuction!: Auction;
   protected typeValues: Type[] = Object.values(Type);
+  protected categoryValues:Category[] = Object.values(Category)
   protected message: string = "";
+
 
   protected auctionForm: FormGroup<AuctionForm> = this.auctionFormService.auctionForm;
 
@@ -87,7 +90,7 @@ export class AuctionFormComponent implements OnInit{
     const newAuction: CreateAuction = {
       albumName: form.value.albumName!,
       artistName: form.value.artistName!,
-      categoryId: form.value.categoryId!,
+      category: form.value.category!,
       description: form.value.description!,
       photos: photos,
       price: form.value.price!,
@@ -116,7 +119,7 @@ export class AuctionFormComponent implements OnInit{
       ...this.existingAuction,
       albumName: form.value.albumName!,
       artistName: form.value.artistName!,
-      categoryId: form.value.categoryId!,
+      category: form.value.category!,
       description: form.value.description!,
       photos: photos,
       price: form.value.price!,
