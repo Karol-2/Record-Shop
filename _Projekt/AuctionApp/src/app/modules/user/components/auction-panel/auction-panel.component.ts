@@ -8,4 +8,5 @@ import { Auction } from 'src/app/shared/models/Auction.model';
 })
 export class AuctionPanelComponent {
   @Input() public auction!: Auction;
+
 }

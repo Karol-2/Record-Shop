@@ -63,25 +63,38 @@ router.put("/users/:id", (req: Request, res: Response) => {
     const userId = req.params.id;
     const { firstName, lastName, email, password, ...extraFields } = req.body;
 
+    //CASE 1 - not at least one field existing in request
     if (!firstName && !lastName && !email && !password) {
       return res.status(400).json({
         message: "Bad Request - At least one field is required for update",
       });
     }
 
+    //CASE 2 - unexpected field in request
     if (Object.keys(extraFields).length > 0) {
       return res
         .status(400)
         .json({ message: "Bad Request - Unexpected fields in the request" });
     }
 
-
-    const existingUserIndex = usersDatabase.findIndex(
-      (user) => user.id === userId
+    //CASE 3 - user with this id doesn't exists
+    const existingUserIndex: number = usersDatabase.findIndex(
+      (user: User) => user.id === userId
     );
 
     if (existingUserIndex === -1) {
       return res.status(404).json({ message: "Not Found - User not found" });
+    }
+
+    //CASE 4 - user with this email exists
+    const existingUser: User | undefined = usersDatabase.at(existingUserIndex)
+    const usersWithThisEmail: User[] = usersDatabase.filter((user: User)=> {
+      return user.email === email})
+
+
+    if (existingUser && existingUser.email !== email && usersWithThisEmail.length > 0) {
+      
+      return res.status(409).json({ message: "This email is already in use" });
     }
 
     const editedUser = {

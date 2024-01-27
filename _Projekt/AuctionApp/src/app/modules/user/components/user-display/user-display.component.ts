@@ -2,7 +2,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/features/services/user.service';
-import { Auction } from 'src/app/shared/models/Auction.model';
 import { User } from 'src/app/shared/models/User.model';
 
 @Component({
@@ -12,7 +11,6 @@ import { User } from 'src/app/shared/models/User.model';
 })
 export class UserDisplayComponent {
   @Input() public user!: User;
-  @Input() public auctionsTab!: Auction[];
   protected message: string = '';
   protected showModal: boolean = false;
 

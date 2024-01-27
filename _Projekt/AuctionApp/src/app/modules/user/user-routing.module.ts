@@ -16,7 +16,7 @@ const routes: Routes = [
     component: UserPanelComponent,
     children: [
       { path: 'details', component: ProfileComponent },
-      { path: 'edit', component: EditFormComponent, canDeactivate:[leaveGuard] },
+      { path: 'edit', component: EditFormComponent},
       {
         path: 'auctions',
         component: UserAuctionsComponent,

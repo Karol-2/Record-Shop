@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/features/services/user.service';
 import { CapitalLetterDirective } from 'src/app/shared/directives/capital-letter.directive';
 import { User } from 'src/app/shared/models/User.model';
@@ -12,9 +13,9 @@ import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
 })
 export class EditFormComponent implements OnInit {
   protected editForm!: FormGroup;
-  protected message: String = "";
+  protected message: string = "";
 
-  constructor(private loggedUserService:LoggedUserService, private userService: UserService){}
+  constructor(private loggedUserService:LoggedUserService, private userService: UserService, private _snackBar: MatSnackBar){}
   
   private user!:User;
 
@@ -40,29 +41,37 @@ export class EditFormComponent implements OnInit {
     
     this.userService.updateUser(this.user.id,updatedUser).subscribe({
       next: (resp)=>{ this.updateHandler(resp)},
-      error: (err)=> { this.message = this.getErrorMessageFromStatusCode(err.statusCode)}
+      error: (error)=> {
+        this.message = this.getErrorMessageFromStatusCode(error.status)
+        this.openSnackBar(this.message)
+      }
       
     })
   }
 
   private updateHandler(user:User): void{
     this.message = "Update successful!"
+    this.openSnackBar(this.message)
     this.loggedUserService.setLoggedUser(user)
   }
 
-  private getErrorMessageFromStatusCode(statusCode: number): string {
+  private getErrorMessageFromStatusCode(statusCode: number): string {   
     switch (statusCode) {
       case 400:
         return "Error - At least one field is required for update";
       case 404:
         return "Error - User not found";
       case 409:
-        return "Conflict - Email is already in use by another user or new email must be different";
+        return "Conflict - Email is already in use";
       case 500:
         return "Internal Server Error";
       default:
         return "Unknown error";
     }
+  }
+
+  private openSnackBar(message: string) {
+    this._snackBar.open(message, 'OK');
   }
 }
 

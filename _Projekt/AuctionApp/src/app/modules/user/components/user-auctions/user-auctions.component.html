@@ -1,9 +1,18 @@
-<h1>Your bought auctions</h1>
-<ng-container *ngIf="auctions">
-    <div *ngFor="let auction of auctions">
-       <app-auction-panel [auction]="auction" ></app-auction-panel>
-    </div>
-</ng-container>
-<div *ngIf="auctions.length == 0">
-    <h2>You didn't buy any auctions yet. Checkout Search tab to find some new music!</h2>
-</div>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h1>Your bought auctions</h1>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <ng-container *ngIf="auctions">
+            <div *ngFor="let auction of auctions">
+               <app-auction-panel [auction]="auction" ></app-auction-panel>
+            </div>
+        </ng-container>
+        <div *ngIf="auctions.length == 0">
+            <h2>You didn't buy any auctions yet. Checkout Search tab to find some new music!</h2>
+        </div>
+    </mat-card-content>
+</mat-card>
