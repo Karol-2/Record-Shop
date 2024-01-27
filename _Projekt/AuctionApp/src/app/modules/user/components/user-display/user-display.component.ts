@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/features/services/user.service';
 import { User } from 'src/app/shared/models/User.model';
@@ -11,6 +11,9 @@ import { User } from 'src/app/shared/models/User.model';
 })
 export class UserDisplayComponent {
   @Input() public user!: User;
+  @Input() public usersTab: User[] = [];
+  @Output() public updatedUserTab: EventEmitter<User[]> = new EventEmitter<User[]>();
+
   protected message: string = '';
   protected showModal: boolean = false;
 
@@ -22,6 +25,9 @@ export class UserDisplayComponent {
         this.message = 'Success';
         this.changeVisibility();
         this.openSnackBar(this.message);
+
+        let updated: User[] = this.usersTab.filter((user:User)=> {return user.id !== userId})
+        this.updatedUserTab.emit(updated);
       },
       error: (error: HttpErrorResponse) => {
         this.message = 'ERROR, ' + error.error.message;

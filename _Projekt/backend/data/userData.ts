@@ -18,5 +18,21 @@ export const userData: User[] = [
         email: "test@test.pl",
         password: "Test1",
         userType: UserType.ADMIN
-    }
+    },
+    {
+        id: uuidv4(),
+        firstName: "User2",
+        lastName: "Example2",
+        email: "example2@karol.pl",
+        password: "Karol1",
+        userType: UserType.USER
+    },
+    {
+        id: uuidv4(),
+        firstName: "User3",
+        lastName: "Example3",
+        email: "example3@karol.pl",
+        password: "Karol1",
+        userType: UserType.USER
+    },
 ]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/shared/models/User.model';
 
@@ -17,6 +17,10 @@ export class UserManagementComponent implements OnInit {
       this.usersTab = data['usersTab'];   
     });
 
+  }
+
+  public onUserRemoved(users: User[]): void {
+   this.usersTab = users;
   }
 
   

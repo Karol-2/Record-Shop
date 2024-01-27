@@ -1,6 +1,6 @@
 <div>
     <h1>User Management</h1>
     <div *ngFor="let user of usersTab">
-       <app-user-display [user]="user" ></app-user-display>
+       <app-user-display [user]="user" [usersTab]="usersTab" (updatedUserTab)="onUserRemoved($event)" ></app-user-display>
     </div>
 </div>
