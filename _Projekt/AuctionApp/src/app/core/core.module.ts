@@ -14,28 +14,28 @@ import { MaterialModule } from '../modules/material/material.module';
 
 
 @NgModule({
-    declarations: [
-        HeaderComponent,
-        FooterComponent,
-        MainComponent,
-        NavComponent,
-        PageForbiddenComponent,
-        AuctionNotFoundComponent
-    ],
-    providers: [
-        LoggedUserService
-    ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        SharedModule,
-        MaterialModule
-    ],
-    exports: [
-        HeaderComponent,
-        FooterComponent,
-        MainComponent,
-    ]
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    MainComponent,
+    NavComponent,
+    PageForbiddenComponent,
+    AuctionNotFoundComponent
+  ],
+  providers: [
+    LoggedUserService
+  ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    SharedModule,
+    MaterialModule
+  ],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    MainComponent,
+  ]
     
 })
 export class CoreModule { }

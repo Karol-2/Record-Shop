@@ -9,11 +9,11 @@ import { Auction } from 'src/app/shared/models/Auction.model';
 })
 export class AuctionPreviewComponent {
 
-  public constructor(private router:Router){};
+  public constructor(private router: Router){}
 
   @Input() public auction!: Auction;
 
   protected goToDetails(): void{
-    this.router.navigate(["auctions","details", this.auction.id])
+    this.router.navigate(["auctions","details", this.auction.id]);
   }
 }

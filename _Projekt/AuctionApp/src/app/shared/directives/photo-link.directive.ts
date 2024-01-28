@@ -9,18 +9,16 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
 })
 export class PhotoLinkDirective implements Validator {
 
-  constructor() { }
+  public validate(control: AbstractControl): ValidationErrors | null {
+    const value: string = control.value as string;
 
-  validate(control: AbstractControl): ValidationErrors | null {
-    const value = control.value as string;
-
-    if (value === null || value === undefined || value === '') {
+    if ( value === '') {
       return null;
     }
 
-    const isValid = /^(http:\/\/|https:\/\/).+.(jpg|jpeg|png|gif)$/i.test(value);
+    const isValid: boolean = /^(http:\/\/|https:\/\/).+.(jpg|jpeg|png|gif)$/i.test(value);
 
     return isValid ? null : { invalidImageLink: true };
 
-}
+  }
 }

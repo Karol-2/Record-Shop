@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data } from '@angular/router';
 import { User } from 'src/app/shared/models/User.model';
 
 @Component({
@@ -10,17 +10,17 @@ import { User } from 'src/app/shared/models/User.model';
 export class UserManagementComponent implements OnInit {
   protected usersTab: User[] = [];
 
-  public constructor(private route: ActivatedRoute){};
+  public constructor(private route: ActivatedRoute){}
 
   public ngOnInit(): void {
-    this.route.data.subscribe((data) => {
+    this.route.data.subscribe((data: Data) => {
       this.usersTab = data['usersTab'];   
     });
 
   }
 
   public onUserRemoved(users: User[]): void {
-   this.usersTab = users;
+    this.usersTab = users;
   }
 
   

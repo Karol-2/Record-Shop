@@ -17,7 +17,7 @@ export class UserDisplayComponent {
   protected message: string = '';
   protected showModal: boolean = false;
 
-  public constructor(private userService: UserService,  private _snackBar: MatSnackBar) {}
+  public constructor(private userService: UserService,  private snackBar: MatSnackBar) {}
 
   protected removeUser(userId: string): void {
     this.userService.deleteUser(userId).subscribe({
@@ -26,7 +26,7 @@ export class UserDisplayComponent {
         this.changeVisibility();
         this.openSnackBar(this.message);
 
-        let updated: User[] = this.usersTab.filter((user:User)=> {return user.id !== userId})
+        const updated: User[] = this.usersTab.filter((user: User)=> {return user.id !== userId;});
         this.updatedUserTab.emit(updated);
       },
       error: (error: HttpErrorResponse) => {
@@ -42,7 +42,7 @@ export class UserDisplayComponent {
   }
 
   
-  protected openSnackBar(message: string) {
-    this._snackBar.open(message, 'OK');
+  protected openSnackBar(message: string): void {
+    this.snackBar.open(message, 'OK');
   }
 }

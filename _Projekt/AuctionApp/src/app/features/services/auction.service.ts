@@ -10,7 +10,7 @@ import Message from '../dto/message.model';
 })
 export class AuctionService {
  
-  constructor(private httpClient: HttpClient) { }
+  public constructor(private httpClient: HttpClient) { }
 
   public getAuctions(): Observable<Auction[]>{
     return this.httpClient.get<Auction[]>("auctions");

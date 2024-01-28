@@ -9,7 +9,7 @@ import { Category } from 'src/app/shared/enums/Category.enum';
 })
 export class AuctionFormService {
 
-  public auctionForm = new FormGroup<AuctionForm>({
+  public auctionForm: FormGroup<AuctionForm> = new FormGroup<AuctionForm>({
     artistName: new FormControl<string>( '',[Validators.required, Validators.minLength(2)]),
     albumName: new FormControl<string>( '',[Validators.required, Validators.minLength(2)]),
     category: new FormControl<Category>( Category.POP,[Validators.required]),
@@ -17,18 +17,16 @@ export class AuctionFormService {
     price: new FormControl<number>(0.99,[Validators.required, Validators.min(0.99)]),
     description: new FormControl<string>( '',[Validators.required, Validators.minLength(10)]),
     photos: new FormArray<FormGroup<PhotoForm>>([], [Validators.required, Validators.maxLength(6)])
-  })
-
-  public constructor() { }
+  });
 
   public addPhoto(): void {
-    this.auctionForm.controls.photos?.push(new FormGroup<PhotoForm>({
+    this.auctionForm.controls.photos.push(new FormGroup<PhotoForm>({
       photo: new FormControl<string>('',[Validators.required]),
-    }))
+    }));
   }
 
   public removePhoto(index: number): void{
-    this.auctionForm.controls.photos?.removeAt(index);
+    this.auctionForm.controls.photos.removeAt(index);
   }
 
   public setInitialData(auction: Auction): void{  
@@ -43,21 +41,21 @@ export class AuctionFormService {
     });
   
     // clear photos
-    const photoFormArray = this.auctionForm.get('photos') as FormArray<FormGroup<PhotoForm>>;
+    const photoFormArray: FormArray<FormGroup<PhotoForm>> = this.auctionForm.get('photos') as FormArray<FormGroup<PhotoForm>>;
     photoFormArray.clear();
   
     // add photos
     auction.photos.forEach((photoUrl: string) => {
       this.addPhoto();
-      const lastIndex = photoFormArray.length - 1;
-      const photoFormGroup = photoFormArray.at(lastIndex) as FormGroup<PhotoForm>;
+      const lastIndex: number = photoFormArray.length - 1;
+      const photoFormGroup: FormGroup<PhotoForm> = photoFormArray.at(lastIndex) as FormGroup<PhotoForm>;
       photoFormGroup.patchValue({ photo: photoUrl });
     });
   }
 
   public resetForm(): void {
     this.auctionForm.reset();
-    const photosFormArray = this.auctionForm.get('photos') as FormArray<FormGroup<PhotoForm>>;
+    const photosFormArray: FormArray<FormGroup<PhotoForm>> = this.auctionForm.get('photos') as FormArray<FormGroup<PhotoForm>>;
     photosFormArray.clear();
   }
 }

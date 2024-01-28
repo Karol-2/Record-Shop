@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CamelCasePipe implements PipeTransform {
 
-  transform(value: string): string {
+  public transform(value: string): string {
     if(value && value.length > 1){
 
       const firstLetter: string = value.charAt(0).toUpperCase();
@@ -14,7 +14,8 @@ export class CamelCasePipe implements PipeTransform {
       return firstLetter + rest;
 
     } 
-    return value?.toUpperCase();
+    
+    return value.toUpperCase();
     
   }
 

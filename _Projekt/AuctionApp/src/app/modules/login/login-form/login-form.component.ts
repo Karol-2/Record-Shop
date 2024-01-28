@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,19 +18,19 @@ import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
 })
 export class LoginFormComponent implements OnInit{
   protected loginForm!: FormGroup;
-  protected error: String = "";
+  protected error: string = "";
 
-  constructor(
+  public constructor(
     private authService: AuthService, 
     private userService: UserService,
     private loggedUserService: LoggedUserService,
     private router: Router){}
 
-  ngOnInit(): void {
-   this.loginForm = new FormGroup({
-    email: new FormControl<string>("",[Validators.required, Validators.email]),
-    password: new FormControl<string>("",[Validators.required])
-   })
+  public ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      email: new FormControl<string>("",[Validators.required, Validators.email]),
+      password: new FormControl<string>("",[Validators.required])
+    });
   }
 
   protected submit(): void{
@@ -37,23 +38,23 @@ export class LoginFormComponent implements OnInit{
     const user: LoginUser = {
       email: this.loginForm.value["email"],
       password: this.loginForm.value["password"]
-    }
-    this.getToken(user)
+    };
+    this.getToken(user);
       
   }
 
   private getToken(user: LoginUser): void{
     this.authService.login(user).subscribe({
       next: (resp: Tokens) => {
-        localStorage.setItem("accessToken",resp.accessToken)
-        localStorage.setItem("refreshToken",resp.refreshToken)
-        this.getUser(resp.id)
+        localStorage.setItem("accessToken",resp.accessToken);
+        localStorage.setItem("refreshToken",resp.refreshToken);
+        this.getUser(resp.id);
       },
-      error: (err) => {
+      error: (err: HttpErrorResponse) => {
         if (err.status === 401) {
           this.error = 'Invalid email or password. Please try again.';
         }else if (err.status === 404) {
-          this.error = "User not found. Please try again."
+          this.error = "User not found. Please try again.";
         } else if (err.status === 500) {
           this.error = 'An error occurred on the server. Please try again later.';
         } else {
@@ -66,12 +67,13 @@ export class LoginFormComponent implements OnInit{
   private getUser(id: string): void{
     this.userService.getUser(id).subscribe({
       next: (resp: User) => {
-        console.log("response from getUSer login", resp);
-        
         this.loggedUserService.setLoggedUser(resp);
         
         this.router.navigate(["/"]);},
-      error: (err)=> console.log(err)
-    })
+      error: (err: HttpErrorResponse)=> {
+        // console.log(err); 
+        throw err;
+      }
+    });
   }
 }

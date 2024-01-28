@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Navigation, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auction-not-found',
@@ -8,10 +8,10 @@ import { ActivatedRoute, Navigation, Router } from '@angular/router';
 })
 export class AuctionNotFoundComponent{
 
-  constructor(private router: Router){}
+  public constructor(private router: Router){}
 
   protected goToSearch(): void{
-    this.router.navigate(['auctions','search'])
+    this.router.navigate(['auctions','search']);
   }
 
 }

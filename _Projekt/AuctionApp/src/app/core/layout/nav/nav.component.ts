@@ -13,7 +13,7 @@ export class NavComponent implements OnInit, OnDestroy {
   protected user: User | null = null;
   private userSubscription!: Subscription;
 
-  constructor(
+  public constructor(
     private loggedUserService: LoggedUserService,
     private router: Router,
     private cdr: ChangeDetectorRef
@@ -22,7 +22,7 @@ export class NavComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.user = this.loggedUserService.getLoggedUser();
 
-    this.userSubscription = this.loggedUserService.loggedUserChanged().subscribe(user => {
+    this.userSubscription = this.loggedUserService.loggedUserChanged().subscribe((user: User | null) => {
       this.user = user;
 
     });

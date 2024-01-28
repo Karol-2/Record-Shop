@@ -8,12 +8,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PageForbiddenComponent {
   
-  constructor(private router: Router, private route: ActivatedRoute){}
+  public constructor(private router: Router, private route: ActivatedRoute){}
 
-  protected endpoint:String = this.route.snapshot.url.join('/')
+  protected endpoint: string = this.route.snapshot.url.join('/');
 
   protected goToHompage(): void{
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   }
 
 }

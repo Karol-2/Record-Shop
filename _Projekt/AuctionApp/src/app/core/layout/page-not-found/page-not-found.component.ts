@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-not-found',
@@ -8,11 +8,11 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class PageNotFoundComponent {
 
-  constructor(private router: Router, private route: ActivatedRoute){}
+  public constructor(private router: Router, private route: ActivatedRoute){}
 
-  protected endpoint:String = this.route.snapshot.url.join('/')
+  protected endpoint: string = this.route.snapshot.url.join('/');
 
   protected goToHompage(): void{
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   }
 }

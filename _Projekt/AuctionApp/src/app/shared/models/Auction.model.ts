@@ -8,7 +8,7 @@ export interface Auction{
     category: Category;
 
     artistName: string;
-    albumName:string;
+    albumName: string;
     type: Type;
 
     price: number;

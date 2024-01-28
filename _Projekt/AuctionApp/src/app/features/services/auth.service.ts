@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Token } from '@angular/compiler';
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import LoginUser from '../dto/login-user.model';
@@ -10,9 +10,9 @@ import Tokens from '../dto/tokens.model';
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient) { }
+  public constructor(private httpClient: HttpClient) { }
 
   public login(user: LoginUser): Observable<Tokens>{
-    return this.httpClient.post<Tokens>("login",user)
+    return this.httpClient.post<Tokens>("login",user);
   }
 }

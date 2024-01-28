@@ -10,12 +10,11 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
 })
 export class CapitalLetterDirective implements Validator {
 
-  constructor() { }
   public validate(control: AbstractControl): ValidationErrors | null {
-    const value = control.value as string;
+    const value: string = control.value as string;
 
     if (value && typeof value === "string") {
-      const hasCapitalLetter = value.split('').some(char => char === char.toUpperCase());
+      const hasCapitalLetter: boolean = value.split('').some((char: string) => char === char.toUpperCase());
 
       return hasCapitalLetter ? null : { hasCapitalLetter: true };
     }

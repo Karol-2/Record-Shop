@@ -9,13 +9,11 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
 })
 export class NumberDirective implements Validator{
 
-  constructor() { }
-
-  validate(control: AbstractControl): ValidationErrors | null {
-    const value = control.value as string;
+  public validate(control: AbstractControl): ValidationErrors | null {
+    const value: string = control.value as string;
 
     if (value && typeof value === "string") {
-      const containsNumber = /\d/.test(value);
+      const containsNumber: boolean = /\d/.test(value);
 
       return containsNumber ? null : { containsNumber: true };
     }

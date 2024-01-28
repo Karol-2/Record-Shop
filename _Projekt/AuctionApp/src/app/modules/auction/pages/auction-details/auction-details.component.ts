@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data } from '@angular/router';
 import { Auction } from 'src/app/shared/models/Auction.model';
 
 @Component({
@@ -10,12 +10,12 @@ import { Auction } from 'src/app/shared/models/Auction.model';
 export class AuctionDetailsComponent implements OnInit{
   protected auction!: Auction;
 
-  public constructor(private route: ActivatedRoute){};
+  public constructor(private route: ActivatedRoute){}
 
   public ngOnInit(): void {
     window.scrollTo(0, 0);
 
-    this.route.data.subscribe((data) => {
+    this.route.data.subscribe((data: Data) => {
       this.auction = data['auction'].auction;
     });
   }

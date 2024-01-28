@@ -9,20 +9,20 @@ import UpdateUser from '../dto/update-user.model';
 })
 export class UserService {
 
-  constructor(private httpClient: HttpClient) { }
+  public constructor(private httpClient: HttpClient) { }
 
   public getAllUsers(): Observable<User[]>{
-    return this.httpClient.get<User[]>("users")
+    return this.httpClient.get<User[]>("users");
   }
 
   public getUser(id: string): Observable<User>{
-    return this.httpClient.get<User>("users/" + id)
+    return this.httpClient.get<User>("users/" + id);
   }
 
   public updateUser(id: string, user: UpdateUser): Observable<User>{
-    return this.httpClient.put<User>("users/" + id,user)
+    return this.httpClient.put<User>("users/" + id,user);
   }
-  public deleteUser(id: string): Observable<String>{
-    return this.httpClient.delete<String>("users/" + id) //TODO: you shure?
+  public deleteUser(id: string): Observable<string>{
+    return this.httpClient.delete<string>("users/" + id);
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/shared/models/User.model';
 import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
 
@@ -13,11 +12,11 @@ export class ProfileComponent implements OnInit {
   protected user!: User;
   protected isLoading: boolean = true;
 
-  constructor(private route: ActivatedRoute, private loggedUserService: LoggedUserService){}
+  public constructor( private loggedUserService: LoggedUserService){}
 
   public ngOnInit(): void {
 
-    this.loggedUserService.loggedUserChanged().subscribe((user) => {
+    this.loggedUserService.loggedUserChanged().subscribe((user: User | null) => {
       if(user){
         this.user = user;
         this.isLoading = false;

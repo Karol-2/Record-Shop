@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data } from '@angular/router';
 import { Auction } from 'src/app/shared/models/Auction.model';
 import { User } from 'src/app/shared/models/User.model';
 import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
@@ -13,11 +13,11 @@ export class UserAuctionsComponent implements OnInit {
   protected auctions: Auction[] = [];
   protected user!: User;
 
-  public constructor(private route:ActivatedRoute, private loggedUserService: LoggedUserService){};
+  public constructor(private route: ActivatedRoute, private loggedUserService: LoggedUserService){}
 
   public ngOnInit(): void {
 
-    this.loggedUserService.loggedUserChanged().subscribe((user) => {
+    this.loggedUserService.loggedUserChanged().subscribe((user: User | null) => {
       if(user){
         this.user = user;
       }
@@ -25,10 +25,10 @@ export class UserAuctionsComponent implements OnInit {
     });
     this.loggedUserService.loadUserFromLocalStorage();
 
-    this.route.data.subscribe((data) => {
+    this.route.data.subscribe((data: Data) => {
       const result: Auction[] = data['auctions'].auctions;
 
-      this.auctions = result.filter((auction: Auction)=> auction.buyerId === this.user.id)      
+      this.auctions = result.filter((auction: Auction)=> auction.buyerId === this.user.id);      
     });
   }
 

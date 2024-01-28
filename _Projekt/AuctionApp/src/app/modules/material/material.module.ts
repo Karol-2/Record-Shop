@@ -10,12 +10,11 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-const MaterialComponents = [
+const materialComponents: MatSnackBarModule[] = [
   MatSnackBarModule,
   MatSlideToggleModule,
   MatButtonModule,
@@ -27,13 +26,12 @@ const MaterialComponents = [
   MatButtonToggleModule,
   MatSliderModule,
   MatCardModule,
-  MatPaginatorModule,
   MatIconModule,
   MatExpansionModule
 ];
 
 @NgModule({
   imports: [CommonModule],
-  exports: [MaterialComponents],
+  exports: [materialComponents],
 })
 export class MaterialModule {}

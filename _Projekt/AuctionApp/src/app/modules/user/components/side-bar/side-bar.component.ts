@@ -12,29 +12,29 @@ export class SideBarComponent implements OnInit{
 
   protected user!: User|null;
 
-  constructor(private router: Router, private loggedUserService: LoggedUserService) {}
+  public constructor(private router: Router, private loggedUserService: LoggedUserService) {}
 
   public ngOnInit(): void {
     this.user = this.loggedUserService.getLoggedUser();
   }
 
-  protected navigateToDetails() {
+  protected navigateToDetails(): void {
     this.router.navigate(['user','details']);
   }
 
-  protected navigateToEdit() {
+  protected navigateToEdit(): void {
     this.router.navigate(['user','edit']);
   }
 
-  protected navigateToAuctions() {
+  protected navigateToAuctions(): void {
     this.router.navigate(['user','auctions']);
   }
 
-  protected navigateToUserManagemenet() {
+  protected navigateToUserManagemenet(): void {
     this.router.navigate(['user','manage']);
   }
 
-  protected navigateToAddForm(){
-    this.router.navigate(['auctions','form'])
+  protected navigateToAddForm(): void{
+    this.router.navigate(['auctions','form']);
   }
 }

@@ -8,9 +8,9 @@ import { Subject } from 'rxjs';
 export class LoggedUserService {
 
   private currentUser: User | null = null;
-  private userSubject = new Subject<User | null>();
+  private userSubject: Subject<User | null> = new Subject<User | null>();
 
-  constructor() {
+  public constructor() {
     this.loadUserFromLocalStorage();
   }
 
@@ -25,7 +25,7 @@ export class LoggedUserService {
   public setLoggedUser(user: User ): void {
     this.currentUser = user;
     localStorage.setItem('loggedUser', JSON.stringify(user));
-    this.notifyUserChange()
+    this.notifyUserChange();
   }
 
   public logout(): void{

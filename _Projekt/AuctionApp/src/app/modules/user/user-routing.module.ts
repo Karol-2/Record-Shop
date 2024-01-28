@@ -6,9 +6,8 @@ import { UserAuctionsComponent } from './components/user-auctions/user-auctions.
 import { UserPanelComponent } from './pages/user-panel/user-panel.component';
 import { auctionsResolver } from 'src/app/core/resolvers/auctions.resolver';
 import { UserManagementComponent } from './components/user-management/user-management.component';
-import { UsersResolver } from 'src/app/core/resolvers/users.resolver';
+import { usersResolver } from 'src/app/core/resolvers/users.resolver';
 import { adminGuard } from 'src/app/core/guards/admin.guard';
-import { leaveGuard } from 'src/app/core/guards/leave.guard';
 
 const routes: Routes = [
   {
@@ -25,7 +24,7 @@ const routes: Routes = [
       {
         path: 'manage',
         component: UserManagementComponent,
-        resolve: { usersTab: UsersResolver, auctionsTab: auctionsResolver },
+        resolve: { usersTab: usersResolver, auctionsTab: auctionsResolver },
         canActivate:[adminGuard]
       },
       { path: '', redirectTo: 'details', pathMatch: 'full' },

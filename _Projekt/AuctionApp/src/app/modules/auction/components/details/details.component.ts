@@ -11,17 +11,17 @@ import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  @Input() public auction!:Auction;
+  @Input() public auction!: Auction;
   protected userId: string | null = null;
   protected showModal: boolean = false;
-  protected message: string = ""
+  protected message: string = "";
 
   public constructor(private loggedUserService: LoggedUserService, private auctionService: AuctionService, private router: Router){}
 
   public ngOnInit(): void {
-    const response: string | undefined = this.loggedUserService.getLoggedUser()?.id
+    const response: string | undefined = this.loggedUserService.getLoggedUser()?.id;
     if (response){
-      this.userId = response
+      this.userId = response;
     } else {
       this.message = "You need to log in to buy an auction";
     }
@@ -40,15 +40,15 @@ export class DetailsComponent implements OnInit {
         ...this.auction, 
         isBought: true, 
         buyerId: this.userId, 
-        dateBought: new Date() }
+        dateBought: new Date() };
 
-        this.auctionService.updateAuction(this.auction.id,updatedAuction).subscribe({
-          next: ()=>{this.message == "success"; this.router.navigate(["user","auctions"])},
-          error: (error: HttpErrorResponse) => {this.message == "Error: " + error.error},
-          complete: ()=>{this.changeVisibility()}
-        })
+      this.auctionService.updateAuction(this.auction.id,updatedAuction).subscribe({
+        next: ()=>{this.message == "success"; this.router.navigate(["user","auctions"]);},
+        error: (error: HttpErrorResponse) => {this.message == "Error: " + error.error;},
+        complete: ()=>{this.changeVisibility();}
+      });
     }
-    this.message = "You need to log in to buy an auction"
+    this.message = "You need to log in to buy an auction";
     
     
   }

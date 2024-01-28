@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./go-back-button.component.scss']
 })
 export class GoBackButtonComponent {
-  public constructor(private location: Location){};
+  public constructor(private location: Location){}
 
   protected goBack(): void{
     this.location.back();

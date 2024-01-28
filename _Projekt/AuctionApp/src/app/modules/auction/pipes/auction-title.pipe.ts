@@ -6,16 +6,17 @@ import { Auction } from 'src/app/shared/models/Auction.model';
 })
 export class AuctionTitlePipe implements PipeTransform {
 
-  transform(auction: Auction): string {
-    if(auction){
-      const artist: string = auction.artistName;
-      const album: string = auction.albumName;
-      const type: string = auction.type;
+  public transform(auction: Auction): string {
+    
+    const artist: string = auction.artistName;
+    const album: string = auction.albumName;
+    const type: string = auction.type;
   
-      const result: string = artist +" - " + album + " | " + type;
-      return result;
-    }
-   return "";
+    const result: string = artist +" - " + album + " | " + type;
+      
+    return result;
+    
+    
   }
 
 }

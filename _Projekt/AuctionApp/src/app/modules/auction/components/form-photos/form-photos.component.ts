@@ -8,9 +8,6 @@ import { PhotoForm } from '../../models/auction-form.model';
   styleUrls: ['./form-photos.component.scss']
 })
 export class FormPhotosComponent {
-
   @Input() public photosForm!: FormGroup<PhotoForm>;
-
-  public constructor(){};
 
 }

@@ -17,22 +17,22 @@ export class AdminOptionsComponent implements OnInit {
   protected message: string = "";
   protected user!: User | null;
 
-  public constructor(private router: Router, private auctionService: AuctionService, private loggedUserService: LoggedUserService){};
+  public constructor(private router: Router, private auctionService: AuctionService, private loggedUserService: LoggedUserService){}
 
-   public ngOnInit(): void {
+  public ngOnInit(): void {
     this.user = this.loggedUserService.getLoggedUser();
   }
 
   protected editAuction(): void{
-    this.router.navigate(["auctions","form", this.auctionId])
+    this.router.navigate(["auctions","form", this.auctionId]);
   }
 
   protected deleteAuction(): void{
     this.auctionService.deleteAuction(this.auctionId).subscribe({
-      next: ()=>{this.router.navigate(["auctions"])},
-      error: (err: HttpErrorResponse) => {this.message = err.error.message},
-      complete: ()=>{this.changeVisibility()}
-    })
+      next: ()=>{this.router.navigate(["auctions"]);},
+      error: (err: HttpErrorResponse) => {this.message = err.error.message;},
+      complete: ()=>{this.changeVisibility();}
+    });
   }
 
   protected changeVisibility(): void{

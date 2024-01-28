@@ -10,13 +10,11 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class PrefixInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const uri: string = "http://localhost:3000/";
 
-    const uri: string = "http://localhost:3000/"
-
-    const modifiedRequest = request.clone({
+    const modifiedRequest: HttpRequest<unknown> = request.clone({
       url: `${uri}${request.url}`,
     });
 

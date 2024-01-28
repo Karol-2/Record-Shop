@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/shared/enums/Category.enum';
 import { Type } from 'src/app/shared/enums/Type.enum';
 import { Auction } from 'src/app/shared/models/Auction.model';
+import { QueryParams } from '../../models/queryParams.model';
 
 @Component({
   selector: 'app-side-bar',
@@ -12,9 +13,9 @@ import { Auction } from 'src/app/shared/models/Auction.model';
 })
 export class SideBarComponent implements OnInit{
 
-  protected categoryValues:Category[] = Object.values(Category)
+  protected categoryValues: Category[] = Object.values(Category);
 
-  public constructor( private route: ActivatedRoute, private router: Router){};
+  public constructor( private route: ActivatedRoute, private router: Router){}
   
   // ============= SORTING ==========
 
@@ -22,34 +23,47 @@ export class SideBarComponent implements OnInit{
   protected sortValue: string = "";
   protected sortOrder: string = "";
 
-  protected sortAuctions() {
+  protected sortAuctions(): void {
+    
     if (this.sortValue) {
-      this.auctions.sort((a, b) => {
-        const valueA = this.getValueForSorting(a, this.sortValue);
-        const valueB = this.getValueForSorting(b, this.sortValue);
+      this.auctions.sort((a: Auction, b: Auction) => {
+        const valueA: Date | number | string = this.getValueForSorting(a, this.sortValue);
+        const valueB: Date | number | string = this.getValueForSorting(b, this.sortValue);
   
         if (this.sortOrder === 'asc') {
-          return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
-        } else {
-          return valueB < valueA ? -1 : valueB > valueA ? 1 : 0;
-        }
+          if (valueA < valueB) { 
+            return -1;
+          } else if (valueA > valueB) {
+            return 1;
+          } 
+
+          return 0;
+          
+        } 
+        if (valueB < valueA) {
+          return -1;
+        } else if (valueB > valueA) {
+          return 1;
+        } 
+            
+        return 0;
       });
+      
     }
-    
   }
   
-  private getValueForSorting(auction: Auction, sortField: string): string | number | Date {
+  private getValueForSorting(auction: Auction, sortField: string): Date | number | string {
     switch (sortField) {
-      case 'artistName':
-        return auction.artistName;
-      case 'albumName':
-        return auction.albumName
-      case 'price':
-        return auction.price;
-      case 'dateCreated':
-        return auction.dateCreated;
-      default:
-        return '';
+    case 'artistName':
+      return auction.artistName;
+    case 'albumName':
+      return auction.albumName;
+    case 'price':
+      return auction.price;
+    case 'dateCreated':
+      return auction.dateCreated;
+    default:
+      return '';
     }
   }
 
@@ -64,20 +78,20 @@ export class SideBarComponent implements OnInit{
       type: new FormControl<Type | null>(null),
       showFinished: new FormControl<boolean | null>(null),
       showOngoing: new FormControl<boolean | null>(null)
-    })
+    });
   }
 
   protected onSubmitFilter(): void{
     this.updateUrl();
   }
 
-  private updateUrl() {
-    const queryParams = {
+  private updateUrl(): void {
+    const queryParams: QueryParams = {
       type: this.filterForm.value.type,
       artistName: this.filterForm.value.artistName,
       category: this.filterForm.value.category,
       showFinished: this.filterForm.value.showFinished,
-      showOngoing: this.filterForm.value.showOngoing
+      showOngoing: this.filterForm.value.showOngoing,
     };
 
     this.router.navigate([], {

@@ -11,7 +11,7 @@
                <app-auction-panel [auction]="auction" ></app-auction-panel>
             </div>
         </ng-container>
-        <div *ngIf="auctions.length == 0">
+        <div *ngIf="auctions.length === 0">
             <h2>You didn't buy any auctions yet. Checkout Search tab to find some new music!</h2>
         </div>
     </mat-card-content>
