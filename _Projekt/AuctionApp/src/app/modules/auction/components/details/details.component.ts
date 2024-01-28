@@ -13,19 +13,19 @@ import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
 })
 export class DetailsComponent implements OnInit {
   @Input() public auction!:Auction;
-  private userId: string | null = null;
+  protected userId: string | null = null;
   protected showModal: boolean = false;
   protected message: string = ""
 
   public constructor(private loggedUserService: LoggedUserService, private auctionService: AuctionService, private router: Router){}
 
   public ngOnInit(): void {
-    this.loggedUserService.loggedUserChanged().subscribe((user) => {
-      if(user){
-        this.userId = user.id;
-      }
-    });
-    this.loggedUserService.loadUserFromLocalStorage();
+    const response: string | undefined = this.loggedUserService.getLoggedUser()?.id
+    if (response){
+      this.userId = response
+    } else {
+      this.message = "You need to log in to buy an auction";
+    }
   }
 
   protected changeVisibility(): void{

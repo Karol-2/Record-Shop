@@ -15,7 +15,7 @@
             <div class="right">
                 <div class="price">
                     <h1>Price: ${{auction.price}}</h1>
-                    <button mat-raised-button color="primary" [disabled]="auction.isBought" (click)="changeVisibility()"> Buy </button>
+                    <button mat-raised-button color="primary" [disabled]="auction.isBought || !userId " (click)="changeVisibility()"> Buy </button>
                     <p *ngIf="auction.isBought">This auction has ended</p>
                     <h1>{{this.message}}</h1>
                 </div>

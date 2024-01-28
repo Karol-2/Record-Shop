@@ -38,26 +38,11 @@ export class LoggedUserService {
 
   public loadUserFromLocalStorage(): void {
     const storedUser: string | null = localStorage.getItem('loggedUser');
-    if (storedUser) {
-      
-      const parsedUser= JSON.parse(storedUser);
-      this.currentUser = this.deserializeUser(parsedUser.user);
+    if (storedUser) {  
+      const parsedUser: User | null= JSON.parse(storedUser);
+      this.currentUser = parsedUser;
       this.notifyUserChange();
     }
-  }
-
-  private deserializeUser(user: any): User | null {
-    if (user) {
-      return {
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        password: user.password,
-        userType: user.userType,
-      };
-    }
-    return null;
   }
 
   private notifyUserChange(): void {
@@ -65,4 +50,3 @@ export class LoggedUserService {
   }
   
 }
-
