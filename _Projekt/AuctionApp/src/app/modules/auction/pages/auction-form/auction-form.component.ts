@@ -32,7 +32,7 @@ export class AuctionFormComponent implements OnInit{
     private auctionFormService: AuctionFormService, 
     private route: ActivatedRoute,
     private auctionService: AuctionService,
-    private snackBar: MatSnackBar
+    private _SnackBar: MatSnackBar
   ){}
 
   public ngOnInit(): void {
@@ -103,10 +103,14 @@ export class AuctionFormComponent implements OnInit{
     this.auctionService.createAuction(newAuction).subscribe({
       next: ()=>{
         this.message = "Success!";
+        this.openSnackBar(this.message);
         this.auctionFormService.resetForm();
       }, 
       error: (err: HttpErrorResponse)=>{
-        this.message = err.error.message;}
+        this.message = err.error.message;
+        this.openSnackBar(this.message);
+      }
+        
     });}
 
 
@@ -144,7 +148,7 @@ export class AuctionFormComponent implements OnInit{
     
 
   protected openSnackBar(message: string): void {
-    this.snackBar.open(message, 'OK');
+    this._SnackBar.open(message, 'OK');
   }
 
 }
