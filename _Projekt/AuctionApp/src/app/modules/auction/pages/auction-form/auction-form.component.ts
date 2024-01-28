@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 import { AuctionForm, PhotoForm } from '../../models/auction-form.model';
 import { AuctionFormService } from '../../services/auction-form.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Auction } from 'src/app/shared/models/Auction.model';
 import { Type } from 'src/app/shared/enums/Type.enum';
 import { AuctionService } from 'src/app/features/services/auction.service';

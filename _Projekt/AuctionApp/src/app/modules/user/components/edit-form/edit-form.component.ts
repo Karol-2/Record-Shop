@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/features/services/user.service';
-import { CapitalLetterDirective } from 'src/app/shared/directives/capital-letter.directive';
 import { User } from 'src/app/shared/models/User.model';
 import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
 

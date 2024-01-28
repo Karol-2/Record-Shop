@@ -15,7 +15,7 @@ export class AuctionListComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.route.data.subscribe((data) => {
       this.originalAuctions = data['auctions'].auctions;
       this.filterAuctions();
@@ -28,7 +28,7 @@ export class AuctionListComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     if (this.queryParamsSubscription) {
       this.queryParamsSubscription.unsubscribe();
     }
@@ -65,9 +65,4 @@ export class AuctionListComponent implements OnInit, OnDestroy {
       return true;
     });
   }
-
-  protected goToForm(): void {
-    this.router.navigate(['auctions', 'form']);
-  }
-
 }

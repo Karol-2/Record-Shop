@@ -18,19 +18,23 @@ export class SideBarComponent implements OnInit{
     this.user = this.loggedUserService.getLoggedUser();
   }
 
-  navigateToDetails() {
-    this.router.navigate(['/user/details']);
+  protected navigateToDetails() {
+    this.router.navigate(['user','details']);
   }
 
-  navigateToEdit() {
-    this.router.navigate(['/user/edit']);
+  protected navigateToEdit() {
+    this.router.navigate(['user','edit']);
   }
 
-  navigateToAuctions() {
-    this.router.navigate(['/user/auctions']);
+  protected navigateToAuctions() {
+    this.router.navigate(['user','auctions']);
   }
 
-  navigateToUserManagemenet() {
-    this.router.navigate(['/user/manage']);
+  protected navigateToUserManagemenet() {
+    this.router.navigate(['user','manage']);
+  }
+
+  protected navigateToAddForm(){
+    this.router.navigate(['auctions','form'])
   }
 }

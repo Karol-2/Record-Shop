@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuctionService } from 'src/app/features/services/auction.service';
 import { Auction } from 'src/app/shared/models/Auction.model';
-import { User } from 'src/app/shared/models/User.model';
 import { LoggedUserService } from 'src/app/shared/services/logged-user.service';
 
 @Component({
