@@ -1,5 +1,5 @@
 export default interface Tokens{
-    accessToken: string,
-    refreshToken: string,
-    id: string
+    readonly accessToken: string,
+    readonly refreshToken: string,
+    readonly id: string
 }

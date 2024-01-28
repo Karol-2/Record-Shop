@@ -5,17 +5,17 @@ export interface Auction{
     readonly id: string;
     readonly dateCreated: Date;
 
-    category: Category;
+    readonly category: Category;
 
-    artistName: string;
-    albumName: string;
-    type: Type;
+    readonly artistName: string;
+    readonly albumName: string;
+    readonly type: Type;
 
-    price: number;
-    description: string;
-    photos: string[];
+    readonly price: number;
+    readonly description: string;
+    readonly photos: string[];
 
-    isBought: boolean;
-    buyerId: string | null;
-    dateBought: Date | null;
+    readonly isBought: boolean;
+    readonly buyerId: string | null;
+    readonly dateBought: Date | null;
 }

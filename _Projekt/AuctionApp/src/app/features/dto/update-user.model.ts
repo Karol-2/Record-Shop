@@ -1,5 +1,5 @@
 export default interface UpdateUser{
-    firstName: string;
-    lastName: string;
-    password: string;
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly password: string;
 }

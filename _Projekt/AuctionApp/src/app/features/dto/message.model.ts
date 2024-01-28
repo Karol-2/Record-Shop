@@ -1,3 +1,3 @@
 export default interface Message{
-    message: string,
+    readonly message: string,
 }

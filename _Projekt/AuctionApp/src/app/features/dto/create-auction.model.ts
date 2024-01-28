@@ -1,11 +1,11 @@
 import { Category } from "src/app/shared/enums/Category.enum";
 
 export default interface CreateAuction{
-    category: Category;
-    artistName: string,
-    albumName: string
-    type: string,
-    price: number;
-    description: string;
-    photos: string[];
+    readonly category: Category;
+    readonly artistName: string,
+    readonly albumName: string
+    readonly type: string,
+    readonly price: number;
+    readonly description: string;
+    readonly photos: string[];
 }

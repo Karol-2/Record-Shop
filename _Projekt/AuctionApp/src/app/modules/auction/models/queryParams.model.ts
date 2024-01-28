@@ -1,9 +1,9 @@
 import { Category } from "src/app/shared/enums/Category.enum";
 
 export interface QueryParams {
-    type: string,
-    artistName: string,
-    category: Category,
-    showFinished: boolean,
-    showOngoing: boolean
+    readonly type: string,
+    readonly artistName: string,
+    readonly category: Category,
+    readonly showFinished: boolean,
+    readonly showOngoing: boolean
 }
