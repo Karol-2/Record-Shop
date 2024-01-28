@@ -39,6 +39,7 @@ export class AuctionListComponent implements OnInit, OnDestroy {
     const artistName: string | null = this.route.snapshot.queryParamMap.get('artistName') || null;
     const category: string | null = this.route.snapshot.queryParamMap.get('category');
     const showFinished: boolean | null = this.route.snapshot.queryParamMap.get('showFinished') === 'true' || null;
+    const showOngoing: boolean | null = this.route.snapshot.queryParamMap.get('showOngoing') === 'true' || null;
 
     this.auctions = this.originalAuctions.filter(auction => {
       if (type !== null && auction.type !== type) {
@@ -55,8 +56,10 @@ export class AuctionListComponent implements OnInit, OnDestroy {
 
       if (showFinished !== null && auction.isBought !== showFinished) {
         return false;
-      } else {
-        return true
+      }
+
+      if(showOngoing !== null && auction.isBought === showOngoing ) {
+        return false
       }
 
       return true;

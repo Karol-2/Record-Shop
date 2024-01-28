@@ -62,7 +62,8 @@ export class SideBarComponent implements OnInit{
       artistName: new FormControl<string | null>(null),
       category: new FormControl<string | null>(null),
       type: new FormControl<Type | null>(null),
-      showFinished: new FormControl<boolean | null>(null)
+      showFinished: new FormControl<boolean | null>(null),
+      showOngoing: new FormControl<boolean | null>(null)
     })
   }
 
@@ -75,7 +76,8 @@ export class SideBarComponent implements OnInit{
       type: this.filterForm.value.type,
       artistName: this.filterForm.value.artistName,
       category: this.filterForm.value.category,
-      showFinished: this.filterForm.value.showFinished
+      showFinished: this.filterForm.value.showFinished,
+      showOngoing: this.filterForm.value.showOngoing
     };
 
     this.router.navigate([], {
