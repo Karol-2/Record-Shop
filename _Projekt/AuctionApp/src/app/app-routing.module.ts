@@ -5,6 +5,7 @@ import { HomepageComponent } from './modules/homepage/pages/homepage/homepage.co
 import { AuthGuard } from './core/guards/auth.guard';
 import { PageForbiddenComponent } from './core/layout/page-forbidden/page-forbidden.component';
 import { AuctionNotFoundComponent } from './core/layout/auction-not-found/auction-not-found.component';
+import { auctionsResolver } from './core/resolvers/auctions.resolver';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomepageComponent,
+    resolve:{ auctions: auctionsResolver}
   },
   {
     path: 'login',

@@ -1,0 +1,30 @@
+.auctions{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:1.5rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+}
+
+img{
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+}
+
+p, mat-card-header{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

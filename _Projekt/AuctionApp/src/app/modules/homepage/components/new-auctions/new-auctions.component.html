@@ -1,1 +1,23 @@
-<p>new-auctions works!</p>
+<h1>Discover our newest addictions!</h1>
+
+<div class="auctions">
+    <div *ngFor="let auction of auctionsTab">
+        <mat-card>
+            <mat-card-content>
+                <img src={{auction.photos[0]}}>
+            </mat-card-content>
+            <mat-card-title>
+                <mat-card-header>
+                    <p>{{auction.albumName}}</p>
+                </mat-card-header>
+              
+            </mat-card-title>
+            <mat-card-subtitle>
+                <p>{{auction.artistName}}</p>
+            </mat-card-subtitle>
+        </mat-card>
+        
+        
+        
+    </div>
+</div>

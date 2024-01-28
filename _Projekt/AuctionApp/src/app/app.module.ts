@@ -11,6 +11,7 @@ import { UserModule } from './modules/user/user.module';
 import { PrefixInterceptor } from './core/interceptors/prefix.interceptor';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { MaterialModule } from './modules/material/material.module';
+import { HomepageModule } from './modules/homepage/homepage.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MaterialModule } from './modules/material/material.module';
     CoreModule,
     LoginModule,
     UserModule,
+    HomepageModule
 
   ],
   providers: [
