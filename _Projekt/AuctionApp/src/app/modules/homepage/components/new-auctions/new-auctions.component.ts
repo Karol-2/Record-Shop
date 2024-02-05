@@ -16,7 +16,7 @@ export class NewAuctionsComponent implements OnInit {
     this.route.data.subscribe((data: Data) => {
       this.auctionsTab = data['auctions']
         .auctions
-        .sort((a: Auction, b: Auction) => new Date(a.dateCreated).getTime() - new Date(b.dateCreated).getTime())
+        .sort((a: Auction, b: Auction) => new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime())
         .splice(0,3);
      
     });

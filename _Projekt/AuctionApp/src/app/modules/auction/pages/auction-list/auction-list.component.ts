@@ -68,6 +68,6 @@ export class AuctionListComponent implements OnInit, OnDestroy {
   }
   
   private filterByShowOngoing(showOngoing: boolean | null, auction: Auction): boolean {
-    return showOngoing === null || auction.isBought === showOngoing;
+    return showOngoing === null || !auction.isBought === showOngoing;
   }
 }
