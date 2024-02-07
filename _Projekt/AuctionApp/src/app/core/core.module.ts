@@ -10,6 +10,7 @@ import { SharedModule } from "../shared/shared.module";
 import { PageForbiddenComponent } from './layout/page-forbidden/page-forbidden.component';
 import { AuctionNotFoundComponent } from './layout/auction-not-found/auction-not-found.component';
 import { MaterialModule } from '../modules/material/material.module';
+import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
 
 
 
@@ -20,7 +21,8 @@ import { MaterialModule } from '../modules/material/material.module';
     MainComponent,
     NavComponent,
     PageForbiddenComponent,
-    AuctionNotFoundComponent
+    AuctionNotFoundComponent,
+    PageNotFoundComponent
   ],
   providers: [
     LoggedUserService

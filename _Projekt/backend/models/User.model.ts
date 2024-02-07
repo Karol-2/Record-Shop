@@ -1,11 +1,11 @@
 import { UserType } from "../enums/UserType";
 
 export interface User{
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    userType: UserType;
+    readonly id: string;
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly email: string;
+    readonly password: string;
+    readonly userType: UserType;
    
 }

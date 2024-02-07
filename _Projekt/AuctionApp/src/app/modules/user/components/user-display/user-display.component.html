@@ -1,13 +1,21 @@
-<div>
-    <h2>{{user.firstName}} {{user.lastName}}</h2>
-    <p>Id: {{user.id}}</p>
-    <p>E-mail: {{user.email}}</p>
-    <p>Password: {{user.password}}</p>
-    <p>Type: {{user.userType}}</p>
+<mat-card>
+  <mat-card-content>
+    <div>
+      <h2>{{user.firstName}} {{user.lastName}}</h2>
+      <p>Id: {{user.id}}</p>
+      <p>E-mail: {{user.email}}</p>
+      <p>Password: {{user.password}}</p>
+      <p>Type: {{user.userType}}</p>
+     
+    </div>
+  </mat-card-content>
+  <mat-card-actions >
     <ng-container >
       <button mat-raised-button color="warn" (click)="changeVisibility()"> Remove user</button>
     </ng-container>
-</div>
+  </mat-card-actions>
+</mat-card>
+
 
 <app-modal *ngIf="showModal" [text]="'Are you shure that you want to delete user: '+ user.firstName + ' ' + user.lastName + '?'" >
     <div>

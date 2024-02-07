@@ -32,7 +32,7 @@ export class AuctionFormComponent implements OnInit{
     private auctionFormService: AuctionFormService, 
     private route: ActivatedRoute,
     private auctionService: AuctionService,
-    private _SnackBar: MatSnackBar
+    private SnackBar: MatSnackBar
   ){}
 
   public ngOnInit(): void {
@@ -85,19 +85,19 @@ export class AuctionFormComponent implements OnInit{
   private handleAddReq(): void{
     const form: FormGroup<AuctionForm> = this.auctionForm;
 
-    const photos: string[] = form.value.photos!
+    const photos: string[] = (form.value.photos || [])
       .map((photoForm: Partial<{ photo: string | null }>) => {
-        return photoForm.photo!;
+        return photoForm.photo ?? "";
       });
 
     const newAuction: CreateAuction = {
-      albumName: form.value.albumName!,
-      artistName: form.value.artistName!,
-      category: form.value.category!,
-      description: form.value.description!,
+      albumName: form.value.albumName ? form.value.albumName : "",
+      artistName: form.value.artistName ? form.value.artistName : "" ,
+      category: form.value.category ? form.value.category : Category.POP ,
+      description: form.value.description ? form.value.description : "" ,
       photos: photos,
-      price: form.value.price!,
-      type: form.value.type!,
+      price: form.value.price ? form.value.price : -1,
+      type: form.value.type ? form.value.type : Type.CD ,
     };
 
     this.auctionService.createAuction(newAuction).subscribe({
@@ -117,20 +117,20 @@ export class AuctionFormComponent implements OnInit{
   private handleEditReq(): void{
     const form: FormGroup<AuctionForm> = this.auctionForm;
 
-    const photos: string[] = form.value.photos!
+    const photos: string[] = (form.value.photos || [])
       .map((photoForm: Partial<{ photo: string | null }>) => {
-        return photoForm.photo!;
+        return photoForm.photo ?? '';
       });
 
     const editedAuction: Auction = {
       ...this.existingAuction,
-      albumName: form.value.albumName!,
-      artistName: form.value.artistName!,
-      category: form.value.category!,
-      description: form.value.description!,
+      albumName: form.value.albumName? form.value.albumName : "",
+      artistName: form.value.artistName ? form.value.artistName : "",
+      category: form.value.category ? form.value.category : Category.POP ,
+      description: form.value.description ? form.value.description : "",
       photos: photos,
-      price: form.value.price!,
-      type: form.value.type! as Type,
+      price: form.value.price ? form.value.price : -1,
+      type: form.value.type ? form.value.type as Type : Type.CD,
     };
 
     this.auctionService.updateAuction(editedAuction.id,editedAuction).subscribe({
@@ -148,7 +148,7 @@ export class AuctionFormComponent implements OnInit{
     
 
   protected openSnackBar(message: string): void {
-    this._SnackBar.open(message, 'OK');
+    this.SnackBar.open(message, 'OK');
   }
 
 }

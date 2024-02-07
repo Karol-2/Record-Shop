@@ -1,28 +1,29 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, Router } from "express";
 import { userData } from "../data/userData";
 import { User } from "../models/User.model";
 import jwt from "jsonwebtoken";
 import { UserType } from "../enums/UserType";
+import { UserEditReq } from "../models/UserEditReq.model";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 const usersDatabase: User[] = userData;
 
 
 router.post("/login", (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  const { email, password }: {email: string, password: string} = req.body;
 
-  const user = usersDatabase.find((user) => user.email === email);
+  const user: User | undefined = usersDatabase.find((user: User) => user.email === email);
 
-    if (!user) {
-      return res.status(404).json({ message: "User doesn't exists" });
-    }
+  if (!user) {
+    return res.status(404).json({ message: "User doesn't exists" });
+  }
 
   if (email === user.email && password === user.password) {
-    const accessToken = jwt.sign({ email }, process.env.TOKEN_SECRET!, {
+    const accessToken: string = jwt.sign({ email }, process.env.TOKEN_SECRET!, {
       expiresIn: "1h",
     });
-    const refeshToken = jwt.sign({ email }, process.env.TOKEN_SECRET!, {
+    const refeshToken: string = jwt.sign({ email }, process.env.TOKEN_SECRET!, {
       expiresIn: "2h",
     });
     res
@@ -44,9 +45,9 @@ router.get("/users", (req: Request, res: Response) => {
 
 router.get("/users/:id", (req: Request, res: Response) => {
   try {
-    const userId = req.params.id;
+    const userId: string = req.params.id;
 
-    const user = usersDatabase.find((user) => user.id === userId);
+    const user: User | undefined = usersDatabase.find((user: User) => user.id === userId);
 
     if (!user) {
       return res.status(404).json({ message: "Not Found - User not found" });
@@ -60,8 +61,8 @@ router.get("/users/:id", (req: Request, res: Response) => {
 
 router.put("/users/:id", (req: Request, res: Response) => {
   try {
-    const userId = req.params.id;
-    const { firstName, lastName, email, password, ...extraFields } = req.body;
+    const userId: string = req.params.id;
+    const { firstName, lastName, email, password, ...extraFields }: UserEditReq = req.body;
 
     //CASE 1 - not at least one field existing in request
     if (!firstName && !lastName && !email && !password) {
@@ -87,9 +88,9 @@ router.put("/users/:id", (req: Request, res: Response) => {
     }
 
     //CASE 4 - user with this email exists
-    const existingUser: User | undefined = usersDatabase.at(existingUserIndex)
+    const existingUser: User | undefined = usersDatabase.at(existingUserIndex);
     const usersWithThisEmail: User[] = usersDatabase.filter((user: User)=> {
-      return user.email === email})
+      return user.email === email;});
 
 
     if (existingUser && existingUser.email !== email && usersWithThisEmail.length > 0) {
@@ -97,7 +98,7 @@ router.put("/users/:id", (req: Request, res: Response) => {
       return res.status(409).json({ message: "This email is already in use" });
     }
 
-    const editedUser = {
+    const editedUser: User = {
       id: userId,
       firstName: firstName || usersDatabase[existingUserIndex].firstName,
       lastName: lastName || usersDatabase[existingUserIndex].lastName,
@@ -118,10 +119,10 @@ router.put("/users/:id", (req: Request, res: Response) => {
 
 router.delete("/users/:id", (req: Request, res: Response) => {
   try {
-    const userId = req.params.id;
+    const userId: string = req.params.id;
 
-    const existingUserIndex = usersDatabase.findIndex(
-      (user) => user.id === userId
+    const existingUserIndex: number = usersDatabase.findIndex(
+      (user: User) => user.id === userId
     );
 
     if (existingUserIndex === -1) {
@@ -132,7 +133,7 @@ router.delete("/users/:id", (req: Request, res: Response) => {
       return res.status(403).json({ message: "You cannot delete admin account!" });
     }
 
-    const deletedUser = usersDatabase.splice(existingUserIndex, 1)[0];
+    const deletedUser: User = usersDatabase.splice(existingUserIndex, 1)[0];
 
     res.status(200).json({ message: "User deleted successfully", user: deletedUser });
   } catch (error) {
