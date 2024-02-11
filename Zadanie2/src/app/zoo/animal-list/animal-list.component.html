@@ -1,9 +1,0 @@
-<app-animal-add [animals]="animals" (animalsUpdated)="onAnimalsUpdated($event)"></app-animal-add>
-
-<h1>Zwierzęta w zoo:</h1>
-<div *ngFor="let animal of animals">
-    <app-animal-details [animal]="animal" [animals]="animals"  (deletionConfirmed)="handleDeletionConfirmation($event)" ></app-animal-details>
-</div>
-
-<app-popup *ngIf="showSuccessModal" [text]="'Usuwanie zakończone sukcesem!'">
-</app-popup>
